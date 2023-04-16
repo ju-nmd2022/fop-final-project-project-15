@@ -15,9 +15,120 @@
     height: auto;
 }
 
+
+.customization-window {
+    background-color: rgb(194, 194, 194);
+    width: 30vw;
+    height: 90vh;
+    margin-top: 5vh;
+    margin-left: 2vw;
+    contain: layout;
+}
+
+.customization-window > h2 {
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 3vh;
+    margin-left: 2vw;
+}
+
+.customization-window > p {
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 3vh;
+    margin-left: 2vw;
+}
+
+.choose-ovve-color {
+    margin-top: 1vh;
+    margin-left: 2vw;
+}
+
+.character-test {
+    contain: layout;
+    position: absolute;
+    top: 20vh;
+    left: 60vw;
+}
+
 .head {
-    background-color: blue;
-    width: 7vw;
-    height: 7vw;
+    background-color: rgb(218, 192, 165);
+    width: 6vw;
+    height: 5.5vw;
     border-radius: 50%;
+    contain: layout;
+}
+.hair {
+    background-color: rgb(226, 209, 114);
+    width: 6vw;
+    height: 2vh;
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+}   
+.eyes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1vh;
+    gap: 0.5vw;
+}
+.right-eye,.left-eye {
+    background-color: white;
+    width: 1.7vw;
+    height: 1.7vw;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pupil {
+    background-color: black;
+    border-radius: 50%;
+    width: 0.5vw;
+    height: 0.5vw;
+}
+.mouth {
+    background-color: black;
+    width: 2vw;
+    height: 0.2vh;
+    margin-left: 2vw;
+    margin-top: 1vh;
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+}
+
+.right-arm {
+    background-color: blue;
+    width: 1vw;
+    height: 3vw;
+    transform: rotate(10deg);
+}
+.left-arm {
+    background-color: blue;
+    width: 1vw;
+    height: 3vw;
+    transform: rotate(-10deg);
+}
+.torso {
+    background-color: aqua;
+    width: 4vw;
+    height: 3vw;
+}
+
+.legs {
+    display: flex;
+    flex-direction: row;
+}
+.right-leg {
+    background-color: blueviolet;
+    margin-left: 1vw;
+    width: 1.8vw;
+    height: 2vw;
+}
+.left-leg {
+    background-color: blueviolet;
+    margin-left: 0.4vw;
+    width: 1.8vw;
+    height: 2vw;
 }

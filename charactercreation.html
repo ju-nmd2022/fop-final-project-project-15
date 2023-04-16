@@ -6,12 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Character</title>
     <link rel="stylesheet" href="main.css"/>
+    <script src="charactercreation.js" type="module" defer></script>
 </head>
 <body>
-    <div class="character-test">
-        <div class="head"></div>
-        <div class="body"></div>
-        <div class="legs"></div>
+    <!-- inputs for customization --> 
+    <div class="customization-window">
+        <h2>Create Your Character!</h2>
+        <p>What's Your Shirt Color?</p>
+        <input class="choose-ovve-color" id="chooseShirtColor" type="color"/>
+        <p>What's Your Ovve Color?</p>
+        <input type="color" list="ovve-colors" class="choose-ovve-color" id="chooseOvveColor"/>
+            <datalist id="ovve-colors">
+                <option value="#FFFF00"></option> <!-- yellow -->
+                <option value="#FF0000"></option> <!-- red -->
+                <option value="#0000FF"></option> <!-- blue -->
+                <option value="#FFFFFF"></option> <!-- white -->
+                <option value="#00FF00"></option> <!-- green -->
+                <option value="#000000"></option> <!-- black -->
+            </datalist>
+        <button class="submit-changes-button" id="submitChangesButton">Submit</button>
+    </div>
+
+    <div id="characterScreen">
+    <!-- the character -->]
     </div>
 </body>
 </html>
