@@ -1,82 +1,32 @@
-
 const backdrop = document.getElementById('backdrop');
+
+const hair = document.getElementById('hair');
+const rightEye = document.getElementById('rightEye');
+const pupilAxisRight = document.getElementById('pupilAxisRight');
+const leftEye = document.getElementById('leftEye');
+const pupilAxisLeft = document.getElementById('pupilAxisLeft');
+const rightArm = document.getElementById('rightArm');
+const torso = document.getElementById('torso');
+const leftArm = document.getElementById('leftArm');
+const rightLeg = document.getElementById('rightLeg');
+const leftLeg = document.getElementById('leftLeg');
 
 const characterInfo = JSON.parse(localStorage.character);
 
-function spawnCharacter() {
-    const newCharacter = document.createElement('div');
-    newCharacter.classList.add('character');
-    newCharacter.setAttribute('id','character');
-    
-    //head of character
-    const newHead = document.createElement('div');
-    newHead.classList.add('head');
-    const newHair = document.createElement('div');
-    newHair.classList.add('hair');
-    const newEyes = document.createElement('div');
-    newEyes.classList.add('eyes');
-    const newRightEye = document.createElement('div'); // right/left shouldnt really need to be done
-    newRightEye.classList.add('right-eye');
-    const newLeftEye = document.createElement('div');
-    newLeftEye.classList.add('left-eye');
-    const newRightPupil = document.createElement('div');
-    newRightPupil.classList.add('pupil');
-    const newLeftPupil = document.createElement('div');
-    newLeftPupil.classList.add('pupil');
-    const newMouth = document.createElement('div');
-    newMouth.classList.add('mouth');
+function generateSavedCharacter() {
+    character.style.position = 'absolute';
 
-    //body of character
-    const newBody = document.createElement('div');
-    newBody.classList.add('body');
-    const newTorso = document.createElement('div');
-    newTorso.classList.add('torso');
-    newTorso.style.backgroundColor = characterInfo.shirtColor;
-    const newRightArm = document.createElement('div');
-    newRightArm.classList.add('right-arm');
-    newRightArm.setAttribute('id','rightArm')
-    newRightArm.style.backgroundColor = characterInfo.shirtColor;
-    const newLeftArm = document.createElement('div');
-    newLeftArm.classList.add('left-arm');
-    newLeftArm.setAttribute('id','leftArm')
-    newLeftArm.style.backgroundColor = characterInfo.shirtColor;
-
-    // legs of character
-    const newLegs = document.createElement('div');
-    newLegs.classList.add('legs');
-    const newLeftLeg = document.createElement('div');
-    newLeftLeg.classList.add('left-leg');
-    newLeftLeg.style.backgroundColor = characterInfo.ovveColor;
-    const newRightLeg = document.createElement('div');
-    newRightLeg.classList.add('right-leg');
-    newRightLeg.style.backgroundColor = characterInfo.ovveColor;
-
-    // assembling
-    //the head
-    newRightEye.appendChild(newRightPupil);
-    newLeftEye.appendChild(newLeftPupil);
-    newEyes.appendChild(newRightEye);
-    newEyes.appendChild(newLeftEye);
-    newHead.appendChild(newHair);
-    newHead.appendChild(newEyes);
-    newHead.appendChild(newMouth);
-
-    //the body 
-    newBody.appendChild(newRightArm);
-    newBody.appendChild(newTorso);
-    newBody.appendChild(newLeftArm);
-
-    //the legs
-    newLegs.appendChild(newRightLeg);
-    newLegs.appendChild(newLeftLeg);
-
-    //the full body
-    newCharacter.appendChild(newHead);
-    newCharacter.appendChild(newBody);
-    newCharacter.appendChild(newLegs);
-
-    backdrop.appendChild(newCharacter);
+    hair.style.backgroundColor = characterInfo.hairColor;
+    rightArm.style.backgroundColor = characterInfo.shirtColor;
+    leftArm.style.backgroundColor = characterInfo.shirtColor;
+    torso.style.backgroundColor = characterInfo.shirtColor;
+    rightLeg.style.backgroundColor = characterInfo.ovveColor;
+    leftLeg.style.backgroundColor = characterInfo.ovveColor;
 }
+
+generateSavedCharacter();
+
+console.log(characterInfo.hairColor);
 
 let armsAnimationState = false;
 
@@ -138,5 +88,3 @@ document.addEventListener('keydown', () => {
     }
     animateArms();
 })
-
-spawnCharacter();

@@ -1,12 +1,19 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .backdrop {
     width: 100vw;
     height: 100vh;
-    background-image: url("backdrops/intersection.png");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.backdrop-image {
+    width: 98vw;
+    height: auto;
 }
 
 .body-container {
@@ -17,6 +24,7 @@
 /* .start-game-button {
 
 } */
+
 
 .customization-window {
     background-color: rgb(194, 194, 194);
@@ -33,19 +41,17 @@
     flex-direction: column;
 }
 
-.customization-window > h2 {
-    font-family: 'Courier New', Courier, monospace;
-}
-
 .customization-window > p {
-    font-family: 'Courier New', Courier, monospace;
     margin-top: 4vh;
     margin-left: 2vw;
 }
 
-.choose-ovve-color {
+.choose-color,.choose-ovve-color,.choose-name {
     margin-top: 1vh;
     margin-left: 2vw;
+}
+.choose-ovve-color,.choose-name {
+    width: 12vw;
 }
 
 .submit-changes-button,.start-game-button {
@@ -68,10 +74,93 @@
     width: 62vw;
     height: 90vh;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-left: 2vw;
+}
+
+.jth-icon,.comm-icon1,.comm-icon2,.teach-icon,.health-icon,.jibs-icon,.qult-icon {
+    display: none;
+}
+
+.rotate-animation {
+    animation-name: rotateanimation;
+    animation-duration: 1s;
+}
+.fade-animation {
+    animation-name: fadeinanimation;
+    animation-duration: 1s;
+}
+.jibs-animation {
+    animation-name: jibsanimation;
+    animation-duration: 1s;
+}
+.qult-animation {
+    animation-name: qultanimation;
+    animation-duration: 1s;
+}
+
+
+.jth-icon {
+    margin-bottom: 3vh;
+    width: 5vw;
+    height: 5vw;
+}
+.comm-icon1 {
+    width: 5vw;
+    height: auto;
+    
+}
+.comm-icon2 {
+    width: 3vw;
+    height: auto;
+    margin-bottom: 3vh;
+}
+.teach-icon {
+    width: 5vw;
+    height: auto;
+    margin-bottom: 3vh;
+}
+.health-icon {
+    width: 5vw;
+    height: auto;
+    margin-bottom: 3vh;
+}
+.jibs-icon {
+    width: 5vw;
+    height: auto;
+    margin-bottom: 3vh;
+    
+}
+.qult-icon {
+    width: 12vw;
+    height: auto;
+    margin-bottom: 3vh;
+    
+}
+
+@keyframes rotateanimation {
+    25% {transform: rotate(90deg);}
+    50% {transform: rotate(180deg);}
+    75% {transform: rotate(270deg);}
+    100% {transform: rotate(360deg);}
+}
+@keyframes fadeinanimation {
+    from {opacity: 0;}
+    to {opacity: 100;}
+}
+@keyframes jibsanimation {
+    from {margin-bottom: 7vh;}
+    to {margin-bottom: 3vh;}
+}
+@keyframes qultanimation {
+    from {
+        margin-right: 20vw;
+    }
+    to {
+        margin-right: 0;
+    }
 }
 
 .stage {
@@ -82,6 +171,12 @@
     width: 8vw;
     height: 5vh;
     border-radius: 50%;
+}
+
+.character-name {
+    position: absolute;
+    bottom: 8vh;
+    left: 38vw;
 }
 
 .character {

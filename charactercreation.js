@@ -1,36 +1,78 @@
 import Character from "./character.js";
 
+const chooseName = document.getElementById('chooseName');
+const characterName = document.getElementById('characterName');
 const chooseHairColor = document.getElementById('chooseHairColor');
 const chooseShirtColor = document.getElementById('chooseShirtColor');
 const chooseOvveColor = document.getElementById('chooseOvveColor');
 const characterScreen = document.getElementById('characterScreen');
 const submitChangesButton = document.getElementById('submitChangesButton');
 
-const savedCharacter = JSON.parse(localStorage.character); 
+const jthIcon = document.getElementById('jthIcon');
+const commIcon1 = document.getElementById('commIcon1');
+const commIcon2 = document.getElementById('commIcon2');
+const teachIcon = document.getElementById('teachIcon');
+const healthIcon = document.getElementById('healthIcon');
+const jibsIcon = document.getElementById('jibsIcon');
+const qultIcon = document.getElementById('qultIcon');
 
+const hair = document.getElementById('hair');
+const rightEye = document.getElementById('rightEye');
+const pupilAxisRight = document.getElementById('pupilAxisRight');
+const leftEye = document.getElementById('leftEye');
+const pupilAxisLeft = document.getElementById('pupilAxisLeft');
+const rightArm = document.getElementById('rightArm');
+const torso = document.getElementById('torso');
+const leftArm = document.getElementById('leftArm');
+const rightLeg = document.getElementById('rightLeg');
+const leftLeg = document.getElementById('leftLeg');
+
+let savedCharacter = JSON.parse(localStorage.character); 
+
+let name;
 let hairColor;
 let shirtColor;
 let ovveColor;
 
+const character = new Character(name,shirtColor,ovveColor,hairColor);
+
 // import saved character, if one exists
+if (savedCharacter.name !== null) {
+    name = savedCharacter.name;
+    character.name = name;
+}
+else {
+    name = 'New Character';
+    character.name = name;
+}
 if (savedCharacter.hairColor !== null) {
     hairColor = savedCharacter.hairColor;
+    character.hairColor = hairColor;
 }
 else {
     hairColor = 'yellow';
+    character.hairColor = hairColor;
 }
 if (savedCharacter.shirtColor !== null) {
     shirtColor = savedCharacter.shirtColor;
+    character.shirtColor = shirtColor;
 }
 else {
     shirtColor = "red";
+    character.shirtColor = shirtColor;
 }
 if (savedCharacter.ovveColor !== null) {
     ovveColor = savedCharacter.ovveColor;
+    character.ovveColor = ovveColor;
 }
 else {
     ovveColor = "yellow";
+    character.ovveColor = ovveColor;
 }
+
+chooseOvveColor.addEventListener('click', () => {
+    chooseOvveColor.value = '';
+})
 
 // make the eyes follow the cursor 
 document.addEventListener('mousemove', () => {
@@ -42,113 +84,92 @@ document.addEventListener('mousemove', () => {
     
 })
 
-const character = new Character(shirtColor,ovveColor,hairColor);
-
 submitChangesButton.addEventListener('click', () => {
+    if (chooseOvveColor.value === 'Yellow (JTH)') {
+        ovveColor = 'rgb(235, 212, 35)';
+        jthIcon.style.display = 'block';
+        jthIcon.classList.add('rotate-animation');
+        setTimeout(() => {
+            jthIcon.style.display = 'none';
+            jthIcon.classList.remove('rotate-animation');
+        }, 2000);
+    }
+    else if (chooseOvveColor.value === 'Blue (HLK)') {
+        ovveColor = 'rgb(26, 46, 230)';
+        commIcon1.style.display = 'block';
+        commIcon2.style.display = 'block';
+        commIcon2.classList.add('fade-animation');
+        setTimeout(() => {
+            commIcon1.style.display = 'none';
+            commIcon2.style.display = 'none';
+            commIcon2.classList.remove('fade-animation');
+        }, 2000);
+    }
+    else if (chooseOvveColor.value === 'Red (HLK)') {
+        ovveColor = 'rgb(230, 26, 26)';
+        teachIcon.style.display = 'block';
+        teachIcon.classList.add('fade-animation');
+        setTimeout(() => {
+            teachIcon.style.display = 'none';
+            teachIcon.classList.remove('fade-animation');
+        }, 2000);
+    }
+    else if (chooseOvveColor.value === 'White (Hälso)') {
+        ovveColor = 'rgb(255, 255, 255)';
+        healthIcon.style.display = 'block';
+        healthIcon.classList.add('rotate-animation');
+        setTimeout(() => {
+            healthIcon.style.display = 'none';
+            healthIcon.classList.remove('rotate-animation');
+        }, 2000);
+    }
+    else if (chooseOvveColor.value === 'Green (JIBS)') {
+        ovveColor = 'rgb(5, 111, 17)';
+        jibsIcon.style.display = 'block';
+        jibsIcon.classList.add('jibs-animation');
+        setTimeout(() => {
+            jibsIcon.style.display = 'none';
+            jibsIcon.classList.remove('jibs-animation');
+        }, 2000);
+    }
+    else if (chooseOvveColor.value === 'Black (Qult)') {
+        ovveColor = 'rgb(0, 0, 0)';
+        qultIcon.style.display = 'block';
+        qultIcon.classList.add('qult-animation');
+        setTimeout(() => {
+            qultIcon.style.display = 'none';
+            qultIcon.classList.remove('qult-animation');
+        }, 2000);
+    }
+
+    name = chooseName.value;
     hairColor = chooseHairColor.value;
     shirtColor = chooseShirtColor.value;
-    ovveColor = chooseOvveColor.value;
     
+    character.name = name;
     character.hairColor = hairColor;
     character.shirtColor = shirtColor;
     character.ovveColor = ovveColor;
-    removeCharacter();
+
+
+
     createCharacter();
     localStorage.removeItem(character);
     localStorage.character = JSON.stringify(character);
+    savedCharacter = JSON.parse(localStorage.character);
+
+    console.log(character);
+    console.log(savedCharacter);
 })
 
-function removeCharacter() {
-    const characterToRemove = characterScreen.lastChild;
-    characterScreen.removeChild(characterToRemove);
-}
-
 function createCharacter() {
-    const newCharacter = document.createElement('div');
-    newCharacter.classList.add('character');
-    newCharacter.setAttribute('id','newCharacter');
-    
-    //head of character
-    const newHead = document.createElement('div');
-    newHead.classList.add('head');
-    const newHair = document.createElement('div');
-    newHair.classList.add('hair');
-    newHair.style.backgroundColor = character.hairColor;
-    const newEyes = document.createElement('div');
-    newEyes.classList.add('eyes');
-    const newRightEye = document.createElement('div'); // right/left shouldnt really need to be done
-    newRightEye.classList.add('right-eye');
-    newRightEye.setAttribute('id','rightEye');
-    const newLeftEye = document.createElement('div');
-    newLeftEye.classList.add('left-eye');
-    newLeftEye.setAttribute('id','leftEye');
-    const newRightPupil = document.createElement('div');
-    newRightPupil.classList.add('pupil');
-    const newLeftPupil = document.createElement('div');
-    newLeftPupil.classList.add('pupil');
-    const newMouth = document.createElement('div');
-    newMouth.classList.add('mouth');
-    
-    const pupilAxisRight = document.createElement('div');
-    pupilAxisRight.classList.add('pupil-axis');
-    pupilAxisRight.setAttribute('id','pupilAxisRight');
-    const pupilAxisLeft = document.createElement('div');
-    pupilAxisLeft.classList.add('pupil-axis');
-    pupilAxisLeft.setAttribute('id','pupilAxisLeft');
-
-    //body of character
-    const newBody = document.createElement('div');
-    newBody.classList.add('body');
-    const newTorso = document.createElement('div');
-    newTorso.classList.add('torso');
-    newTorso.style.backgroundColor = character.shirtColor;
-    const newRightArm = document.createElement('div');
-    newRightArm.classList.add('right-arm');
-    newRightArm.style.backgroundColor = character.shirtColor;
-    const newLeftArm = document.createElement('div');
-    newLeftArm.classList.add('left-arm');
-    newLeftArm.style.backgroundColor = character.shirtColor;
-
-    // legs of character
-    const newLegs = document.createElement('div');
-    newLegs.classList.add('legs');
-    const newLeftLeg = document.createElement('div');
-    newLeftLeg.classList.add('left-leg');
-    newLeftLeg.style.backgroundColor = character.ovveColor;
-    const newRightLeg = document.createElement('div');
-    newRightLeg.classList.add('right-leg');
-    newRightLeg.style.backgroundColor = character.ovveColor;
-
-    // assembling
-    //the head
-    pupilAxisRight.appendChild(newRightPupil);
-    pupilAxisLeft.appendChild(newLeftPupil);
-    newRightEye.appendChild(pupilAxisRight);
-    newLeftEye.appendChild(pupilAxisLeft);
-
-    // newRightEye.appendChild(newRightPupil);
-    // newLeftEye.appendChild(newLeftPupil);
-    newEyes.appendChild(newRightEye);
-    newEyes.appendChild(newLeftEye);
-    newHead.appendChild(newHair);
-    newHead.appendChild(newEyes);
-    newHead.appendChild(newMouth);
-
-    //the body 
-    newBody.appendChild(newRightArm);
-    newBody.appendChild(newTorso);
-    newBody.appendChild(newLeftArm);
-
-    //the legs
-    newLegs.appendChild(newRightLeg);
-    newLegs.appendChild(newLeftLeg);
-
-    //the full body
-    newCharacter.appendChild(newHead);
-    newCharacter.appendChild(newBody);
-    newCharacter.appendChild(newLegs);
-
-    characterScreen.appendChild(newCharacter);
+    characterName.innerText = character.name;
+    hair.style.backgroundColor = character.hairColor;
+    rightArm.style.backgroundColor = character.shirtColor;
+    leftArm.style.backgroundColor = character.shirtColor;
+    torso.style.backgroundColor = character.shirtColor;
+    rightLeg.style.backgroundColor = character.ovveColor;
+    leftLeg.style.backgroundColor = character.ovveColor;
 }
 
 createCharacter();

@@ -13,19 +13,21 @@
     <div class="body-container">
     <div class="customization-window">
         <h2>Create Your Character!</h2>
+        <p>What's Your Name?</p>
+        <input class="choose-name" id="chooseName" type="text"/>
         <p>What's Your Hair Color?</p>
-        <input class="choose-ovve-color" id="chooseHairColor" type="color"/>
+        <input class="choose-color" id="chooseHairColor" type="color"/>
         <p>What's Your Shirt Color?</p>
-        <input class="choose-ovve-color" id="chooseShirtColor" type="color"/>
+        <input class="choose-color" id="chooseShirtColor" type="color"/>
         <p>What's Your Ovve Color?</p>
-        <input type="color" list="ovve-colors" class="choose-ovve-color" id="chooseOvveColor"/>
+        <input readonly list="ovve-colors" class="choose-ovve-color" id="chooseOvveColor" autocomplete="off"/>
             <datalist id="ovve-colors">
-                <option value="#FFFF00"></option> <!-- yellow -->
-                <option value="#FF0000"></option> <!-- red -->
-                <option value="#0000FF"></option> <!-- blue -->
-                <option value="#FFFFFF"></option> <!-- white -->
-                <option value="#00FF00"></option> <!-- green -->
-                <option value="#000000"></option> <!-- black -->
+                <option value="Yellow (JTH)"></option> <!-- yellow -->
+                <option value="Red (HLK)"></option> <!-- red -->
+                <option value="Blue (HLK)"></option> <!-- blue -->
+                <option value="White (Hälso)"></option> <!-- white -->
+                <option value="Green (JIBS)"></option> <!-- green -->
+                <option value="Black (Qult)"></option> <!-- black -->
             </datalist>
         <button class="submit-changes-button" id="submitChangesButton">Submit</button>
         <a href="intersection.html">
@@ -36,7 +38,43 @@
     </div>
 
     <div class="character-window" id="characterScreen">
+        <img class="jth-icon" id="jthIcon" src="glyphs/jthicon.svg"/>
+        <img class="comm-icon1" id="commIcon1" src="glyphs/commicon1.svg"/>
+        <img class="comm-icon2" id="commIcon2" src="glyphs/commicon2.svg"/>
+        <img class="teach-icon" id="teachIcon" src="glyphs/teachicon.svg"/>
+        <img class="health-icon" id="healthIcon" src="glyphs/healthicon.svg"/>
+        <img class="jibs-icon" id="jibsIcon" src="glyphs/jibsicon.svg"/>
+        <img class="qult-icon" id="qultIcon" src="glyphs/qulticon.svg"/>
+
     <!-- the character -->
+        <div class="character">
+            <div class="head">
+                <div class="hair" id="hair"></div>
+                <div class="eyes">
+                    <div class="right-eye" id="rightEye">
+                        <div class="pupil-axis" id="pupilAxisRight">
+                            <div class="pupil"></div>
+                        </div>
+                    </div>
+                    <div class="left-eye" id="leftEye">
+                        <div class="pupil-axis" id="pupilAxisLeft">
+                            <div class="pupil"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+            <div class="body">
+                <div class="right-arm" id="rightArm"></div>
+                <div class="torso" id="torso"></div>
+                <div class="left-arm" id="leftArm"></div>
+            </div>
+            <div class="legs">
+                <div class="right-leg" id="rightLeg"></div>
+                <div class="left-leg" id="leftLeg"></div>
+            </div>
+        </div>
+        <h2 class="character-name" id="characterName">New Character</h2>
         <div class="stage"></div>
     </div>
     </div>
