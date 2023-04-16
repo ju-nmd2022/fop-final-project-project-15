@@ -10,8 +10,11 @@
 </head>
 <body>
     <!-- inputs for customization --> 
+    <div class="body-container">
     <div class="customization-window">
         <h2>Create Your Character!</h2>
+        <p>What's Your Hair Color?</p>
+        <input class="choose-ovve-color" id="chooseHairColor" type="color"/>
         <p>What's Your Shirt Color?</p>
         <input class="choose-ovve-color" id="chooseShirtColor" type="color"/>
         <p>What's Your Ovve Color?</p>
@@ -25,11 +28,17 @@
                 <option value="#000000"></option> <!-- black -->
             </datalist>
         <button class="submit-changes-button" id="submitChangesButton">Submit</button>
-        <a class="start-game-button" id="startGameButton" href="intersection.html">Start Game</a>
+        <a href="intersection.html">
+            <button class="start-game-button">
+                <p class="start-game-text">Start Game!</p>
+            </button>
+        </a>
     </div>
 
-    <div id="characterScreen">
-    <!-- the character -->]
+    <div class="character-window" id="characterScreen">
+    <!-- the character -->
+        <div class="stage"></div>
+    </div>
     </div>
 </body>
 </html>

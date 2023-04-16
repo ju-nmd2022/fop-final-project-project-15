@@ -1,5 +1,6 @@
 export default class Character {
-    constructor(shirtColor,ovveColor) {
+    constructor(shirtColor,ovveColor,hairColor) {
+        this.hairColor = hairColor;
         this.shirtColor = shirtColor;
         this.ovveColor = ovveColor;
         this.topPosition = 0;

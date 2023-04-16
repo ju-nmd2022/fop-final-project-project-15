@@ -9,14 +9,23 @@
     background-image: url("backdrops/intersection.png");
 }
 
+.body-container {
+    display: flex;
+    flex-direction: row;
+}
+
 /* .start-game-button {
 
 } */
 
 .customization-window {
     background-color: rgb(194, 194, 194);
-    width: 30vw;
-    height: 90vh;
+    width: 28vw;
+    height: 84vh;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    padding-right: 2vw;
+    padding-left: 2vw;
     margin-top: 5vh;
     margin-left: 2vw;
     contain: layout;
@@ -26,13 +35,11 @@
 
 .customization-window > h2 {
     font-family: 'Courier New', Courier, monospace;
-    margin-top: 3vh;
-    margin-left: 2vw;
 }
 
 .customization-window > p {
     font-family: 'Courier New', Courier, monospace;
-    margin-top: 3vh;
+    margin-top: 4vh;
     margin-left: 2vw;
 }
 
@@ -41,17 +48,44 @@
     margin-left: 2vw;
 }
 
-.submit-changes-button {
-    width: 4vw;
+.submit-changes-button,.start-game-button {
+    width: 8vw;
+    height: 4vh;
     margin-left: 2vw;
+}
+
+.submit-changes-button {
     margin-top: 10vh;
+}
+
+.start-game-button {
+    margin-top: 3vh;
+}
+
+.character-window {
+    background-color: rgb(132, 215, 215);
+    margin-top: 5vh;
+    width: 62vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2vw;
+}
+
+.stage {
+    /* gradient made with https://cssgradient.io */
+    background: linear-gradient(90deg, rgba(77,77,77,1) 0%, rgba(32,32,32,1) 35%, rgba(32,32,32,1) 65%, rgba(77,77,77,1) 100%);
+    opacity: 70%;
+
+    width: 8vw;
+    height: 5vh;
+    border-radius: 50%;
 }
 
 .character {
     contain: layout;
-    position: absolute;
-    top: 20vh;
-    left: 60vw;
 }
 
 .head {
@@ -74,7 +108,17 @@
     justify-content: center;
     margin-top: 1vh;
     gap: 0.5vw;
+    contain: layout;
 }
+
+.pupil-axis {
+    width: 1.2vw;
+    height: 1.2vw;
+    border-radius: 50%;
+    transform: rotate(20deg);
+}
+
+
 .right-eye,.left-eye {
     background-color: white;
     width: 1.7vw;
