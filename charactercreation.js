@@ -5,23 +5,22 @@ const chooseOvveColor = document.getElementById('chooseOvveColor');
 const characterScreen = document.getElementById('characterScreen');
 const createdCharacter = document.getElementById('newCharacter');
 const submitChangesButton = document.getElementById('submitChangesButton');
+const startGameButton = document.getElementById('startGameButton');
 
 let shirtColor = "red";
 let ovveColor = "yellow";
 const character = new Character(shirtColor,ovveColor);
 
-submitChangesButton.addEventListener('keypress', () => {
-    if (event.key === 'Enter') {
-        shirtColor = chooseShirtColor.value;
-        chooseShirtColor.value = '';
-        ovveColor = chooseOvveColor.value;
-        chooseOvveColor.value = '';
+submitChangesButton.addEventListener('click', () => {
+    shirtColor = chooseShirtColor.value;
+    ovveColor = chooseOvveColor.value;
     
-        character.shirtColor = shirtColor;
-        character.ovveColor = ovveColor;
-        removeCharacter();
-        createCharacter();
-    } 
+    character.shirtColor = shirtColor;
+    character.ovveColor = ovveColor;
+    removeCharacter();
+    createCharacter();
+    localStorage.clear();
+    localStorage.character = JSON.stringify(character);
 })
 
 function removeCharacter() {
@@ -30,7 +29,7 @@ function removeCharacter() {
 
 function createCharacter() {
     const newCharacter = document.createElement('div');
-    newCharacter.classList.add('character-test');
+    newCharacter.classList.add('character');
     newCharacter.setAttribute('id','newCharacter');
     
     //head of character

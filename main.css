@@ -9,12 +9,9 @@
     background-image: url("backdrops/intersection.png");
 }
 
-.character {
-    width: 7vw;
-    position: absolute;
-    height: auto;
-}
+/* .start-game-button {
 
+} */
 
 .customization-window {
     background-color: rgb(194, 194, 194);
@@ -23,6 +20,8 @@
     margin-top: 5vh;
     margin-left: 2vw;
     contain: layout;
+    display: flex;
+    flex-direction: column;
 }
 
 .customization-window > h2 {
@@ -42,7 +41,13 @@
     margin-left: 2vw;
 }
 
-.character-test {
+.submit-changes-button {
+    width: 4vw;
+    margin-left: 2vw;
+    margin-top: 10vh;
+}
+
+.character {
     contain: layout;
     position: absolute;
     top: 20vh;
