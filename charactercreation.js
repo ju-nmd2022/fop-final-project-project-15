@@ -74,16 +74,15 @@ chooseOvveColor.addEventListener('click', () => {
     chooseOvveColor.value = '';
 })
 
-// make the eyes follow the cursor 
-document.addEventListener('mousemove', () => {
+// make the eyes follow the cursor (kind of)
+document.addEventListener('mousemove', (e) => {
     // const rotation = (event.pageY/window.innerHeight)*90;
-    const rotationY = (event.pageY/window.innerHeight) * 90;
-    const rotationX = (event.pageX/window.innerWidth) * 90;
+    const rotationY = (e.clientY/window.innerHeight) * 90;
+    const rotationX = (e.clientX/window.innerWidth) * 90;
     pupilAxisLeft.style.transform = 'rotate(-' + rotationY + 'deg)';
     pupilAxisRight.style.transform = 'rotate(-' + rotationY + 'deg)';
     leftEye.style.transform = 'rotate(-' + rotationX + 'deg)';
     rightEye.style.transform = 'rotate(-' + rotationX + 'deg)';
-    
 })
 
 submitChangesButton.addEventListener('click', () => {

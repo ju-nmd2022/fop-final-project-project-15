@@ -5,18 +5,35 @@
     font-family: 'Courier New', Courier, monospace; /* font: courier new (by default) */
 }
 
-.backdrop {
+.background {
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+.backdrop {
+    width: 98vw;
+    height: 98vh;
+    contain: content;
+}
 .backdrop-image {
     width: 98vw;
     height: auto;
 }
-
+.pathway1 {
+    position: absolute;
+    width: 100vw;
+    height: 16vh;
+    top: 43vh;
+}
+.pathway2 {
+    position: absolute;
+    width: 16vh;
+    height: 97vh;
+    top: 0;
+    left: 55.5vw;
+}
 .body-container {
     display: flex;
     flex-direction: row;

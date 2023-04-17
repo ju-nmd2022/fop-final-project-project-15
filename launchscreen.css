@@ -1,22 +1,28 @@
+/* make the default margin 0, the default padding 0, and the default font helvetica */
 * {
     margin: 0;
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
 }
 
+/* the container for the whole page */
 .container {
     background-color: rgb(194, 194, 194);
+
     width: 100vw;
     height: 100vh;
+
     display: grid;
     grid-template-columns: 10% 90% 10%;
     grid-template-rows: 12.5% 25% 25% 25% 12.5%;
 }
 
+/* the container for the "tabs" */
 .tab-container {
+    width: 100vw;
+
     display: flex;
     flex-direction: row;
-    width: 100vw;
     justify-content: center;
 }
 .yellow-tab,.blue-tab,.red-tab,.white-tab,.green-tab,.black-tab {
