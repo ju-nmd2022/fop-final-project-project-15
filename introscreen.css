@@ -1,0 +1,446 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.main-container {
+    width: 96vw;
+    height: 96vh;
+    padding: 2vh 2vw 2vh 2vw;
+    contain: content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-container {
+    width: 94vw;
+    height: 94vh;
+    padding: 1vh 1vw 1vh 1vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 2vw;
+}
+
+.square1-content,.square2-content,.square3-content,.square4-content {
+    contain: content;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-name: squareani;
+}
+
+.square1-content {
+    animation-delay: 1s;   
+}
+.square2-content {
+    animation-delay: 3s; 
+}
+.square3-content {
+    animation-delay: 5s
+}
+.square4-content {
+    animation-delay: 9s;
+}
+
+@keyframes squareani {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
+}
+
+.square1,.square2,.square3,.square4 {
+    width: 44vw;
+    height: 35vh;
+    border: 1vw solid black;
+    contain: content;
+}
+
+.start-game {
+    width: 12vw;
+    height: 8vh;
+    margin-left: 80vw;
+    animation-name: squareani;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+    animation-delay: 10s;
+}
+.start-game-button {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(50, 50, 204);
+    color: white;
+}
+
+/* square 1 */
+.table {
+    width: 30vw;
+    height: auto;
+    position: absolute;
+    left: 10vw;
+    top: 20vh;
+}
+.character {
+    contain: layout;
+    position: absolute;
+    left: 25vw;
+}
+.speech-bubble1 {
+    background-image: url("glyphs/intro/square1bubble.svg");
+    background-repeat: no-repeat;
+    width: 12.5vw;
+    height: 12.5vh;
+    padding: 1.5vh 1.5vw 1.5vh 1.5vw;
+    position: absolute;
+    top: 15vh;
+    left: 17vw;
+    font-size: 0.8vw;
+}
+/* square 2 */
+.speech-bubble2 {
+    background-image: url("glyphs/intro/square2bubble.svg");
+    background-repeat: no-repeat;
+    width: 20vw;
+    height: 20vh;
+    padding: 1vh 1vw 1vh 1vw;
+    position: absolute;
+    top: 8vh;
+    left: 1vw;
+    font-size: 2vw;
+}
+/* square 3 */
+.table2 {
+    width: fit-content;
+}
+.arm {
+    background-color: brown;
+    width: 25vw;
+    height: 18vh;
+    position: absolute;
+    top: 15vh;
+    left: 18vw;
+    transform: rotate(130deg);
+    contain: content;
+}
+.clock-container {
+    display: flex;
+    justify-content: center;
+    width: 10vw;
+}
+
+.clock {
+    background-image: url("glyphs/clockicon.svg");
+    width: 9vw;
+    height: 9vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(140deg);
+}
+.clock-center {
+    width: 0.3vw;
+    height: 0.3vw;
+    animation-name: clockanimation;
+    animation-duration: 4s;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+@keyframes clockanimation {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(180deg);}
+}
+.minute-hand{
+    background-color: black;
+    width: 0.3vw;
+    height: 4vw;
+}
+.speech-bubble3 {
+    background-image: url("glyphs/intro/square3bubble.svg");
+    background-repeat: no-repeat;
+    width: 17.5vw;
+    height: 17.5vh;
+    padding: 1.5vh 1.5vw 1.5vh 1.5vw;
+    position: absolute;
+    top: 3vh;
+    left: 1vw;
+}
+.laugh1,.laugh2,.laugh3 {
+    width: 7vw;
+    height: auto;
+    position: absolute;
+    
+    animation-duration: 1s;
+    
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+.laugh1 {
+    top: 3vh;
+    left: 15vw;
+    animation-delay: 5s;
+    animation-name: laughani;
+    transform: rotate(-30deg);
+}
+.laugh2 {
+    top: 8vh;
+    left: 18vw;
+    animation-delay: 5.5s;
+    animation-name: laugh2ani;
+    transform: rotate(30deg);
+}
+.laugh3 {
+    top: 24vh;
+    left: 10vw;
+    animation-delay: 6s;
+    animation-name: laughani;
+    transform: rotate(-30deg);
+}
+@keyframes laughani {
+    33% {
+        transform: rotate(-30deg);
+        opacity: 0;
+    }
+    66% {
+        transform: rotate(0deg);
+        opacity: 100;
+    }
+    100% {
+        transform: rotate(30deg);
+        opacity: 100;
+    }
+}
+@keyframes laugh2ani {
+    33% {
+        transform: rotate(30deg);
+        opacity: 0;
+    }
+    66% {
+        transform: rotate(0deg);
+        opacity: 100;
+    }
+    100% {
+        transform: rotate(-30deg);
+        opacity: 100;
+    }
+}
+
+
+
+/* everything below is just for the character render, no need to touch */
+
+/* square 3 */
+.character3 {
+    contain: layout;
+    z-index: 1;
+    position: absolute;
+    left: 15vw;
+    bottom: 1vh;
+    animation-name: charani;
+    animation-delay: 9s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes charani {
+    from {
+        left: 15vw;
+        bottom: 1vh;
+    }
+    to {
+        left: 17vw;
+        bottom: 4vh;
+    }
+}
+
+.head3 {
+    background-color: rgb(218, 192, 165);
+    width: 6vw;
+    height: 5.5vw;
+    border-radius: 50%;
+    contain: layout;
+}
+.hair3 {
+    background-color: rgb(226, 209, 114);
+    width: 6vw;
+    height: 2vh;
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+}   
+.body3 {
+    display: flex;
+    flex-direction: row;
+}
+
+.right-arm3 {
+    background-color: blue;
+    width: 1vw;
+    height: 3vw;
+    transform: rotate(10deg);
+}
+.left-arm3 {
+    background-color: blue;
+    width: 1vw;
+    height: 3vw;
+    transform: rotate(-10deg);
+}
+.torso3 {
+    background-color: aqua;
+    width: 4vw;
+    height: 3vw;
+}
+.legs3 {
+    display: flex;
+    flex-direction: row;
+}
+.right-leg3 {
+    background-color: blueviolet;
+    margin-left: 1vw;
+    width: 1.8vw;
+    height: 2vw;
+}
+.left-leg3 {
+    background-color: blueviolet;
+    margin-left: 0.4vw;
+    width: 1.8vw;
+    height: 2vw;
+}
+
+/* square 2 */
+.head2 {
+    background-color: rgb(218, 192, 165);
+    width: 30vw;
+    height: 27.5vw;
+    border-radius: 50%;
+    contain: layout;
+    position: absolute;
+    left: 10vw;
+    bottom: -2vh;
+} 
+.eyes2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15vh;
+    gap: 2.5vw;
+    contain: layout;
+}
+.right-eye2,.left-eye2 {
+    background-color: white;
+    width: 8.5vw;
+    height: 8.5vw;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pupil2 {
+    background-color: black;
+    border-radius: 50%;
+    width: 2.5vw;
+    height: 2.5vw;
+}
+.mouth2 {
+    background-color: black;
+    width: 10vw;
+    height: 1vh;
+    margin-left: 10vw;
+    margin-top: 5vh;
+}
+
+/* square 1*/
+.head {
+    background-color: rgb(218, 192, 165);
+    width: 9vw;
+    height: 8.25vw;
+    border-radius: 50%;
+    contain: layout;
+}
+.hair {
+    background-color: rgb(226, 209, 114);
+    width: 8vw;
+    height: 3vh;
+    border-top-left-radius: 1.5vw;
+    border-top-right-radius: 1.5vw;
+    margin-left: 0.5vw;
+}   
+.eyes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1.5vh;
+    gap: 0.75vw;
+    contain: layout;
+}
+
+.right-eye,.left-eye {
+    background-color: white;
+    width: 2.55vw;
+    height: 2.55vw;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pupil {
+    background-color: black;
+    border-radius: 50%;
+    width: 0.75vw;
+    height: 0.75vw;
+}
+.mouth {
+    background-color: black;
+    width: 3vw;
+    height: 0.3vh;
+    margin-left: 3vw;
+    margin-top: 1.5vh;
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+}
+
+.right-arm {
+    background-color: blue;
+    width: 1.5vw;
+    height: 4.5vw;
+    transform: rotate(10deg);
+}
+.left-arm {
+    background-color: blue;
+    width: 1.5vw;
+    height: 4.5vw;
+    transform: rotate(-10deg);
+}
+
+.torso {
+    background-color: aqua;
+    width: 6vw;
+    height: 4.5vw;
+}
+
+.legs {
+    display: flex;
+    flex-direction: row;
+}
+.right-leg {
+    background-color: blueviolet;
+    margin-left: 1.5vw;
+    width: 2.7vw;
+    height: 3vw;
+}
+.left-leg {
+    background-color: blueviolet;
+    margin-left: 0.6vw;
+    width: 2.7vw;
+    height: 3vw;
+}
