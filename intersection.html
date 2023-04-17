@@ -4,40 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKA Rush</title> 
-    <link rel="stylesheet" href="main.css"/>
-    <script src="script.js" type="module" defer></script>
+    <title>Document</title>
+    <script src="p5.min.js" defer></script>
+    <script src="backdrops/intersection.js" defer></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="intersection.css"/>
 </head>
 <body>
-    <div class="background">
-    <div class="backdrop" id="backdrop">
-        <img src="backdrops/intersection.png" class="backdrop-image"/>
-        <div class="pathway1" id="pathway1"></div>
-        <div class="pathway2" id="pathway2"></div>
-        <div class="character" id="character">
-            <div class="head">
-                <div class="hair" id="hair"></div>
-                <div class="eyes">
-                    <div class="right-eye" id="rightEye">
-                        <div class="pupil"></div>
-                    </div>
-                    <div class="left-eye" id="leftEye">
-                        <div class="pupil"></div>
-                    </div>
+    <img class="aka-sign" src="glyphs/signs/akasign.svg"/>
+    <img class="bridge-sign" src="glyphs/signs/bridgesign.svg"/>
+    <img class="home-sign" src="glyphs/signs/homesign.svg"/>
+    <img class="school-sign" src="glyphs/signs/schoolsign.svg"/>
+    <img class="tree" src="glyphs/tree.svg"/>
+    <div class="character" id="character">
+        <div class="head">
+            <div class="hair" id="hair"></div>
+            <div class="eyes">
+                <div class="right-eye" id="rightEye">
+                    <div class="pupil"></div>
                 </div>
-                <div class="mouth"></div>
+                <div class="left-eye" id="leftEye">
+                    <div class="pupil"></div>
+                </div>
             </div>
-            <div class="body">
-                <div class="right-arm" id="rightArm"></div>
-                <div class="torso" id="torso"></div>
-                <div class="left-arm" id="leftArm"></div>
-            </div>
-            <div class="legs">
-                <div class="right-leg" id="rightLeg"></div>
-                <div class="left-leg" id="leftLeg"></div>
-            </div>
+            <div class="mouth"></div>
         </div>
-    </div>
+        <div class="body">
+            <div class="right-arm" id="rightArm"></div>
+            <div class="torso" id="torso"></div>
+            <div class="left-arm" id="leftArm"></div>
+        </div>
+        <div class="legs">
+            <div class="right-leg" id="rightLeg"></div>
+            <div class="left-leg" id="leftLeg"></div>
+        </div>
     </div>
 </body>
 </html>

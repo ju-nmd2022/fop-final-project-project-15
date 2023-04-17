@@ -5,6 +5,15 @@
     font-family: 'Courier New', Courier, monospace; /* font: courier new (by default) */
 }
 
+.pathway {
+    background-image: url("glyphs/Pathway.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 20vw;
+    height: 20vw;
+    position: absolute;
+}
+
 .background {
     width: 100vw;
     height: 100vh;
@@ -13,13 +22,15 @@
     justify-content: center;
 }
 .backdrop {
-    width: 98vw;
-    height: 98vh;
+    /* the following four lines were taken from https://stackoverflow.com/questions/600743/how-to-get-div-height-to-auto-adjust-to-background-size */
+    background-image: url("backdrops/intersection.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: 52.66%;
+
+    width: 96%;
+    height: 0;
     contain: content;
-}
-.backdrop-image {
-    width: 98vw;
-    height: auto;
 }
 .pathway1 {
     position: absolute;

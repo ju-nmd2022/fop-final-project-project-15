@@ -1,3 +1,10 @@
+import Character from "../character.js";
+import Pathway from "./pathway.js";
+
+const backdrop = document.getElementById('backdrop');
+const pathway1 = document.getElementById('pathway1');
+const pathway2 = document.getElementById('pathway2');
+
 const hair = document.getElementById('hair');
 const rightArm = document.getElementById('rightArm');
 const torso = document.getElementById('torso');
@@ -7,6 +14,7 @@ const leftLeg = document.getElementById('leftLeg');
 
 const characterInfo = JSON.parse(localStorage.character);
 const characterOnScreen = document.getElementById('character');
+const character = new Character(characterInfo.name,characterInfo.hairColor,characterInfo.shirtColor,characterInfo.ovveColor);
 
 let armsAnimationState = false;
 
@@ -14,18 +22,30 @@ let topPosition = 38;
 let leftPosition = 80;
 let sprintMultiplier = 1;
 
+const pathway1Position = pathway1.getBoundingClientRect();
+const pathway2Position = pathway2.getBoundingClientRect();
 let characterPosition = characterOnScreen.getBoundingClientRect();
+
+for (let i = 0; i < 5; i++) {
+    const newPathway = new Pathway(i*10,30,0);
+    const pathway = document.createElement('div');
+    pathway.classList.add('pathway');
+    pathway.style.top = newPathway.y;
+    pathway.style.left = newPathway.x;
+
+    backdrop.appendChild(pathway);
+}
 
 function generateSavedCharacter() {
     characterOnScreen.style.position = 'absolute';
     updateCharacterPosition();
 
-    hair.style.backgroundColor = characterInfo.hairColor;
-    rightArm.style.backgroundColor = characterInfo.shirtColor;
-    leftArm.style.backgroundColor = characterInfo.shirtColor;
-    torso.style.backgroundColor = characterInfo.shirtColor;
-    rightLeg.style.backgroundColor = characterInfo.ovveColor;
-    leftLeg.style.backgroundColor = characterInfo.ovveColor;
+    hair.style.backgroundColor = character.hairColor;
+    rightArm.style.backgroundColor = character.shirtColor;
+    leftArm.style.backgroundColor = character.shirtColor;
+    torso.style.backgroundColor = character.shirtColor;
+    rightLeg.style.backgroundColor = character.ovveColor;
+    leftLeg.style.backgroundColor = character.ovveColor;
 }
 
 generateSavedCharacter();
@@ -49,51 +69,30 @@ function updateCharacterPosition() {
     characterPosition = characterOnScreen.getBoundingClientRect();
 }
 function moveUp() {
-    if (characterPosition.bottom > window.innerHeight/2-115 || (characterPosition.left > window.innerWidth/2-135 && characterPosition.right < window.innerWidth/2+135)) { //make return function of this
+    if (characterPosition.top > pathway1Position.top-90 || (characterPosition.left > pathway2Position.left -10 && characterPosition.right < pathway2Position.right+10)) { //only move up if the character remains on the path
         topPosition -= 1 * sprintMultiplier;
     }
-    
     updateCharacterPosition();
 }
 function moveDown() {
-    if (characterPosition.bottom < window.innerHeight/2+115 || (characterPosition.left > window.innerWidth/2-135 && characterPosition.right < window.innerWidth/2+135)) {
-    topPosition += 1 * sprintMultiplier;
+    if (characterPosition.bottom < pathway1Position.bottom - 5 || (characterPosition.left > pathway2Position.left -10 && characterPosition.right < pathway2Position.right+10)) {
+        topPosition += 1 * sprintMultiplier;
     }
     updateCharacterPosition();
 }
 
-function moveRight() {   
-    if (characterPosition.left < window.innerWidth/2 || (characterPosition.bottom > window.innerHeight/2-115 && characterPosition.bottom < window.innerHeight/2+125)) {
-    leftPosition += 1 * sprintMultiplier;
+function moveRight() {
+    if (characterPosition.right < pathway2Position.right+7.9 || (characterPosition.bottom < pathway1Position.bottom - 5 && characterPosition.top > pathway1Position.top-90)) {
+        leftPosition += 1 * sprintMultiplier;
     }
     updateCharacterPosition();
 }
 function moveLeft() {
-    if (characterPosition.left > window.innerWidth/2-115 || (characterPosition.bottom > window.innerHeight/2-115 && characterPosition.bottom < window.innerHeight/2+125)) {
-    leftPosition -= 1 * sprintMultiplier;
+    if (characterPosition.left > pathway2Position.left -11 || (characterPosition.bottom < pathway1Position.bottom - 5 && characterPosition.top > pathway1Position.top-90)) {
+        leftPosition -= 1 * sprintMultiplier;
     }
     updateCharacterPosition();
 }
-
-function checkForScreenChange() {
-    // top: characterposition.top + characterposition.height/2
-    if (characterPosition.top + characterPosition.height/2 < 0) {
-        alert('hej')
-    }
-    // bottom: characterposition.bottom - characterposition.height/2
-    if (characterPosition.bottom - characterPosition.height/2 > window.innerHeight) {
-        alert('halla')
-    }
-    // left: characterposition.left + characterposition.width/2
-    if (characterPosition.left + characterPosition.width/2 < 0) {
-        alert('halla')
-    }
-    // right: characterposition.right - characterposition.width/2
-    if (characterPosition.right - characterPosition.width/2 > window.innerWidth) {
-        alert('halla')
-    }
-}
-
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Shift') {
         sprintMultiplier = 2;
@@ -122,6 +121,11 @@ document.addEventListener('keydown', (e) => {
         console.log('hej')
     }
     animateArms();
-    checkForScreenChange();
     // p1 position top - 90
+
+    if (characterPosition.bottom > pathway1Position.bottom - 5) {
+
+    }
+    console.log(characterPosition.top);
+    console.log(pathway1Position.height);
 })

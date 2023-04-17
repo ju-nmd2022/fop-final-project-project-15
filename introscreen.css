@@ -32,6 +32,7 @@
     animation-duration: 2s;
     animation-fill-mode: forwards;
     animation-name: squareani;
+    background-color: rgb(229, 229, 229);
 }
 
 .square1-content {
