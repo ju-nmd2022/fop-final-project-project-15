@@ -1,7 +1,8 @@
+/* remove padding and margin for everything by default */
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace; /* font: courier new (by default) */
 }
 
 .backdrop {
@@ -20,11 +21,6 @@
     display: flex;
     flex-direction: row;
 }
-
-/* .start-game-button {
-
-} */
-
 
 .customization-window {
     background-color: rgb(194, 194, 194);
@@ -80,10 +76,6 @@
     margin-left: 2vw;
 }
 
-.jth-icon,.comm-icon1,.comm-icon2,.teach-icon,.health-icon,.jibs-icon,.qult-icon {
-    display: none;
-}
-
 .rotate-animation {
     animation-name: rotateanimation;
     animation-duration: 1s;
@@ -100,44 +92,23 @@
     animation-name: qultanimation;
     animation-duration: 1s;
 }
-
-
-.jth-icon {
-    margin-bottom: 3vh;
-    width: 5vw;
-    height: 5vw;
-}
-.comm-icon1 {
-    width: 5vw;
+.jth-icon,.comm-icon1,.comm-icon2,.teach-icon,.health-icon,.jibs-icon,.qult-icon { /* all icons */
     height: auto;
-    
+    display: none;
+    position: absolute;
+    top: 23vh;
+}
+.jth-icon,.comm-icon1,.teach-icon,.health-icon,.jibs-icon {
+    width: 5vw;
 }
 .comm-icon2 {
     width: 3vw;
-    height: auto;
-    margin-bottom: 3vh;
-}
-.teach-icon {
-    width: 5vw;
-    height: auto;
-    margin-bottom: 3vh;
-}
-.health-icon {
-    width: 5vw;
-    height: auto;
-    margin-bottom: 3vh;
-}
-.jibs-icon {
-    width: 5vw;
-    height: auto;
-    margin-bottom: 3vh;
-    
+    top: 29vh;
+
 }
 .qult-icon {
     width: 12vw;
-    height: auto;
-    margin-bottom: 3vh;
-    
+
 }
 
 @keyframes rotateanimation {
@@ -151,8 +122,8 @@
     to {opacity: 100;}
 }
 @keyframes jibsanimation {
-    from {margin-bottom: 7vh;}
-    to {margin-bottom: 3vh;}
+    from {top: 18vh;}
+    to {top: 23vh;}
 }
 @keyframes qultanimation {
     from {
@@ -171,6 +142,8 @@
     width: 8vw;
     height: 5vh;
     border-radius: 50%;
+    margin-top: -2vh;
+    filter: blur(5px);
 }
 
 .character-name {
@@ -181,6 +154,7 @@
 
 .character {
     contain: layout;
+    z-index: 1;
 }
 
 .head {
@@ -254,6 +228,27 @@
     height: 3vw;
     transform: rotate(-10deg);
 }
+
+/* only used on the character selection screen */
+.right-arm-animation {
+    animation-name: rightarmanimation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.left-arm-animation {
+    animation-name: leftarmanimation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+@keyframes rightarmanimation {
+    50% {transform: rotate(16deg);}
+    100% {transform: rotate(10deg);}
+}
+@keyframes leftarmanimation {
+    50% {transform: rotate(-16deg);}
+    100% {transform: rotate(-10deg);}
+}
+
 .torso {
     background-color: aqua;
     width: 4vw;
