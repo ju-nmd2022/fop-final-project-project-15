@@ -3,31 +3,66 @@
     margin: 0;
 }
 
+.screen-container {
+    width: 100vw;
+    height: 100vh;
+    contain: content;
+}
+
 /* signs */
 .aka-sign,.bridge-sign,.home-sign,.school-sign {
-    width: 9vw;
+    width: 11vw;
     height: auto;
     position: absolute;
     z-index: 2;
 }
 .aka-sign {
-    top: 25vh;
+    top: 15vh;
     left: 2vw;
 }
 .bridge-sign {
     top: 5vh;
-    left: 55vw;
+    left: 60vw;
     transform: rotate(90deg);
 }
 .school-sign {
-    top: 55vh;
-    left: 89vw;
+    top: 60vh;
+    left: 85vw;
 }
 .home-sign {
     top: 80vh;
-    left: 35vw;
+    left: 30vw;
     transform: rotate(-90deg);
 }
+
+.middle-pathway {
+    width: 15vw;
+    height: auto;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.vertical-pathway {
+    width: 15vw;
+    height: auto;
+
+    /* place in the middle of the X axis */
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0); 
+}
+.horizontal-pathway {
+    height: 15vw;
+    width: auto;
+
+    /* place in the middle of the Y axis */
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
 
 /* tree */
 .tree {

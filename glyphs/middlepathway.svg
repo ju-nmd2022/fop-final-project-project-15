@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172.28 172.33">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #8c6239;
+      }
+
+      .cls-2 {
+        fill: #666;
+      }
+
+      .cls-3 {
+        fill: #333;
+      }
+
+      .cls-4 {
+        fill: #a67c52;
+      }
+
+      .cls-5 {
+        fill: gray;
+      }
+
+      .cls-6 {
+        fill: #4d4d4d;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <rect class="cls-5" x="0" y="0" width="172.28" height="172.23" transform="translate(172.28 172.24) rotate(180)"/>
+      <ellipse class="cls-3" cx="107.68" cy="133.87" rx="41.14" ry="38.41"/>
+      <ellipse class="cls-2" cx="106.55" cy="132.28" rx="40.01" ry="40"/>
+      <ellipse class="cls-2" cx="133.75" cy="19.04" rx="16.37" ry="18.99"/>
+      <ellipse class="cls-6" cx="85.72" cy="27.04" rx="34.73" ry="27"/>
+      <ellipse class="cls-6" cx="103.08" cy="86.68" rx="17.37" ry="20.28"/>
+      <ellipse class="cls-2" cx="33.04" cy="41.51" rx="16.37" ry="18.99"/>
+      <ellipse class="cls-6" cx="36.09" cy="111.81" rx="17.37" ry="20.28"/>
+    </g>
+    <rect class="cls-4" x=".12" y="156.1" width="16.2" height="16.2"/>
+    <rect class="cls-1" x=".06" y="147.25" width="16.26" height="8.85"/>
+    <rect class="cls-1" x="8.21" y="155.36" width="25.08" height="8.85" transform="translate(180.54 139.04) rotate(90)"/>
+    <rect class="cls-4" y="8.87" width="25.03" height="16.2"/>
+    <rect class="cls-1" x="0" y="0" width="8.85" height="8.85"/>
+    <rect class="cls-4" x="12.47" y="-3.62" width="8.96" height="16.2" transform="translate(21.43 -12.47) rotate(90)"/>
+    <rect class="cls-4" x="147.23" y="8.87" width="25.05" height="16.2"/>
+    <rect class="cls-1" x="147.23" width="25.05" height="8.85"/>
+    <rect class="cls-4" x="147.23" y="147.25" width="25.05" height="16.2" transform="translate(319.5 310.7) rotate(180)"/>
+    <rect class="cls-1" x="147.23" y="163.48" width="25.05" height="8.85" transform="translate(319.5 335.8) rotate(180)"/>
+  </g>
+</svg>

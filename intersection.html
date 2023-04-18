@@ -7,15 +7,21 @@
     <title>Document</title>
     <script src="p5.min.js" defer></script>
     <script src="backdrops/intersection.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script.js" type="module" defer></script>
     <link rel="stylesheet" href="intersection.css"/>
 </head>
 <body>
+    <div class="screen-container">
     <img class="aka-sign" src="glyphs/signs/akasign.svg"/>
     <img class="bridge-sign" src="glyphs/signs/bridgesign.svg"/>
     <img class="home-sign" src="glyphs/signs/homesign.svg"/>
     <img class="school-sign" src="glyphs/signs/schoolsign.svg"/>
     <img class="tree" src="glyphs/tree.svg"/>
+    <img class="middle-pathway" id="middlePathway" src="glyphs/middlepathway.svg"/>
+    <img class="vertical-pathway" id="verticalPathway1" src="glyphs/verticalpathway.svg"/>
+    <img class="vertical-pathway" id="verticalPathway2" src="glyphs/verticalpathway.svg"/>
+    <img class="horizontal-pathway" id="horizontalPathway1" src="glyphs/regularpathway.svg"/>
+    <img class="horizontal-pathway" id="horizontalPathway2" src="glyphs/regularpathway.svg"/>
     <div class="character" id="character">
         <div class="head">
             <div class="hair" id="hair"></div>
@@ -38,6 +44,7 @@
             <div class="right-leg" id="rightLeg"></div>
             <div class="left-leg" id="leftLeg"></div>
         </div>
+    </div>
     </div>
 </body>
 </html>

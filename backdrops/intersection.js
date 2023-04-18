@@ -1,6 +1,10 @@
-// the following 7 lines of code were taken from https://www.youtube.com/watch?v=OIfEHD3KqCg
-let canvas;
 
+//copy over these two lines to the script.js document (export doesn't work for some reason)
+const unitY = window.innerHeight/100;
+const pathwayWidth = unitY*25; 
+
+// the following 6 lines of code were taken from https://www.youtube.com/watch?v=OIfEHD3KqCg
+let canvas;
 function setup() {
     canvas = createCanvas(window.innerWidth,window.innerHeight);
     canvas.position(0,0);
@@ -22,42 +26,42 @@ function backdrop() {
 function horizontalPathway(x,y) {
     push();
     fill(120,120,120);
-    translate(0,-125);
-    rect(x,y,(window.innerWidth/2)-125,250);
+    translate(0,-pathwayWidth/2);
+    rect(x,y,(window.innerWidth/2)-pathwayWidth/2,pathwayWidth);
     fill(200,60,40);
-    rect(x,y,(window.innerWidth/2)-125,10);
-    rect(x,y+240,(window.innerWidth/2)-125,10);
+    rect(x,y,(window.innerWidth/2)-pathwayWidth/2,pathwayWidth/15);
+    rect(x,y+pathwayWidth-pathwayWidth/15,(window.innerWidth/2)-pathwayWidth/2,pathwayWidth/15);
     pop();
 }
 function verticalPathway(x,y) {
     push();
     fill(120,120,120);
-    translate(-125,0);
-    rect(x,y,250,window.innerHeight/2-125);
+    translate(-pathwayWidth/2,0);
+    rect(x,y,pathwayWidth,window.innerHeight/2-pathwayWidth/2);
     fill(200,60,40);
-    rect(x,y,10,window.innerHeight/2-125);
-    rect(x+240,y,10,window.innerHeight/2-125);
+    rect(x,y,pathwayWidth/15,window.innerHeight/2-pathwayWidth/2);
+    rect(x+pathwayWidth-pathwayWidth/15,y,pathwayWidth/15,window.innerHeight/2-pathwayWidth/2);
     pop();
 }
 function centerPiece() {
     push();
     fill(120,120,120);
-    translate(-125,-125);
-    rect(window.innerWidth/2,window.innerHeight/2,250,250)
+    translate(-pathwayWidth/2,-pathwayWidth/2);
+    rect(window.innerWidth/2,window.innerHeight/2,pathwayWidth,pathwayWidth)
     fill(200,60,40);
-    rect(window.innerWidth/2,window.innerHeight/2,10,10)
-    rect(window.innerWidth/2+240,window.innerHeight/2,10,10)
-    rect(window.innerWidth/2,window.innerHeight/2+240,10,10)
-    rect(window.innerWidth/2+240,window.innerHeight/2+240,10,10)
+    rect(window.innerWidth/2,window.innerHeight/2,pathwayWidth/15,pathwayWidth/15)
+    rect(window.innerWidth/2+pathwayWidth-pathwayWidth/15,window.innerHeight/2,pathwayWidth/15,pathwayWidth/15)
+    rect(window.innerWidth/2,window.innerHeight/2+pathwayWidth-pathwayWidth/15,pathwayWidth/15,pathwayWidth/15)
+    rect(window.innerWidth/2+pathwayWidth-pathwayWidth/15,window.innerHeight/2+pathwayWidth-pathwayWidth/15,pathwayWidth/15,pathwayWidth/15)
     rect()
     pop();
 }
 
 function draw() {
     backdrop();
-    horizontalPathway(0,window.innerHeight/2);
-    horizontalPathway((window.innerWidth/2)+125,window.innerHeight/2);
-    verticalPathway(window.innerWidth/2,0);
-    verticalPathway(window.innerWidth/2,window.innerHeight/2+125);
-    centerPiece();
+    // horizontalPathway(0,window.innerHeight/2);
+    // horizontalPathway((window.innerWidth/2)+pathwayWidth/2,window.innerHeight/2);
+    // verticalPathway(window.innerWidth/2,0);
+    // verticalPathway(window.innerWidth/2,window.innerHeight/2+pathwayWidth/2);
+    // centerPiece();
 }
