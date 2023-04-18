@@ -16,27 +16,24 @@
     position: absolute;
     z-index: 2;
 }
+
 .aka-sign {
-    top: 15vh;
     left: 2vw;
+}
+.school-sign {
+    right: 2vw;
 }
 .bridge-sign {
     top: 5vh;
-    left: 60vw;
     transform: rotate(90deg);
 }
-.school-sign {
-    top: 60vh;
-    left: 85vw;
-}
 .home-sign {
-    top: 80vh;
-    left: 30vw;
+    bottom: 5vh;
     transform: rotate(-90deg);
 }
 
 .middle-pathway {
-    width: 15vw;
+    width: 13vw;
     height: auto;
 
     position: absolute;
@@ -45,7 +42,7 @@
     transform: translate(-50%,-50%);
 }
 .vertical-pathway {
-    width: 15vw;
+    width: 13vw;
     height: auto;
 
     /* place in the middle of the X axis */
@@ -54,7 +51,7 @@
     transform: translate(-50%,0); 
 }
 .horizontal-pathway {
-    height: 15vw;
+    height: 13vw;
     width: auto;
 
     /* place in the middle of the Y axis */

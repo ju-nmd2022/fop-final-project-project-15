@@ -15,10 +15,6 @@ const horizontalPathway2 = document.getElementById('horizontalPathway2');
 // get the saved character info
 const characterInfo = JSON.parse(localStorage.character);
 
-// copied over from the p5 document
-const unitY = window.innerHeight/100;
-const pathwayWidth = unitY*25; 
-
 let armsAnimationState = false;
 let topPosition = 38;
 let leftPosition = 80;
@@ -37,7 +33,18 @@ function alignPaths() {
 
     horizontalPathway1.style.right = middlePathwayPosition.right + 'px';
     horizontalPathway2.style.left = middlePathwayPosition.right + 'px';
-    console.log(middlePathwayPosition.top)
+}
+// align the signs to be close to the pathway regardless of screen size
+function alignSigns() {
+    const akaSign = document.getElementById('akaSign');
+    const schoolSign = document.getElementById('schoolSign');
+    const bridgeSign = document.getElementById('bridgeSign');
+    const homeSign = document.getElementById('homeSign');
+
+    akaSign.style.top = window.innerHeight/2 - horizontalPathwayPosition.height - 30 + 'px';
+    schoolSign.style.bottom = window.innerHeight/2 - horizontalPathwayPosition.height + 30 + 'px';
+    bridgeSign.style.left = window.innerWidth/2 + verticalPathwayPosition.width/2 - 15 + 'px';
+    homeSign.style.right = window.innerWidth/2 + verticalPathwayPosition.width/2 - 15 + 'px';
 }
 
 function generateSavedCharacter() {
@@ -73,7 +80,7 @@ function updateCharacterPosition() {
 
 // check if the character can move up
 function canMoveUp() {
-    if (characterPosition.bottom > horizontalPathwayPosition.top + railingWidth || canMoveLeft() || canMoveRight()) {
+    if (characterPosition.bottom > horizontalPathwayPosition.top + railingWidth || canMoveLeft() && canMoveRight()) {
         return true;
     }
     else {
@@ -82,7 +89,7 @@ function canMoveUp() {
 }
 // check if the character can move down 
 function canMoveDown() {
-    if (characterPosition.bottom < horizontalPathwayPosition.bottom - railingWidth || canMoveLeft() || canMoveRight()) {
+    if (characterPosition.bottom < horizontalPathwayPosition.bottom - railingWidth || canMoveLeft() && canMoveRight()) {
         return true;
     }
     else {
@@ -91,7 +98,7 @@ function canMoveDown() {
 }
 // check if the character can move left
 function canMoveLeft() {
-    if (characterPosition.left > verticalPathwayPosition.left + railingWidth || canMoveUp() || canMoveDown()) {
+    if (characterPosition.left > verticalPathwayPosition.left + railingWidth || canMoveUp() && canMoveDown()) {
         return true;
     }
     else {
@@ -100,7 +107,7 @@ function canMoveLeft() {
 }
 // check if the character can move right
 function canMoveRight() {
-    if (characterPosition.right < verticalPathwayPosition.right - railingWidth || canMoveUp() || canMoveDown()) {
+    if (characterPosition.right < verticalPathwayPosition.right - railingWidth || canMoveUp() && canMoveDown()) {
         return true;
     }
     else {
@@ -112,7 +119,6 @@ function moveUp() {
     if (canMoveUp()) {
         topPosition -= 1 * sprintMultiplier;
     }
-    
     updateCharacterPosition();
 }
 function moveDown() {
@@ -121,7 +127,6 @@ function moveDown() {
     }
     updateCharacterPosition();
 }
-
 function moveLeft() {   
     if (canMoveLeft()) {
     leftPosition -= 1 * sprintMultiplier;
@@ -138,7 +143,7 @@ function moveRight() {
 function checkForScreenChange() {
     // top: characterposition.top + characterposition.height/2
     if (characterPosition.top + characterPosition.height/2 < 0) {
-        alert('hej')
+        window.location.href = 'bridge.html';
     }
     // bottom: characterposition.bottom - characterposition.height/2
     if (characterPosition.bottom - characterPosition.height/2 > window.innerHeight) {
@@ -154,11 +159,13 @@ function checkForScreenChange() {
     }
 }
 
+// raise the sprintMultiplier on shift press
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Shift') {
         sprintMultiplier = 2;
     }
 })
+// revert the sprintMultiplier to starting value on shift release
 document.addEventListener('keyup', (e) => {
     if (e.key === 'Shift') {
         sprintMultiplier = 1;
@@ -178,13 +185,11 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' || e.key === 'a') {
         moveLeft();
     }
-    if (e.key === 'Shift') {
-        console.log('hej')
-    }
     animateArms();
     checkForScreenChange();
-    // p1 position top - 90
 })
 
+// on launch
 generateSavedCharacter();
 alignPaths();
+alignSigns();
