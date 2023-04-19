@@ -4,6 +4,30 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+.popup {
+    background-color: aliceblue;
+    width: 30vw;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    border: 1vw solid grey;
+    contain: content;
+    padding: 1vh 1vw 1vh 1vw; 
+}
+.popup > p {
+    color: black;
+    font-size: 1.5vw;
+}
+.remove-popup {
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: bold;
+    margin-top: 2vh;
+}
+
 .screen-container {
     background-color: rgb(171, 171, 171);
     width: 100vw;
@@ -29,10 +53,27 @@
     transform: translate(-50%,0);
 }
 
+.systemet-div {
+    width: 6vw;
+    height: auto;
+    position: absolute;
+    bottom: 0vh;
+    display: flex;
+    z-index: 2;
+}
+
 .systemet-bag {
     width: 6vw;
     position: absolute;
     bottom: 5vh;
+    z-index: 1;
+}
+
+.systemet-hide {
+    background-color: aqua;
+    width: 6vw;
+    height: 10vh;
+    z-index: 0;
 }
 
 .drink {
@@ -57,4 +98,11 @@
 .life {
     width: 4vw;
     height: auto;
+}
+
+.number-of-beers {
+    margin-top: 1vw;
+    margin-left: 53vw;
+    font-size: 1.2vw;
+    font-weight: bold;
 }

@@ -32,6 +32,7 @@ function removeCars() {
     allCars.forEach(car => {
         car.remove();
     });
+    carPositions = [];
 }
 
 removePopup.addEventListener('click', () => {
@@ -199,8 +200,8 @@ function moveCarsForward() {
         cars[i].style.top = carPositions[i] + 'vh';
         detectCollision(cars[i]);
         if (cars[i].getBoundingClientRect().top > window.innerHeight) {
-        // screenContainer.removeChild(cars[i]); 
-        // why doesnt this work
+            screenContainer.removeChild(cars[i]);
+            carPositions.splice(i,1); 
         }
     }
 }

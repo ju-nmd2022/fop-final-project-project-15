@@ -10,16 +10,27 @@
 </head>
 <body>
     <div class="screen-container" id="screenContainer">
+        <div class="popup" id="popup">
+            <p id="popupText">
+                Whoa! Systemet sure has changed. I'll probably need 8 beers, absolutely no vodka though.
+            </p>
+            <p class="remove-popup" id="removePopup">Click to continue</p>
+            <!-- <a href="intersection.html"> -->
+                <!-- <p class="remove-popup"><= Back to the intersection</p> -->
+            <!-- </a> -->
+        </div>
         <div class="game-container" id="gameContainer">
-            <img class="systemet-logo" src="glyphs/systemetlogo.svg"/> 
-            <img class="systemet-bag" id="systemetBag" src="glyphs/systemetbag.svg"/>
-            <img class="drink" src="glyphs/beercan.svg"/>
-            <img class="drink" src="/glyphs/vodka.svg"/>
+            <img class="systemet-logo" src="glyphs/systemetlogo.svg"/>
+            <div class="systemet-div" id="systemetBag">
+                <img class="systemet-bag" src="glyphs/systemetbag.svg"/>
+                <div class="systemet-hide"></div>
+            </div>
             <div class="life-container" id="lifeContainer">
                 <img class="life" src="/glyphs/systemetlife.svg"/>
                 <img class="life" src="/glyphs/systemetlife.svg"/>
                 <img class="life" src="/glyphs/systemetlife.svg"/>
             </div>
+            <p class="number-of-beers" id="numberOfBeers">Number:</p>
         </div>
     </div>
 </body>

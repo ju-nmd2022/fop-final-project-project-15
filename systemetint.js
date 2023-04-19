@@ -2,28 +2,67 @@
 const gameContainer = document.getElementById('gameContainer');
 const systemetBag = document.getElementById('systemetBag');
 const lifeContainer = document.getElementById('lifeContainer');
+const numberOfBeers = document.getElementById('numberOfBeers');
+const removePopup = document.getElementById('removePopup')
 
 const gameContainerRect = gameContainer.getBoundingClientRect();
 
 let drinkPositions = [];
 let bagPosition = gameContainerRect.width/2 - systemetBag.getBoundingClientRect().width/2;
 let lives = 3;
+let beerCount = 0;
+let drinksSpawning;
+let drinksFalling;
+
+function removeAllDrinks() {
+    const drinks = document.getElementsByClassName('drink');
+    const allDrinks = Array.from(drinks);
+    allDrinks.forEach(drink => {
+        drink.remove();
+    });
+    drinkPositions = [];
+}
+
+removePopup.addEventListener('click', () => {
+    // reset the values
+    lives = 3;
+    beerCount = 0;
+    bagPosition = gameContainerRect.width/2 - systemetBag.getBoundingClientRect().width/2;
+
+    removeAllDrinks();
+    updateBagPosition();
+    updateBeerCountText();
+    updateHearts();
+
+    // set the intervals
+    drinksSpawning = setInterval(spawnDrinksRegularly,500);
+    drinksFalling = setInterval(makeDrinksFall,50);
+    
+    popup.style.display = 'none';
+    gameFailed = false;
+})
 
 // remove a life
 function removeLife() {
     lives -= 1;
+    updateHearts();
 }
-// update the number of hearts accordingly
+// update the number of hearts on screen accordingly
 function updateHearts() {
-    const hearts = document.getElementsByClassName('hearts');
-
-    for (let i = lives+2; i > lives; i--) {
+    for (let i = lives+1; i > lives; i--) {
         lifeContainer.removeChild(lifeContainer.firstChild);
     }
 }
-removeLife();
-removeLife();
-updateHearts();
+
+// add a beer to beercount 
+function addBeer() {
+    beerCount += 1;
+    updateBeerCountText();
+}
+// update the text for beercount 
+function updateBeerCountText() {
+    numberOfBeers.innerText = 'Beers: ' + beerCount;
+}
 
 // generate a random drink
 // type of drink
@@ -56,30 +95,30 @@ function spawnDrink() {
 }
 
 // spawn drink regularly
-setInterval(() => {
+function spawnDrinksRegularly() {
     spawnDrink();
     drinkPositions.push(0);
-}, 500);
+}
 
 // make the drinks fall
-setInterval(() => {
+function makeDrinksFall() {
     const drinks = document.getElementsByClassName('drink');
     for (let i = 0; i < drinks.length; i++) {
         drinkPositions[i] += 3.5;
         drinks[i].style.top = drinkPositions[i] + 'vh';
         detectCatch(drinks[i]);
     }
-}, 50);
+}
 
 function detectCatch(drink) {
     const currentDrinkPosition = drink.getBoundingClientRect();
     const currentBagPosition = systemetBag.getBoundingClientRect();
     if (currentDrinkPosition.left > currentBagPosition.left && currentDrinkPosition.right < currentBagPosition.right && currentDrinkPosition.bottom > currentBagPosition.bottom && currentDrinkPosition.bottom < currentBagPosition.bottom + currentBagPosition.width/2) {
         if (drink.src.includes('vodka')) {
-            alert('vodka');
+            removeLife();
         }
         else if (drink.src.includes('beer')) {
-            alert('beer')
+            addBeer();
         }
     }
 }
@@ -112,3 +151,4 @@ document.addEventListener('keydown', (e) => {
 
 // on launch
 updateBagPosition();
+updateBeerCountText();
