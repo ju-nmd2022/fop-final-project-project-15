@@ -28,9 +28,10 @@ let gameFailed;
 
 // remove all cars currently on screen
 function removeCars() {
-    for (let i = 0; i < cars.length; i++) {
-        screenContainer.removeChild(cars[i]);
-    }
+    const allCars = Array.from(cars);
+    allCars.forEach(car => {
+        car.remove();
+    });
 }
 
 removePopup.addEventListener('click', () => {
@@ -62,8 +63,6 @@ function generateSavedCharacter() {
 
 // make sure the character fits between the bridge lines
 function resizeCharacter() {
-    const bridgeWidth = bridge.getBoundingClientRect().width;
-    const laneWidth = bridgeWidth/6;
     const characterWidth = laneWidth/3;
 
     head.style.width = characterWidth + 'px';
@@ -72,6 +71,17 @@ function resizeCharacter() {
     body.style.height = characterWidth + 'px';
     legs.style.width = characterWidth + 'px';
     legs.style.height = characterWidth + 'px';
+}
+
+// make sure the cars are the right size
+function resizeCars() {
+    const carWidth = laneWidth-laneWidth/5;
+
+    const allCars = Array.from(cars);
+    allCars.forEach(car => {
+        car.style.width = carWidth + 'px';
+        car.style.marginLeft = laneWidth/5;
+    });
 }
 
 // align the pillars to be next to the bridge regardless of screen size
@@ -149,6 +159,7 @@ function spawnCarsRegularly() {
         carPositions.push(0);
         carPositions.push(0);
         carPositions.push(0);
+        resizeCars();
     }
 }
 
@@ -187,7 +198,7 @@ function moveCarsForward() {
         carPositions[i] += 3.5;
         cars[i].style.top = carPositions[i] + 'vh';
         detectCollision(cars[i]);
-        if (cars[i].getBoundingClientRect().top > 100) {
+        if (cars[i].getBoundingClientRect().top > window.innerHeight) {
         // screenContainer.removeChild(cars[i]); 
         // why doesnt this work
         }
@@ -206,7 +217,10 @@ document.addEventListener('keydown', (e) => {
 })
 
 // on launch
-generateSavedCharacter();
-resizeCharacter();
-alignBridgePillars();
-updateLanePosition();
+document.addEventListener('DOMContentLoaded', () => {
+    generateSavedCharacter();
+    resizeCharacter();
+    alignBridgePillars();
+    updateLanePosition();
+});
+

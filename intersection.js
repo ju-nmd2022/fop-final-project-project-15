@@ -34,6 +34,7 @@ function alignPaths() {
     horizontalPathway1.style.right = middlePathwayPosition.right + 'px';
     horizontalPathway2.style.left = middlePathwayPosition.right + 'px';
 }
+
 // align the signs to be close to the pathway regardless of screen size
 function alignSigns() {
     const akaSign = document.getElementById('akaSign');
@@ -98,7 +99,7 @@ function canMoveDown() {
 }
 // check if the character can move left
 function canMoveLeft() {
-    if (characterPosition.left > verticalPathwayPosition.left + railingWidth || canMoveUp() && canMoveDown()) {
+    if (characterPosition.left > verticalPathwayPosition.left + railingWidth/2 || canMoveUp() && canMoveDown()) {
         return true;
     }
     else {
@@ -107,7 +108,7 @@ function canMoveLeft() {
 }
 // check if the character can move right
 function canMoveRight() {
-    if (characterPosition.right < verticalPathwayPosition.right - railingWidth || canMoveUp() && canMoveDown()) {
+    if (characterPosition.right < verticalPathwayPosition.right - railingWidth/2 || canMoveUp() && canMoveDown()) {
         return true;
     }
     else {
