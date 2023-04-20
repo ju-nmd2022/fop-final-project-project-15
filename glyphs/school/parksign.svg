@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 189.62 145.72">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #603813;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: .25px;
+      }
+
+      .cls-2 {
+        fill: #502d13;
+      }
+
+      .cls-3 {
+        fill: #885b08;
+      }
+
+      .cls-4 {
+        fill: #8c6239;
+      }
+
+      .cls-5 {
+        fill: #aec9e9;
+        font-family: Futura-CondensedExtraBold, Futura;
+        font-size: 26px;
+        font-weight: 700;
+      }
+
+      .cls-6 {
+        letter-spacing: -.03em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="cls-1" d="m119.16,63.77v71.42c0,2.69-1.25,5.14-3.3,6.98-2.33,2.1-5.69,3.41-9.43,3.41-3.74,0-7.1-1.31-9.43-3.41-2.05-1.85-3.29-4.29-3.29-6.98V63.77s25.45,0,25.45,0Z"/>
+      <path class="cls-2" d="m97,63.77v78.4c-2.05-1.85-3.29-4.29-3.29-6.98V63.77s3.29,0,3.29,0Z"/>
+      <path class="cls-2" d="m119.16,63.77v71.42c0,2.69-1.25,5.14-3.3,6.98V63.77s3.3,0,3.3,0Z"/>
+      <polygon class="cls-3" points="184.25 17.05 189.48 64.81 52.88 79.78 8.9 60.44 47.64 32.02 184.25 17.05"/>
+      <polygon class="cls-1" points="184.48 63.81 188.82 52.8 183.11 .7 179.25 16.05 184.48 63.81"/>
+      <polygon class="cls-1" points="188.11 1.7 184.25 17.05 47.64 32.02 46.03 17.28 188.11 1.7"/>
+      <polygon class="cls-1" points="46.03 17.28 47.64 32.02 44.98 34.01 8.94 60.44 .17 48.47 36.2 22.05 46.03 17.28"/>
+      <polygon class="cls-4" points="25.97 67.95 26.42 63.19 24.8 57.23 27.87 50.9 30.44 59.04 28.83 69.21 25.97 67.95"/>
+      <polygon class="cls-4" points="49.41 31.83 48.68 41.41 47.06 62.66 49.07 54.91 51.54 31.59 49.41 31.83"/>
+      <polygon class="cls-4" points="76.73 77.17 82.28 57.27 84.36 59.44 78.73 76.95 76.73 77.17"/>
+      <polygon class="cls-4" points="117.15 24.4 116.89 35.43 111.7 33.43 113.5 33.04 117.15 24.4"/>
+      <polygon class="cls-4" points="138.44 22.07 136.67 51.31 139.6 46.11 139.02 34.11 140.98 21.79 138.44 22.07"/>
+      <polygon class="cls-4" points="157.14 68.36 161.21 50.15 159.21 47 162.14 48.52 161.37 58.25 157.14 68.36"/>
+      <text class="cls-5" transform="translate(87.14 60.99) rotate(-6.74)"><tspan class="cls-6" x="0" y="0">P</tspan><tspan x="14.02" y="0">ARK</tspan></text>
+    </g>
+  </g>
+</svg>

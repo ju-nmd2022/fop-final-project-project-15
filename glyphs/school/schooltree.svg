@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.49 372.12">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #006837;
+      }
+
+      .cls-2 {
+        fill: #117835;
+      }
+
+      .cls-3 {
+        fill: #009245;
+        stroke-width: 2px;
+      }
+
+      .cls-3, .cls-4, .cls-5 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3, .cls-5 {
+        stroke: #000;
+      }
+
+      .cls-4 {
+        fill: #754c24;
+        stroke: #754c24;
+        stroke-width: 8px;
+      }
+
+      .cls-4, .cls-5 {
+        stroke-linecap: round;
+      }
+
+      .cls-5 {
+        fill: none;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <ellipse class="cls-3" cx="96.24" cy="312.42" rx="95.28" ry="58.64" transform="translate(-10.51 3.43) rotate(-1.94)"/>
+    <line class="cls-5" x1="48.9" y1="242.91" x2="142.96" y2="242.91"/>
+    <path class="cls-4" d="m68.33,297.78s9-228.23,0-238.06"/>
+    <path class="cls-4" d="m93.33,317.78s2.92-219.93,12.96-239.96"/>
+    <path class="cls-4" d="m124.83,303.78s-8.68-223.75,8.41-235.39"/>
+    <circle class="cls-2" cx="60.19" cy="116.65" r="35.35"/>
+    <circle class="cls-1" cx="34.25" cy="84.22" r="29.24"/>
+    <circle class="cls-2" cx="103.25" cy="97.84" r="37.08"/>
+    <circle class="cls-1" cx="143.46" cy="78.6" r="37.66"/>
+    <circle class="cls-2" cx="46.92" cy="40.77" r="28.7"/>
+    <circle class="cls-2" cx="122.99" cy="39.09" r="33.43"/>
+    <circle class="cls-1" cx="86.55" cy="22.27" r="22.27"/>
+    <circle class="cls-1" cx="70.97" cy="107.62" r="25.31"/>
+    <circle class="cls-2" cx="147.01" cy="115.59" r="27.59"/>
+    <circle class="cls-1" cx="72.28" cy="61.73" r="28.84"/>
+    <circle class="cls-1" cx="117.06" cy="120.17" r="29.95"/>
+    <line class="cls-5" x1="48.83" y1="242.78" x2="96.26" y2="304.78"/>
+    <line class="cls-5" x1="143.52" y1="242.78" x2="96.64" y2="304.07"/>
+    <line class="cls-5" x1="48.83" y1="297.78" x2="48.83" y2="243.12"/>
+    <line class="cls-5" x1="143.56" y1="297.33" x2="143.56" y2="242.67"/>
+    <line class="cls-5" x1="96.09" y1="336.78" x2="96.09" y2="304.55"/>
+  </g>
+</svg>

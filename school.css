@@ -1,0 +1,35 @@
+.screencontainer {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(210, 210, 210);
+}
+
+.jthbuilding {
+    width: 100vw;
+    height: auto;
+}
+
+.fountain {
+    width: 20vw;
+    height: auto;
+}
+
+.schooltree {
+    width: 10vw;
+    height: auto;
+}
+
+.parksign {
+    width: 5vw;
+    height: auto;
+}   
+
+.benchvert {
+    width: 3vw;
+    height: auto;
+}
+
+.benchhori {
+    width: 15vw;
+    height: auto;
+}
