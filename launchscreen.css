@@ -1,7 +1,5 @@
 /* make the default margin 0, the default padding 0, and the default font helvetica */
 * {
-    margin: 0;
-    padding: 0;
     font-family: Helvetica, Arial, sans-serif;
 }
 

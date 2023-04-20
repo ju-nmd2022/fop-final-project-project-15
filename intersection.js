@@ -26,7 +26,7 @@ const railingWidth = 35;
 
 // align the pathways so they stay connected regardless of screen size
 function alignPaths() {
-    const middlePathwayPosition = middlePathway.getBoundingClientRect()
+    const middlePathwayPosition = middlePathway.getBoundingClientRect();
 
     verticalPathway1.style.bottom = middlePathwayPosition.bottom + 'px';
     verticalPathway2.style.top = middlePathwayPosition.bottom + 'px';
