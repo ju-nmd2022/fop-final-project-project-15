@@ -22,7 +22,7 @@ let sprintMultiplier = 1;
 let characterPosition = characterOnScreen.getBoundingClientRect();
 const verticalPathwayPosition = verticalPathway1.getBoundingClientRect();
 const horizontalPathwayPosition = horizontalPathway1.getBoundingClientRect();
-const railingWidth = 35;
+const railingWidth = horizontalPathwayPosition.height/5;
 
 // align the pathways so they stay connected regardless of screen size
 function alignPaths() {
@@ -81,7 +81,7 @@ function updateCharacterPosition() {
 
 // check if the character can move up
 function canMoveUp() {
-    if (characterPosition.bottom > horizontalPathwayPosition.top + railingWidth || canMoveLeft() && canMoveRight()) {
+    if (characterPosition.bottom > horizontalPathwayPosition.top + railingWidth) {
         return true;
     }
     else {
@@ -90,7 +90,7 @@ function canMoveUp() {
 }
 // check if the character can move down 
 function canMoveDown() {
-    if (characterPosition.bottom < horizontalPathwayPosition.bottom - railingWidth || canMoveLeft() && canMoveRight()) {
+    if (characterPosition.bottom < horizontalPathwayPosition.bottom - railingWidth) {
         return true;
     }
     else {
@@ -99,7 +99,7 @@ function canMoveDown() {
 }
 // check if the character can move left
 function canMoveLeft() {
-    if (characterPosition.left > verticalPathwayPosition.left + railingWidth/2 || canMoveUp() && canMoveDown()) {
+    if (characterPosition.left > verticalPathwayPosition.left + railingWidth/2) {
         return true;
     }
     else {
@@ -108,7 +108,7 @@ function canMoveLeft() {
 }
 // check if the character can move right
 function canMoveRight() {
-    if (characterPosition.right < verticalPathwayPosition.right - railingWidth/2 || canMoveUp() && canMoveDown()) {
+    if (characterPosition.right < verticalPathwayPosition.right - railingWidth/2) {
         return true;
     }
     else {
@@ -117,25 +117,25 @@ function canMoveRight() {
 }
 
 function moveUp() {
-    if (canMoveUp()) {
+    if (canMoveUp() || (canMoveLeft() && canMoveRight())) {
         topPosition -= 1 * sprintMultiplier;
     }
     updateCharacterPosition();
 }
 function moveDown() {
-    if (canMoveDown()) {
+    if (canMoveDown() || (canMoveLeft() && canMoveRight())) {
     topPosition += 1 * sprintMultiplier;
     }
     updateCharacterPosition();
 }
 function moveLeft() {   
-    if (canMoveLeft()) {
+    if (canMoveLeft() || (canMoveUp() && canMoveDown())) {
     leftPosition -= 1 * sprintMultiplier;
     }
     updateCharacterPosition();
 }
 function moveRight() {
-    if (canMoveRight()) {
+    if (canMoveRight() || (canMoveUp() && canMoveDown())) {
     leftPosition += 1 * sprintMultiplier;
     }
     updateCharacterPosition();
@@ -194,3 +194,11 @@ document.addEventListener('keydown', (e) => {
 generateSavedCharacter();
 alignPaths();
 alignSigns();
+
+// since the position of the other paths are placed in relation to the middlepath, it is important that it has loaded properly
+function reloadOnZeroWidth() {
+    if (middlePathway.getBoundingClientRect().height === 0) {
+        location.reload();
+    }
+}
+reloadOnZeroWidth();

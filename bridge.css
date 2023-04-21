@@ -11,30 +11,6 @@
     contain: content;
 }
 
-.popup {
-    background-color: aliceblue;
-    width: 30vw;
-    height: auto;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    z-index: 1;
-    border: 1vw solid grey;
-    contain: content;
-    padding: 1vh 1vw 1vh 1vw; 
-}
-.popup > p {
-    color: black;
-    font-size: 1.5vw;
-}
-.remove-popup {
-    text-align: center;
-    font-size: 1.2vw;
-    font-weight: bold;
-    margin-top: 2vh;
-}
-
 .bridge {
     height: 100vh;
     width: auto;

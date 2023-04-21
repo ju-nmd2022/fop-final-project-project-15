@@ -24,7 +24,7 @@ let carsDriving;
 let carsSpawning;
 let playerWalking; 
 
-let gameFailed;
+let gameActive = false;
 
 // remove all cars currently on screen
 function removeCars() {
@@ -36,6 +36,8 @@ function removeCars() {
 }
 
 removePopup.addEventListener('click', () => {
+    const popupShade = document.getElementById('popupShade');
+
     removeCars();
     currentBottomPosition = 5;
     currentLane = 3;
@@ -44,7 +46,8 @@ removePopup.addEventListener('click', () => {
     carsSpawning = setInterval(spawnCarsRegularly,500);
     playerWalking = setInterval(movePlayerForward,50);
     popup.style.display = 'none';
-    gameFailed = false;
+    popupShade.style.display = 'none';
+    gameActive = true;
 })
 
 function displayReplayPopup() {
@@ -168,7 +171,7 @@ function failGame() {
     clearInterval(carsDriving);
     clearInterval(carsSpawning);
     clearInterval(playerWalking);
-    gameFailed = true;
+    gameActive = false;
     displayReplayPopup();
 }
 
@@ -199,15 +202,15 @@ function moveCarsForward() {
         carPositions[i] += 3.5;
         cars[i].style.top = carPositions[i] + 'vh';
         detectCollision(cars[i]);
-        if (cars[i].getBoundingClientRect().top > window.innerHeight) {
-            screenContainer.removeChild(cars[i]);
-            carPositions.splice(i,1); 
-        }
+        // if (cars[i].getBoundingClientRect().top > window.innerHeight) {
+        //     screenContainer.removeChild(cars[i]);
+        //     carPositions.splice(i,1); 
+        // }
     }
 }
 
 document.addEventListener('keydown', (e) => {
-    if (!gameFailed) {
+    if (gameActive) {
         if (e.key === 'ArrowRight' || e.key === 'd') {
             moveToRightLane();
         }
@@ -218,10 +221,15 @@ document.addEventListener('keydown', (e) => {
 })
 
 // on launch
-document.addEventListener('DOMContentLoaded', () => {
-    generateSavedCharacter();
-    resizeCharacter();
-    alignBridgePillars();
-    updateLanePosition();
-});
+generateSavedCharacter();
+resizeCharacter();
+alignBridgePillars();
+updateLanePosition();
 
+// since the position of many things are placed in relation to the bridge, it is important that it has loaded properly
+function reloadOnZeroWidth() {
+    if (bridgeWidth === 0) {
+        location.reload();
+    }
+}
+reloadOnZeroWidth();

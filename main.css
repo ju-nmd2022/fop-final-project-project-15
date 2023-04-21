@@ -292,10 +292,18 @@
     margin-left: 1vw;
     width: 1.8vw;
     height: 2vw;
+    contain: content;
 }
 .left-leg {
     background-color: blueviolet;
     margin-left: 0.4vw;
     width: 1.8vw;
     height: 2vw;
+}
+
+/* patches */
+.winner-patch {
+    width: 1.3vw;
+    transform: rotate(-10deg);
+    display: none;
 }

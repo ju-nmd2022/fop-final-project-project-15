@@ -27,7 +27,44 @@ const leftArm = document.getElementById('leftArm');
 const rightLeg = document.getElementById('rightLeg');
 const leftLeg = document.getElementById('leftLeg');
 
-let savedCharacter = JSON.parse(localStorage.character); 
+let savedCharacter; 
+let unlockedPatches = ['winnerPatch'];
+localStorage.unlockedPatches = JSON.stringify(unlockedPatches);
+
+unlockedPatches.push(0);
+
+if (localStorage.character !== undefined) {
+    savedCharacter = JSON.parse(localStorage.character); 
+}
+else {
+    savedCharacter = {
+        name: 'akko',
+        hairColor: 'yellow',
+        shirtColor: 'red',
+        ovveColor: 'rgb(235, 212, 35)'
+    };
+    localStorage.character = JSON.stringify(savedCharacter);
+}
+
+if (localStorage.unlockedPatches !== undefined) {
+    unlockedPatches = JSON.parse(localStorage.unlockedPatches);
+}
+else {
+    unlockedPatches = ['none'];
+    localStorage.unlockedPatches = JSON.stringify(unlockedPatches);
+}
+
+// for testing purposes
+
+
+// import the unlocked patches
+function importPatches() {
+    const winnerPatch = document.querySelector('.winner-patch');
+    if (unlockedPatches.includes('winnerPatch')) {
+        console.log(winnerPatch)
+        winnerPatch.style.display = 'block';
+    }
+}
 
 let name;
 let hairColor;
@@ -172,3 +209,4 @@ function createCharacter() {
 }
 
 createCharacter();
+importPatches();
