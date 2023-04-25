@@ -1,22 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-}
-
-.screen-container {
-    width: 100vw;
-    height: 100vh;
-    contain: content;
-}
-
-/* signs */
-.aka-sign,.bridge-sign,.home-sign,.school-sign {
-    width: 11vw;
-    height: auto;
-    position: absolute;
-    z-index: 2;
-}
-
 .aka-sign {
     left: 2vw;
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193.68 132.87">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #603813;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: .25px;
+      }
+
+      .cls-2 {
+        fill: #502d13;
+      }
+
+      .cls-3 {
+        fill: #885b08;
+      }
+
+      .cls-4 {
+        fill: #8c6239;
+      }
+
+      .cls-5 {
+        fill: #aec9e9;
+        font-family: Futura-CondensedBold, 'Futura Condensed';
+        font-size: 26px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <path class="cls-1" d="m122,51.93l-4.75,71.26c-.18,2.69-1.59,5.04-3.76,6.75-2.46,1.94-5.9,3.03-9.64,2.78s-7-1.78-9.18-4.03c-1.92-1.98-3-4.5-2.82-7.18l4.75-71.26,25.39,1.69Z"/>
+    <path class="cls-2" d="m99.89,50.45l-5.21,78.23c-1.92-1.98-3-4.5-2.82-7.18l4.75-71.26,3.28.22Z"/>
+    <path class="cls-2" d="m122,51.93l-4.75,71.26c-.18,2.69-1.59,5.04-3.76,6.75l5.21-78.23,3.29.22Z"/>
+    <polygon class="cls-3" points="186.88 25.26 183.28 73.17 46.24 62.87 6.55 35.8 49.85 14.96 186.88 25.26"/>
+    <polygon class="cls-1" points="183.28 73.18 189.56 63.14 193.49 10.89 186.88 25.26 183.28 73.18"/>
+    <polygon class="cls-1" points="193.49 10.88 186.88 25.26 49.85 14.96 50.96 .17 193.49 10.88"/>
+    <polygon class="cls-1" points="50.96 .17 49.85 14.96 46.86 16.43 6.59 35.8 .17 22.43 40.42 3.06 50.96 .17"/>
+    <polygon class="cls-4" points="21.96 46.31 23.28 41.71 22.77 35.55 26.95 29.89 27.98 38.37 24.54 48.07 21.96 46.31"/>
+    <polygon class="cls-4" points="51.61 15.09 49.14 24.38 43.66 44.97 47.06 37.72 53.76 15.25 51.61 15.09"/>
+    <polygon class="cls-4" points="70.17 64.67 79.27 46.12 80.91 48.63 72.17 64.82 70.17 64.67"/>
+    <polygon class="cls-4" points="119.57 20.2 117.29 31 112.56 28.07 114.4 28.03 119.57 20.2"/>
+    <polygon class="cls-4" points="140.93 21.8 133.83 50.23 137.67 45.65 139.29 33.75 143.48 22 140.93 21.8"/>
+    <polygon class="cls-4" points="150.83 70.73 158.17 53.58 156.78 50.12 159.38 52.15 156.84 61.57 150.83 70.73"/>
+    <text class="cls-5" transform="translate(72.63 49.48) rotate(3.81)"><tspan x="0" y="0">ALCAMO</tspan></text>
+  </g>
+</svg>
