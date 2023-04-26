@@ -156,7 +156,7 @@ function checkForScreenChange() {
     }
     // right: characterposition.right - characterposition.width/2
     if (characterPosition.right - characterPosition.width/2 > window.innerWidth) {
-        alert('halla')
+        window.location.href = 'school.html';
     }
 }
 
