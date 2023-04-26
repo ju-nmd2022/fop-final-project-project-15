@@ -56,7 +56,9 @@ function updateCharacterPosition() {
 
 // check if the character can move up
 function canMoveUp() {
-    if (characterPosition.bottom > schoolPosition.top) {
+    console.log(schoolPosition.bottom)
+    console.log(characterPosition.bottom)
+    if (characterPosition.bottom > schoolPosition.bottom + 30) {
         return true;
     }
     else {
@@ -65,7 +67,7 @@ function canMoveUp() {
 }
 // check if the character can move down 
 function canMoveDown() {
-    if (characterPosition.bottom < schoolPosition.bottom) {
+    if (characterPosition.bottom < window.innerHeight) {
         return true;
     }
     else {
@@ -73,17 +75,17 @@ function canMoveDown() {
     }
 }
 // check if the character can move left
-function canMoveLeft() {
-    if (characterPosition.bottom < schoolPosition.bottom) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
+// function canMoveLeft() {
+//     if (characterPosition.bottom < schoolPosition.bottom) {
+//         return true;
+//     }
+//     else {
+//         return false;
+//     }
+// }
 // check if the character can move right
 function canMoveRight() {
-    if (characterPosition.bottom < schoolPosition.bottom) {
+    if (characterPosition.right < window.innerWidth) {
         return true;
     }
     else {
@@ -104,9 +106,9 @@ function moveDown() {
     updateCharacterPosition();
 }
 function moveLeft() {   
-    if (canMoveLeft() ) {
+    // if (canMoveLeft() ) {
     leftPosition -= 1 * sprintMultiplier;
-    }
+    // }
     updateCharacterPosition();
 }
 function moveRight() {
@@ -114,6 +116,14 @@ function moveRight() {
     leftPosition += 1 * sprintMultiplier;
     }
     updateCharacterPosition();
+}
+
+function checkForScreenChange() {
+    console.log(characterPosition.left)
+    // left
+    if (characterPosition.left < 0) {
+        window.location.href = 'intersection.html';
+    }
 }
 
 // raise the sprintMultiplier on shift press
@@ -143,7 +153,7 @@ document.addEventListener('keydown', (e) => {
         moveLeft();
     }
     animateArms();
-    // checkForScreenChange();
+    checkForScreenChange();
 })
 
 generateSavedCharacter();
