@@ -9,9 +9,27 @@
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="character.css">
     <script src="school.js" defer></script>
+    <script src="common.js" defer></script>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/b0f116667a.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="screen-container">
+
+        <!-- the clock -->
+    <div class="clock-container">
+        <h2 id="currentTimeDisplay">00:00</h2>
+    </div>
+        <!-- pause button -->
+    <div class="pause-screen">
+    <div id="pauseButton">
+        <i class="fa-solid fa-pause" id="pauseIcon"></i>
+    </div>
+        <button class="restart-game">
+            <p>Restart Game</p>
+        </button>
+    </div>
+
         <img src="glyphs/school/jthbuilding.svg" class="jthbuilding">
         <img src="glyphs/school/fountain.svg" class="fountain">
         <img src="glyphs/school/schooltree.svg" class="schooltree">

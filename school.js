@@ -140,6 +140,7 @@ document.addEventListener('keyup', (e) => {
 })
 
 document.addEventListener('keydown', (e) => {
+    if (gameIsPaused === false) {
     if (e.key === 'ArrowUp' || e.key === 'w') {
         moveUp();
     }
@@ -154,6 +155,7 @@ document.addEventListener('keydown', (e) => {
     }
     animateArms();
     checkForScreenChange();
+    }   
 })
 
 generateSavedCharacter();

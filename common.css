@@ -31,6 +31,54 @@
     font-family: alarm_clock;
 }
 
+.pause-screen {
+    contain: content;
+
+    width: auto;
+    height: auto;
+
+    position: absolute;
+    right: 4vmin;
+    top: 4vmin;
+
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 2vmin;
+}
+
+.pause-screen > button {
+    background-color: black;
+    border: none;
+    border-radius: 2vmin;
+    height: 7vmin;
+    aspect-ratio: 2/1;
+    display: none;
+}
+.pause-screen > button > p {
+    color: white;
+}
+
+#pauseButton {
+    background-color: rgb(0, 0, 0);
+    contain: content;
+    width: 7vmin;
+    aspect-ratio: 1/1;
+
+    
+
+    border-radius: 2vmin;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pauseButton > i {
+    color: white;
+    font-size: 4vmin;
+}
+
 .screen-container {
     width: 100vw;
     height: 100vh;

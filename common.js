@@ -2,9 +2,17 @@
 
 // the clock
 const currentTimeDisplay = document.getElementById('currentTimeDisplay');
+// the pausebutton
+const pauseButton = document.getElementById('pauseButton');
+const pauseIcon = document.getElementById('pauseIcon');
+const restartGame = document.querySelector('.restart-game');
 
+let gameIsPaused = false;
 let currentHour;
 let currentMinute;
+let timeInterval;
+
+timeInterval = setInterval(addTime,800);
 
 if (!localStorage.currentHour || !localStorage.currentMinute) {
     currentHour = 19;
@@ -34,6 +42,24 @@ function addTime() {
     updateTimeDisplay();
 }
 
-setInterval(addTime,800);
+pauseButton.addEventListener('click', ()=> {
+    if (!gameIsPaused) {
+        pauseIcon.setAttribute('class','fa-solid fa-play');
+        clearInterval(timeInterval);
+        restartGame.style.display = 'block';
+        gameIsPaused = true;
+    } else {
+        pauseIcon.setAttribute('class','fa-solid fa-pause');
+        timeInterval = setInterval(addTime,800);
+        restartGame.style.display = 'none';
+        gameIsPaused = false;
+    }    
+})
+
+restartGame.addEventListener('click', () => {
+    window.location.href = 'school.html';
+    localStorage.currentHour = 19;
+    localStorage.currentMinute = 0;
+})
 
 updateTimeDisplay();
