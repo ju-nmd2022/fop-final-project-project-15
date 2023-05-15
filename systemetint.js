@@ -3,7 +3,8 @@ const gameContainer = document.getElementById('gameContainer');
 const systemetBag = document.getElementById('systemetBag');
 const lifeContainer = document.getElementById('lifeContainer');
 const numberOfBeers = document.getElementById('numberOfBeers');
-const removePopup = document.getElementById('removePopup')
+const removePopup = document.getElementById('removePopup');
+const returnToOutside = document.getElementById('returnToOutside');
 
 const gameContainerRect = gameContainer.getBoundingClientRect();
 
@@ -15,9 +16,19 @@ let drinksSpawning;
 let drinksFalling;
 let gameActive = false;
 
-if (!localStorage.systemetDone) {
-    localStorage.systemetDone = 'false';
-}
+returnToOutside.addEventListener('click', () => {
+    if (localStorage.alcoholTaskCompleted === 'false') {
+        window.location.href = 'systemetext.html';
+        return;
+    } else {
+        const alcoholTaskCompletedPopup = new TaskCompletion('Buy alcohol');
+        alcoholTaskCompletedPopup.createTaskCompletionPopup();
+        setTimeout(() => {
+            window.location.href = 'systemetext.html';
+        }, 4000);
+        updateTaskColors();
+    }   
+});
 
 function removeAllDrinks() {
     const drinks = document.getElementsByClassName('drink');
@@ -139,6 +150,7 @@ function displayWinPopup() {
 
 function winGame() {
     stopGame();
+    localStorage.alcoholTaskCompleted = 'true';
     displayWinPopup();
 
     // set global variable that checks for alcohol
@@ -151,7 +163,6 @@ function failGame() {
 function testForResult() {
     if (beerCount === 8) {
         winGame();
-        localStorage.systemetDone = 'true';
     }
     if (lives < -1) { // needs to be below -1 and not 0 for some reason
         failGame();

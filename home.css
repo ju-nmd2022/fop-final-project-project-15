@@ -1,0 +1,30 @@
+.screen-container {
+    background-color: gray;
+}
+
+.player-house-container {
+    height: fit-content;
+    contain: content;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%,0);
+}
+
+#playerHouse {
+    width: 50vw;
+}
+
+#playerHouseDoor {
+    width: 10vw;
+    position: absolute;
+    bottom: 0;
+    left: 30vw;
+}
+
+#playerHouseOvve {
+    width: 12vw;
+    position: absolute;
+    bottom: 20vh;
+    left: 10vw;
+}

@@ -14,7 +14,7 @@ for (let i = 0; i < torso.length; i++) {
     torso[i].style.backgroundColor = characterInfo.shirtColor;
 }
 for (let i = 0; i < legs.length; i++) {
-    legs[i].style.backgroundColor = characterInfo.ovveColor;
+    legs[i].style.backgroundColor = characterInfo.pantsColor;
 }
 
 namePlaceholder.innerText = characterInfo.name;

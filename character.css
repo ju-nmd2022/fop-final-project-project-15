@@ -81,17 +81,17 @@
     height: 3vw;
 }
 
-.legs {
+.legs,.ovve {
     display: flex;
     flex-direction: row;
 }
-.right-leg {
+.right-leg, .right-ovve-leg {
     background-color: blueviolet;
     margin-left: 1vw;
     width: 1.8vw;
     height: 2vw;
 }
-.left-leg {
+.left-leg, .left-ovve-leg {
     background-color: blueviolet;
     margin-left: 0.4vw;
     width: 1.8vw;

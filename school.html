@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="character.css">
     <script src="school.js" defer></script>
     <script src="common.js" defer></script>
+    <script src="characterjs.js" defer></script>
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/b0f116667a.js" crossorigin="anonymous"></script>
 </head>
@@ -29,6 +30,39 @@
             <p>Restart Game</p>
         </button>
     </div>
+        <!-- tasks -->
+    <div class="task-container">
+        <div class="task-tooltip tt-alcohol">
+            <h3>Buy alcohol</h3>
+            <p>There's no preparty without alcohol!</br>Visit systemet and buy some</p>
+        </div>
+        <div class="task-tooltip tt-kebab">
+            <h3>Eat a kebab</h3>
+            <p>No one wants to get sloppy drunk.</br>Visit Alcamo and buy a kebab</p>
+        </div>
+        <div class="task-tooltip tt-ovve">
+            <h3>Get your ovve</h3>
+            <p>Only a JIBS student would</br>go to AKA without their ovve!</br>Go home and collect yours</p>
+        </div>
+        <div class="task-tooltip tt-preparty">
+            <h3>Go to the preparty</h3>
+            <p>You need to get in the party mood.</br>Visit Frej's preparty</br>(Frej won't let you in without your</br>ovve and alcohol)</p>
+        </div>
+        <div class="task-background">
+            <div class="task" id="alcoholTaskIcon">
+                <img src="glyphs/taskicons/alcoholtask.png"/>
+            </div>
+            <div class="task" id="kebabTaskIcon">
+                <img src="glyphs/taskicons/kebabtask.png"/>
+            </div>
+            <div class="task" id="ovveTaskIcon">
+                <img src="glyphs/taskicons/ovvetask.png"/>
+            </div>
+            <div class="task" id="prepartyTaskIcon">
+                <img src="glyphs/taskicons/prepartytask.png"/>
+            </div>
+        </div>
+    </div>
 
         <img src="glyphs/school/jthbuilding.svg" class="jthbuilding">
         <img src="glyphs/school/fountain.svg" class="fountain">
@@ -37,6 +71,7 @@
         <img src="glyphs/school/benchvert.svg" class="benchvert">
         <img src="glyphs/school/benchhorizontal.svg" class="benchhori">
 
+        <!-- character -->
         <div class="character" id="character">
             <div class="head">
                 <div class="hair" id="hair"></div>
@@ -55,11 +90,19 @@
                 <div class="torso" id="torso"></div>
                 <div class="left-arm" id="leftArm"></div>
             </div>
+            <div class="ovve">
+                <div class="right-ovve-leg" id="rightOvveLeg">
+                    <!-- pathes -->
+                    <img class="winner-patch" src="glyphs/patches/winnerpatch.svg"/>
+                </div>
+                <div class="left-ovve-leg" id="leftOvveLeg"></div>
+            </div>
             <div class="legs">
                 <div class="right-leg" id="rightLeg"></div>
                 <div class="left-leg" id="leftLeg"></div>
             </div>
         </div>
+        <!--  -->
 
     </div>
     

@@ -1,9 +1,8 @@
-import Character from "./character.js";
-
 const chooseName = document.getElementById('chooseName');
 const characterName = document.getElementById('characterName');
 const chooseHairColor = document.getElementById('chooseHairColor');
 const chooseShirtColor = document.getElementById('chooseShirtColor');
+const choosePantsColor = document.getElementById('choosePantsColor');
 const chooseOvveColor = document.getElementById('chooseOvveColor');
 const characterScreen = document.getElementById('characterScreen');
 const submitChangesButton = document.getElementById('submitChangesButton');
@@ -26,6 +25,8 @@ const torso = document.getElementById('torso');
 const leftArm = document.getElementById('leftArm');
 const rightLeg = document.getElementById('rightLeg');
 const leftLeg = document.getElementById('leftLeg');
+const rightOvveLeg = document.getElementById('rightOvveLeg');
+const leftOvveLeg = document.getElementById('leftOvveLeg');
 
 let savedCharacter; 
 let unlockedPatches = ['winnerPatch'];
@@ -39,8 +40,10 @@ if (localStorage.character !== undefined) {
 else {
     savedCharacter = {
         name: 'akko',
+        school: 'JTH',
         hairColor: 'yellow',
         shirtColor: 'red',
+        pantsColor: 'blue',
         ovveColor: 'rgb(235, 212, 35)'
     };
     localStorage.character = JSON.stringify(savedCharacter);
@@ -66,46 +69,14 @@ function importPatches() {
     }
 }
 
-let name;
-let hairColor;
-let shirtColor;
-let ovveColor;
-
-const character = new Character(name,shirtColor,ovveColor,hairColor);
-
-// import saved character, if one exists
-if (savedCharacter.name !== null) {
-    name = savedCharacter.name;
-    character.name = name;
-}
-else {
-    name = 'New Character';
-    character.name = name;
-}
-if (savedCharacter.hairColor !== null) {
-    hairColor = savedCharacter.hairColor;
-    character.hairColor = hairColor;
-}
-else {
-    hairColor = 'yellow';
-    character.hairColor = hairColor;
-}
-if (savedCharacter.shirtColor !== null) {
-    shirtColor = savedCharacter.shirtColor;
-    character.shirtColor = shirtColor;
-}
-else {
-    shirtColor = "red";
-    character.shirtColor = shirtColor;
-}
-if (savedCharacter.ovveColor !== null) {
-    ovveColor = savedCharacter.ovveColor;
-    character.ovveColor = ovveColor;
-}
-else {
-    ovveColor = "yellow";
-    character.ovveColor = ovveColor;
-}
+let character = {
+    name: savedCharacter.name,
+    school: savedCharacter.school,
+    hairColor: savedCharacter.hairColor,
+    shirtColor: savedCharacter.shirtColor,
+    pantsColor: savedCharacter.pantsColor,
+    ovveColor: savedCharacter.ovveColor
+};
 
 chooseOvveColor.addEventListener('click', () => {
     chooseOvveColor.value = '';
@@ -125,6 +96,7 @@ document.addEventListener('mousemove', (e) => {
 submitChangesButton.addEventListener('click', () => {
     if (chooseOvveColor.value === 'Yellow (JTH)') {
         ovveColor = 'rgb(235, 212, 35)';
+        character.school = 'JTH';
         jthIcon.style.display = 'block';
         jthIcon.classList.add('rotate-animation');
         setTimeout(() => {
@@ -133,7 +105,8 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
     else if (chooseOvveColor.value === 'Blue (HLK)') {
-        ovveColor = 'rgb(26, 46, 230)';
+        character.ovveColor = 'rgb(26, 46, 230)';
+        character.school = 'HLK (Blue)';
         commIcon1.style.display = 'block';
         commIcon2.style.display = 'block';
         commIcon2.classList.add('fade-animation');
@@ -144,7 +117,8 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
     else if (chooseOvveColor.value === 'Red (HLK)') {
-        ovveColor = 'rgb(230, 26, 26)';
+        character.ovveColor = 'rgb(230, 26, 26)';
+        character.school = 'HLK (Red)';
         teachIcon.style.display = 'block';
         teachIcon.classList.add('fade-animation');
         setTimeout(() => {
@@ -153,7 +127,8 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
     else if (chooseOvveColor.value === 'White (Hälso)') {
-        ovveColor = 'rgb(255, 255, 255)';
+        character.ovveColor = 'rgb(255, 255, 255)';
+        character.school = 'Hälso';
         healthIcon.style.display = 'block';
         healthIcon.classList.add('rotate-animation');
         setTimeout(() => {
@@ -162,7 +137,8 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
     else if (chooseOvveColor.value === 'Green (JIBS)') {
-        ovveColor = 'rgb(5, 111, 17)';
+        character.ovveColor = 'rgb(5, 111, 17)';
+        character.school = 'JIBS';
         jibsIcon.style.display = 'block';
         jibsIcon.classList.add('jibs-animation');
         setTimeout(() => {
@@ -171,7 +147,8 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
     else if (chooseOvveColor.value === 'Black (Qult)') {
-        ovveColor = 'rgb(0, 0, 0)';
+        character.ovveColor = 'rgb(0, 0, 0)';
+        character.school = 'Qult';
         qultIcon.style.display = 'block';
         qultIcon.classList.add('qult-animation');
         setTimeout(() => {
@@ -180,22 +157,15 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
 
-    name = chooseName.value;
-    hairColor = chooseHairColor.value;
-    shirtColor = chooseShirtColor.value;
-    
-    character.name = name;
-    character.hairColor = hairColor;
-    character.shirtColor = shirtColor;
-    character.ovveColor = ovveColor;
+    character.name = chooseName.value;
+    character.hairColor = chooseHairColor.value;
+    character.shirtColor = chooseShirtColor.value;
+    character.pantsColor = choosePantsColor.value;
 
     createCharacter();
     localStorage.removeItem(character);
     localStorage.character = JSON.stringify(character);
     savedCharacter = JSON.parse(localStorage.character);
-
-    console.log(character);
-    console.log(savedCharacter);
 })
 
 function createCharacter() {
@@ -204,8 +174,8 @@ function createCharacter() {
     rightArm.style.backgroundColor = character.shirtColor;
     leftArm.style.backgroundColor = character.shirtColor;
     torso.style.backgroundColor = character.shirtColor;
-    rightLeg.style.backgroundColor = character.ovveColor;
-    leftLeg.style.backgroundColor = character.ovveColor;
+    rightOvveLeg.style.backgroundColor = character.ovveColor;
+    leftOvveLeg.style.backgroundColor = character.ovveColor;
 }
 
 createCharacter();
