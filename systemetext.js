@@ -1,4 +1,5 @@
 // DOM consts
+// get character assets
 const hair = document.getElementById('hair');
 const rightArm = document.getElementById('rightArm');
 const torso = document.getElementById('torso');
@@ -6,57 +7,29 @@ const leftArm = document.getElementById('leftArm');
 const rightLeg = document.getElementById('rightLeg');
 const leftLeg = document.getElementById('leftLeg');
 const characterOnScreen = document.getElementById('character'); 
-const middlePathway = document.getElementById('middlePathway');
-const verticalPathway1 = document.getElementById('verticalPathway1');
-const verticalPathway2 = document.getElementById('verticalPathway2');
-const horizontalPathway1 = document.getElementById('horizontalPathway1');
-const horizontalPathway2 = document.getElementById('horizontalPathway2');
+
+// get hitbox items
+const systemetDoor = document.querySelector('.systemet-door');
+const systemetBuilding = document.querySelector('.systemet-building');
+const systemetImage = document.querySelector('.systemet-image');
 
 // get the saved character info
 const characterInfo = JSON.parse(localStorage.character);
 
+// use for determining what state the arms animation is in
 let armsAnimationState = false;
-let topPosition = 38;
+// place the player based on these values
+let topPosition = 58;
 let leftPosition = 80;
+// used for applying sprint
 let sprintMultiplier = 1;
+// continusly get the position of the character
 let characterPosition = characterOnScreen.getBoundingClientRect();
-const verticalPathwayPosition = verticalPathway1.getBoundingClientRect();
-const horizontalPathwayPosition = horizontalPathway1.getBoundingClientRect();
-const railingWidth = horizontalPathwayPosition.height/5;
+// get the position of the door and building
+const doorPosition = systemetDoor.getBoundingClientRect();
+const buildingPosition = systemetBuilding.getBoundingClientRect();
 
-// since the position of the other paths are placed in relation to the middlepath, it is important that it has loaded properly
-function reloadOnZeroWidth() {
-    if (middlePathway.getBoundingClientRect().height === 0) {
-        // location.reload();
-        middlePathway.style.height = '13vw';
-    }
-}
-reloadOnZeroWidth();
-
-// align the pathways so they stay connected regardless of screen size
-function alignPaths() {
-    const middlePathwayPosition = middlePathway.getBoundingClientRect();
-
-    verticalPathway1.style.bottom = middlePathwayPosition.bottom + 'px';
-    verticalPathway2.style.top = middlePathwayPosition.bottom + 'px';
-
-    horizontalPathway1.style.right = middlePathwayPosition.right + 'px';
-    horizontalPathway2.style.left = middlePathwayPosition.right + 'px';
-}
-
-// align the signs to be close to the pathway regardless of screen size
-function alignSigns() {
-    const akaSign = document.getElementById('akaSign');
-    const schoolSign = document.getElementById('schoolSign');
-    const bridgeSign = document.getElementById('bridgeSign');
-    const homeSign = document.getElementById('homeSign');
-
-    akaSign.style.top = window.innerHeight/2 - horizontalPathwayPosition.height - 30 + 'px';
-    schoolSign.style.bottom = window.innerHeight/2 - horizontalPathwayPosition.height + 30 + 'px';
-    bridgeSign.style.left = window.innerWidth/2 + verticalPathwayPosition.width/2 - 15 + 'px';
-    homeSign.style.right = window.innerWidth/2 + verticalPathwayPosition.width/2 - 15 + 'px';
-}
-
+// import the character settings
 function generateSavedCharacter() {
     characterOnScreen.style.position = 'absolute';
     updateCharacterPosition();
@@ -69,6 +42,7 @@ function generateSavedCharacter() {
     leftLeg.style.backgroundColor = characterInfo.ovveColor;
 }
 
+// animate the arms
 function animateArms() {
     if (armsAnimationState === false) {
         document.getElementById('rightArm').style.transform = 'rotate(20deg)'
@@ -82,6 +56,7 @@ function animateArms() {
     }
 }
 
+// update the characters position
 function updateCharacterPosition() {
     characterOnScreen.style.top = topPosition + 'vh';
     characterOnScreen.style.left = leftPosition + 'vw';
@@ -90,34 +65,7 @@ function updateCharacterPosition() {
 
 // check if the character can move up
 function canMoveUp() {
-    if (characterPosition.bottom > horizontalPathwayPosition.top + railingWidth) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-// check if the character can move down 
-function canMoveDown() {
-    if (characterPosition.bottom < horizontalPathwayPosition.bottom - railingWidth) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-// check if the character can move left
-function canMoveLeft() {
-    if (characterPosition.left > verticalPathwayPosition.left + railingWidth/2) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-// check if the character can move right
-function canMoveRight() {
-    if (characterPosition.right < verticalPathwayPosition.right - railingWidth/2) {
+    if (characterPosition.bottom > buildingPosition.bottom) {
         return true;
     }
     else {
@@ -125,47 +73,44 @@ function canMoveRight() {
     }
 }
 
+// move the character up if possible
 function moveUp() {
-    if (canMoveUp() || (canMoveLeft() && canMoveRight())) {
+    if (canMoveUp()) {
         topPosition -= 1 * sprintMultiplier;
     }
     updateCharacterPosition();
 }
+// move the character down
 function moveDown() {
-    if (canMoveDown() || (canMoveLeft() && canMoveRight())) {
     topPosition += 1 * sprintMultiplier;
-    }
     updateCharacterPosition();
 }
+// move the character left
 function moveLeft() {   
-    if (canMoveLeft() || (canMoveUp() && canMoveDown())) {
     leftPosition -= 1 * sprintMultiplier;
-    }
     updateCharacterPosition();
 }
+// move the character right
 function moveRight() {
-    if (canMoveRight() || (canMoveUp() && canMoveDown())) {
     leftPosition += 1 * sprintMultiplier;
-    }
     updateCharacterPosition();
 }
 
 function checkForScreenChange() {
     // top: characterposition.top + characterposition.height/2
-    if (characterPosition.top + characterPosition.height/2 < 0) {
-        window.location.href = 'bridge.html';
-    }
-    // bottom: characterposition.bottom - characterposition.height/2
-    if (characterPosition.bottom - characterPosition.height/2 > window.innerHeight) {
-        alert('halla')
+    console.log(doorPosition.right);
+    console.log(characterPosition.right);
+    if (characterPosition.top + characterPosition.height/3 < buildingPosition.bottom && characterPosition.left + characterPosition.width/3 > doorPosition.left && characterPosition.left + characterPosition.width/3 < doorPosition.right) {
+        window.location.href = 'systemetint.html';
     }
     // left: characterposition.left + characterposition.width/2
     if (characterPosition.left + characterPosition.width/2 < 0) {
         alert('halla')
+        // go to alcamo
     }
     // right: characterposition.right - characterposition.width/2
     if (characterPosition.right - characterPosition.width/2 > window.innerWidth) {
-        window.location.href = 'school.html';
+        window.location.href = 'bridge.html';
     }
 }
 
@@ -201,6 +146,4 @@ document.addEventListener('keydown', (e) => {
 
 // on launch
 generateSavedCharacter();
-alignPaths();
-alignSigns();
 

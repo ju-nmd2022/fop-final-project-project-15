@@ -4,13 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="systemetext.js" defer></script>
+    <link rel="stylesheet" href="common.css"/>
+    <link rel="stylesheet" href="systemetext.css"/>
+    <link rel="stylesheet" href="character.css"/>
     <title>Town</title>
 </head>
 <body>
     <div class="screen-container">
-        <img class="systemet-building" src="glyphs/systemetext/systemetbuilding.svg"/>
+        <div class="systemet-building">
+            <img class="systemet-image" src="glyphs/systemetext/systemet.png"/>
+            <img class="systemet-door" src="glyphs/systemetext/systemetdoor.png"/>
+        </div>
         <img class="alcamo-sign sign" src="glyphs/systemetext/alcamosign.svg"/>
         <img class="bike-stand" src="glyphs/systemetext/bikestand.svg"/>
+        <!-- character -->
+        <div class="character" id="character">
+            <div class="head">
+                <div class="hair" id="hair"></div>
+                <div class="eyes">
+                    <div class="right-eye" id="rightEye">
+                        <div class="pupil"></div>
+                    </div>
+                    <div class="left-eye" id="leftEye">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+            <div class="body">
+                <div class="right-arm" id="rightArm"></div>
+                <div class="torso" id="torso"></div>
+                <div class="left-arm" id="leftArm"></div>
+            </div>
+            <div class="legs">
+                <div class="right-leg" id="rightLeg"></div>
+                <div class="left-leg" id="leftLeg"></div>
+            </div>
+        </div>
+        <!--  -->
     </div>
 </body>
 </html>

@@ -13,6 +13,11 @@ let lives = 3;
 let beerCount = 0;
 let drinksSpawning;
 let drinksFalling;
+let gameActive = false;
+
+if (!localStorage.systemetDone) {
+    localStorage.systemetDone = 'false';
+}
 
 function removeAllDrinks() {
     const drinks = document.getElementsByClassName('drink');
@@ -21,6 +26,12 @@ function removeAllDrinks() {
         drink.remove();
     });
     drinkPositions = [];
+}
+
+function stopGame() {
+    gameActive = false;
+    clearInterval(drinksSpawning);
+    clearInterval(drinksFalling);
 }
 
 removePopup.addEventListener('click', () => {
@@ -39,7 +50,7 @@ removePopup.addEventListener('click', () => {
     drinksFalling = setInterval(makeDrinksFall,50);
     
     popup.style.display = 'none';
-    gameFailed = false;
+    gameActive = true;
 })
 
 // remove a life
@@ -110,6 +121,43 @@ function makeDrinksFall() {
     }
 }
 
+function displayReplayPopup() {
+    const popupText = document.getElementById('popupText');
+    
+    popupText.innerText = 'Too much vodka! This won\'t work';
+    removePopup.innerText = 'Try Again';
+    popup.style.display = 'block';
+}
+
+function displayWinPopup() {
+    const popupText = document.getElementById('popupText');
+    
+    popupText.innerText = 'Perfect!';
+    removePopup.innerText = '';
+    popup.style.display = 'block';
+}
+
+function winGame() {
+    stopGame();
+    displayWinPopup();
+
+    // set global variable that checks for alcohol
+}
+function failGame() {
+    stopGame();
+    displayReplayPopup();
+}
+
+function testForResult() {
+    if (beerCount === 8) {
+        winGame();
+        localStorage.systemetDone = 'true';
+    }
+    if (lives < -1) { // needs to be below -1 and not 0 for some reason
+        failGame();
+    }
+}
+
 function detectCatch(drink) {
     const currentDrinkPosition = drink.getBoundingClientRect();
     const currentBagPosition = systemetBag.getBoundingClientRect();
@@ -121,6 +169,7 @@ function detectCatch(drink) {
             addBeer();
         }
     }
+    testForResult();
 }
 
 function updateBagPosition() {
@@ -129,23 +178,32 @@ function updateBagPosition() {
 
 function moveToTheLeft() {
     if (bagPosition > gameContainerRect.left - gameContainerRect.left) {
-        bagPosition -= 8;
+        bagPosition -= 10;
     }
     updateBagPosition();
 }
 function moveToTheRight() {
     if (bagPosition < gameContainerRect.right - gameContainerRect.left - systemetBag.getBoundingClientRect().width) {
-        bagPosition += 8;
+        bagPosition += 10;
     }
     updateBagPosition();
 }
 
 document.addEventListener('keydown', (e) => {
+    if (gameActive) {
     if (e.key === 'ArrowRight' || e.key === 'd') {
         moveToTheRight();
     }
     if (e.key === 'ArrowLeft' || e.key === 'a') {
         moveToTheLeft();
+    }
+    }
+})
+
+document.addEventListener('mousemove', (e) => {
+    if (gameActive) {
+        bagPosition = e.clientX;
+        updateBagPosition();
     }
 })
 

@@ -52,3 +52,9 @@
     width: 2vw;
     height: 2vw;
 }
+
+#failCountText {
+    position: absolute;
+    top: 2vmin;
+    left: 2vmin;
+}

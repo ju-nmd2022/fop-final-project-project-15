@@ -9,16 +9,22 @@ const legs = document.getElementById('legs');
 const popup = document.getElementById('popup');
 const removePopup = document.getElementById('removePopup');
 const cars = document.getElementsByClassName('car');
+const failCountText = document.getElementById('failCountText');
 
 const bridgeLeftPosition = bridge.getBoundingClientRect().left;
 const bridgeWidth = bridge.getBoundingClientRect().width;
 const laneWidth = bridgeWidth/6;
 const lanes = [0,laneWidth,laneWidth*2,laneWidth*3,laneWidth*4,laneWidth*5];
 
+if (!localStorage.bridgeCompleted) {
+    localStorage.bridgeCompleted = 'false';
+}
+
 const savedCharacter = JSON.parse(localStorage.character);
 let carPositions = [];
 let currentLane = 3;
-let currentBottomPosition = 5;
+let currentBottomPosition = 25;
+let failCount = 0;
 
 let carsDriving;
 let carsSpawning;
@@ -26,45 +32,12 @@ let playerWalking;
 
 let gameActive = false;
 
-// remove all cars currently on screen
-function removeCars() {
-    const allCars = Array.from(cars);
-    allCars.forEach(car => {
-        car.remove();
-    });
-    carPositions = [];
-}
-
-removePopup.addEventListener('click', () => {
-    const popupShade = document.getElementById('popupShade');
-
-    removeCars();
-    currentBottomPosition = 5;
-    currentLane = 3;
-    updateLanePosition();
-    carsDriving = setInterval(moveCarsForward,50);
-    carsSpawning = setInterval(spawnCarsRegularly,500);
-    playerWalking = setInterval(movePlayerForward,50);
-    popup.style.display = 'none';
-    popupShade.style.display = 'none';
-    gameActive = true;
-})
-
-function displayReplayPopup() {
-    const popupText = document.getElementById('popupText');
-    
-    popupText.innerText = 'Darn it!';
-    removePopup.innerText = 'Click to try again';
-    popup.style.display = 'block';
-}
-
 // get the saved character colors
 function generateSavedCharacter() {
     head.style.backgroundColor = savedCharacter.hairColor;
     body.style.backgroundColor = savedCharacter.shirtColor;
     legs.style.backgroundColor = savedCharacter.ovveColor;
 }
-
 // make sure the character fits between the bridge lines
 function resizeCharacter() {
     const characterWidth = laneWidth/3;
@@ -76,7 +49,76 @@ function resizeCharacter() {
     legs.style.width = characterWidth + 'px';
     legs.style.height = characterWidth + 'px';
 }
+// align the pillars to be next to the bridge regardless of screen size
+function alignBridgePillars() {
+    const bridgePosition = bridge.getBoundingClientRect();
 
+    bridgePillarLeft.style.right = bridgePosition.right + 'px';
+    bridgePillarRight.style.left = bridgePosition.right + 'px';
+}
+// move character to desired lane 
+function updateLanePosition() {
+    character.style.left = bridgeLeftPosition + lanes[currentLane] + character.getBoundingClientRect().width + 'px';
+}
+function moveToLeftLane() {
+    if (currentLane !== 0) {
+        currentLane -= 1;
+    }
+    updateLanePosition();
+}
+function moveToRightLane() {
+    if (currentLane !== 5) {
+        currentLane += 1;
+    }
+    updateLanePosition();
+}
+function checkForScreenChange() {
+    const characterPosition = character.getBoundingClientRect();
+    // top: characterposition.top + characterposition.height/2
+    if (characterPosition.top + characterPosition.height/2 < 0) {
+        window.location.href = 'systemetext.html';
+        console.log('hej');
+    }
+    // bottom: characterposition.bottom - characterposition.height/2
+    if (characterPosition.bottom - characterPosition.height/2 > window.innerHeight) {
+        window.location.href = 'intersection.html';
+        console.log('hej');
+    }
+}
+
+if (localStorage.bridgeCompleted === 'false') {
+function updateFailCountText() {
+    failCountText.innerText = 'Fails: ' + failCount;
+}
+// remove all cars currently on screen
+function removeCars() {
+    const allCars = Array.from(cars);
+    allCars.forEach(car => {
+        car.remove();
+    });
+    carPositions = [];
+}
+removePopup.addEventListener('click', () => {
+    const popupShade = document.getElementById('popupShade');
+
+    removeCars();
+    currentBottomPosition = 5;
+    currentLane = 3;
+    updateLanePosition();
+    carsDriving = setInterval(moveCarsForward,3);
+    carsSpawning = setInterval(spawnCarsRegularly,500);
+    playerWalking = setInterval(movePlayerForward,50);
+    popup.style.display = 'none';
+    popupShade.style.display = 'none';
+    gameActive = true;
+})
+function displayReplayPopup() {
+    const popupText = document.getElementById('popupText');
+    
+    popupText.innerText = 'Darn it!';
+    removePopup.innerText = 'Click to try again';
+    popup.style.display = 'block';
+}
 // make sure the cars are the right size
 function resizeCars() {
     const carWidth = laneWidth-laneWidth/5;
@@ -87,15 +129,6 @@ function resizeCars() {
         car.style.marginLeft = laneWidth/5;
     });
 }
-
-// align the pillars to be next to the bridge regardless of screen size
-function alignBridgePillars() {
-    const bridgePosition = bridge.getBoundingClientRect();
-
-    bridgePillarLeft.style.right = bridgePosition.right + 'px';
-    bridgePillarRight.style.left = bridgePosition.right + 'px';
-}
-
 // spawn a car
 // generate a color
 function chooseCarColor() {
@@ -137,26 +170,9 @@ function spawnCar() {
     screenContainer.appendChild(car);
 }
 
-// move character to desired lane 
-function updateLanePosition() {
-    character.style.left = bridgeLeftPosition + lanes[currentLane] + character.getBoundingClientRect().width + 'px';
-}
-function moveToLeftLane() {
-    if (currentLane !== 0) {
-        currentLane -= 1;
-    }
-    updateLanePosition();
-}
-function moveToRightLane() {
-    if (currentLane !== 5) {
-        currentLane += 1;
-    }
-    updateLanePosition();
-}
-
 // spawn three cars every half second unless the player is at the top
 function spawnCarsRegularly() {
-    if (character.getBoundingClientRect().top < 200 === false) {
+    if (character.getBoundingClientRect().top < 400 === false) {
         spawnCar();
         spawnCar();
         spawnCar();
@@ -166,16 +182,15 @@ function spawnCarsRegularly() {
         resizeCars();
     }
 }
-
 function failGame() {
+    failCount += 1;
+    updateFailCountText();
     clearInterval(carsDriving);
     clearInterval(carsSpawning);
     clearInterval(playerWalking);
     gameActive = false;
     displayReplayPopup();
 }
-
-
 // detect a collision between the character and the car
 function detectCollision(car) {
     const characterPosition = character.getBoundingClientRect();
@@ -184,22 +199,21 @@ function detectCollision(car) {
         failGame();
     }
 }
-
 // make the character move forward every 50ms 
 function movePlayerForward() {
-    if (character.getBoundingClientRect().top < 200 === false) {
+    if (character.getBoundingClientRect().top < 400 === false) {
         currentBottomPosition += 1;
     }
     else {
         currentBottomPosition += 2;
+        localStorage.bridgeCompleted = 'true';
     }
     character.style.bottom = currentBottomPosition + 'px';
 }
-
 // make the cars move forward every 50ms
 function moveCarsForward() {
     for (let i = 0; i < cars.length; i++) {
-        carPositions[i] += 3.5;
+        carPositions[i] += 0.35;
         cars[i].style.top = carPositions[i] + 'vh';
         detectCollision(cars[i]);
         // if (cars[i].getBoundingClientRect().top > window.innerHeight) {
@@ -208,15 +222,32 @@ function moveCarsForward() {
         // }
     }
 }
+} else {
+    popup.style.display = 'none';
+    const popupShade = document.getElementById('popupShade');
+    popupShade.style.display = 'none';
+    failCountText.style.display = 'none';
+}
 
 document.addEventListener('keydown', (e) => {
-    if (gameActive) {
+    if (gameActive || localStorage.bridgeCompleted === 'true') {
         if (e.key === 'ArrowRight' || e.key === 'd') {
             moveToRightLane();
         }
         if (e.key === 'ArrowLeft' || e.key === 'a') {
             moveToLeftLane();
         }
+    }
+    if (localStorage.bridgeCompleted === 'true') {
+        if (e.key === 'ArrowUp' || e.key === 'w') {
+            currentBottomPosition += 10;
+            character.style.bottom = currentBottomPosition + 'px';
+        }
+        if (e.key === 'ArrowDown' || e.key === 's') {
+            currentBottomPosition -= 10;
+            character.style.bottom = currentBottomPosition + 'px';
+        }
+        checkForScreenChange();
     }
 })
 

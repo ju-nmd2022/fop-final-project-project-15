@@ -1,12 +1,12 @@
 .screen-container {
-    background-color: rgb(171, 171, 171);
+    background-color: rgb(56, 57, 109);
     width: 100vw;
     height: 100vh;
     contain: content;
 }
 
 .game-container {
-    background-color: aqua;
+    background-color: rgb(101, 114, 160);
     height: 100vh;
     width: 70vw;
     position: absolute;
@@ -40,7 +40,7 @@
 }
 
 .systemet-hide {
-    background-color: aqua;
+    background-color: rgb(101, 114, 160);
     width: 6vw;
     height: 10vh;
     z-index: 0;
