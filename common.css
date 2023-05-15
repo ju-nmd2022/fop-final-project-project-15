@@ -4,6 +4,33 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+/* font from: https://www.dafont.com/alarm-clock.font */
+@font-face {
+    font-family: alarm_clock;
+    src: url(alarm_clock.ttf)
+}
+
+.clock-container {
+    background-color: black;
+    contain: content;
+    width: 20vmin;
+    aspect-ratio: 5/2;
+
+    position: absolute;
+    top: 4vmin;
+    left: 4vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2vmin;
+    z-index: 10;
+}
+.clock-container > h2 {
+    color: white;
+    font-size: 5vmin;
+    font-family: alarm_clock;
+}
+
 .screen-container {
     width: 100vw;
     height: 100vh;
