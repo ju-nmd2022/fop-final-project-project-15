@@ -64,25 +64,25 @@ function generateSavedCharacter() {
 }
 
 function moveUp() {
-    if (canMoveUp() || (canMoveLeft() && canMoveRight())) {
+    if (canMoveUp()) {
         topPosition -= 1 * sprintMultiplier;
     }
     updateCharacterPosition();
 }
 function moveDown() {
-    if (canMoveDown() || (canMoveLeft() && canMoveRight())) {
+    if (canMoveDown()) {
     topPosition += 1 * sprintMultiplier;
     }
     updateCharacterPosition();
 }
 function moveLeft() {   
-    if (canMoveLeft() || (canMoveUp() && canMoveDown())) {
+    if (canMoveLeft()) {
     leftPosition -= 1 * sprintMultiplier;
     }
     updateCharacterPosition();
 }
 function moveRight() {
-    if (canMoveRight() || (canMoveUp() && canMoveDown())) {
+    if (canMoveRight()) {
     leftPosition += 1 * sprintMultiplier;
     }
     updateCharacterPosition();

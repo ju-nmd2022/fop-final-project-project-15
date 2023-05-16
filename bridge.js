@@ -105,7 +105,7 @@ removePopup.addEventListener('click', () => {
     currentBottomPosition = 5;
     currentLane = 3;
     updateLanePosition();
-    carsDriving = setInterval(moveCarsForward,3);
+    carsDriving = setInterval(moveCarsForward,12);
     carsSpawning = setInterval(spawnCarsRegularly,500);
     playerWalking = setInterval(movePlayerForward,50);
     popup.style.display = 'none';
@@ -213,7 +213,7 @@ function movePlayerForward() {
 // make the cars move forward every 50ms
 function moveCarsForward() {
     for (let i = 0; i < cars.length; i++) {
-        carPositions[i] += 0.35;
+        carPositions[i] += 1.20;
         cars[i].style.top = carPositions[i] + 'vh';
         detectCollision(cars[i]);
         // if (cars[i].getBoundingClientRect().top > window.innerHeight) {

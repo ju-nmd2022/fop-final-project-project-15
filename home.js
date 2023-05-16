@@ -33,7 +33,11 @@ switch (ovveInformation.school) {
 }
 
 function updateOvveInWindow() {
-    playerHouseOvve.setAttribute('src', ovveToDisplay);
+    if (localStorage.ovveTaskCompleted === 'true') {
+        playerHouseOvve.setAttribute('src', 'glyphs/home/emptywindow.png');    
+    } else {
+        playerHouseOvve.setAttribute('src', ovveToDisplay);
+    }
 }
     
  
@@ -42,7 +46,7 @@ let topPosition = 50;
 let leftPosition = 50;
 
 function canMoveUp() {
-    if (characterPosition.top > playerHousePosition.bottom) {
+    if (characterPosition.top > playerHousePosition.bottom - (characterPosition.height - characterPosition.height/4)) {
         return true;
     }
 }
@@ -70,6 +74,7 @@ function checkForScreenChange() {
         localStorage.ovveTaskCompleted = 'true';
         upgradeTaskColors();
         isOvveOn();
+        updateOvveInWindow();
     }
     }
 

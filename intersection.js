@@ -46,38 +46,26 @@ function alignSigns() {
 
 // check if the character can move up
 function canMoveUp() {
-    if (characterPosition.bottom > horizontalPathwayPosition.top + railingWidth) {
+    if (characterPosition.bottom > horizontalPathwayPosition.top + railingWidth || canMoveLeft() && canMoveRight()) {
         return true;
-    }
-    else {
-        return false;
     }
 }
 // check if the character can move down 
 function canMoveDown() {
-    if (characterPosition.bottom < horizontalPathwayPosition.bottom - railingWidth) {
+    if (characterPosition.bottom < horizontalPathwayPosition.bottom - railingWidth || canMoveLeft() && canMoveRight()) {
         return true;
-    }
-    else {
-        return false;
     }
 }
 // check if the character can move left
 function canMoveLeft() {
-    if (characterPosition.left > verticalPathwayPosition.left + railingWidth/2) {
+    if (characterPosition.left > verticalPathwayPosition.left + railingWidth/2 || canMoveUp() && canMoveDown()) {
         return true;
-    }
-    else {
-        return false;
     }
 }
 // check if the character can move right
 function canMoveRight() {
-    if (characterPosition.right < verticalPathwayPosition.right - railingWidth/2) {
+    if (characterPosition.right < verticalPathwayPosition.right - railingWidth/2 || canMoveUp() && canMoveDown()) {
         return true;
-    }
-    else {
-        return false;
     }
 }
 

@@ -21,7 +21,7 @@ let currentHour;
 let currentMinute;
 let timeInterval;
 
-timeInterval = setInterval(addTime,800);
+timeInterval = setInterval(addTime,1000);
 
 if (!localStorage.currentHour || !localStorage.currentMinute) {
     currentHour = 19;
@@ -93,10 +93,19 @@ pauseButton.addEventListener('click', ()=> {
     }    
 })
 
-restartGame.addEventListener('click', () => {
+function restart() {
     window.location.href = 'school.html';
     localStorage.currentHour = 19;
     localStorage.currentMinute = 0;
+    localStorage.alcoholTaskCompleted = 'false';
+    localStorage.kebabTaskCompleted = 'false';
+    localStorage.ovveTaskCompleted = 'false';
+    localStorage.prepartyTaskCompleted = 'false';
+    localStorage.bridgeCompleted = 'false';
+}
+
+restartGame.addEventListener('click', () => {
+    restart();
 })
 
 // display task tooltips on hover 

@@ -1,0 +1,26 @@
+.screen-container {
+    background-color: gray;
+}
+
+.aka-building-container {
+    height: fit-content;
+    contain: content;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#akaBuilding {
+    width: 100vw;
+}
+#akaDoor {
+    width: 19vmin;
+    position: absolute;
+    left: 24vmin;
+    bottom: 0;
+}
+#akaRailing {
+    width: 40vw;
+    position: absolute;
+    bottom: 30vmin;
+    left: 30vw;
+}
