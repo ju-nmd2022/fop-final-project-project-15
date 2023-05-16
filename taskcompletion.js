@@ -5,6 +5,7 @@ class TaskCompletion {
         this.taskName = taskName;
     }
     createTaskCompletionPopup() {
+        pauseGame();
         let taskImage;
         switch (this.taskName) {
             case 'Buy alcohol':
@@ -51,6 +52,7 @@ class TaskCompletion {
         }, 500);
         setTimeout(() => {
             taskPopup.style.display = 'none';
+            unpauseGame();
         }, 3000);
     }
 }

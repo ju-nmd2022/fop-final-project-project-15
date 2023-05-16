@@ -140,7 +140,7 @@
 }
 
 .popup {
-    background-color: aliceblue;
+    background-color: rgb(0, 0, 0);
     width: 30vw;
     height: auto;
     position: absolute;
@@ -148,13 +148,14 @@
     top: 50%;
     transform: translate(-50%,-50%);
     z-index: 1;
-    border: 1vw solid grey;
+    /* border: 1vmin solid grey; */
     contain: content;
-    padding: 1vh 1vw 1vh 1vw; 
+    padding: 2vmin;
+    border-radius: 2vmin;
 }
 .popup > p {
-    color: black;
-    font-size: 1.5vw;
+    color: rgb(255, 255, 255);
+    font-size: 2vmin;
 }
 .remove-popup {
     text-align: center;
@@ -162,7 +163,7 @@
     font-weight: bold;
     margin-top: 2vh;
 }
-#popupShade {
+.popup-shade {
     background-color: black;
     width: 100vw;
     height: 100vh;
@@ -211,12 +212,15 @@
 
 @keyframes taskcompletion {
     33% {
-        width: 30vw;
+        /* width: 30vw; */
+        padding: 2vmin;
     }
     66% {
-        width: 35vw;
+        /* width: 35vw; */
+        padding: 5vmin;
     }
     100% {
-        width: 30vw;
+        /* width: 30vw; */
+        padding: 2vmin;
     }
 }

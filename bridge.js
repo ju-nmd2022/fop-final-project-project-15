@@ -6,8 +6,6 @@ const character = document.getElementById('character');
 const head = document.getElementById('head');
 const body = document.getElementById('body');
 const legs = document.getElementById('legs');
-const popup = document.getElementById('popup');
-const removePopup = document.getElementById('removePopup');
 const cars = document.getElementsByClassName('car');
 const failCountText = document.getElementById('failCountText');
 
@@ -87,6 +85,12 @@ function checkForScreenChange() {
 }
 
 if (localStorage.bridgeCompleted === 'false') {
+
+function displayPopup() {
+    const bridgePopup = new Popup('Whoa! What happened to my perspective? What happened to me? Why doesn/t this bridge have any sidewalk? The questions are many, but the quest remains: I/ve gotta get across!','click to start','intersection.html');
+    bridgePopup.createPopup();
+}
+
 function updateFailCountText() {
     failCountText.innerText = 'Fails: ' + failCount;
 }
@@ -98,9 +102,7 @@ function removeCars() {
     });
     carPositions = [];
 }
-removePopup.addEventListener('click', () => {
-    const popupShade = document.getElementById('popupShade');
-
+function removePopupHandler() {
     removeCars();
     currentBottomPosition = 5;
     currentLane = 3;
@@ -108,16 +110,11 @@ removePopup.addEventListener('click', () => {
     carsDriving = setInterval(moveCarsForward,12);
     carsSpawning = setInterval(spawnCarsRegularly,500);
     playerWalking = setInterval(movePlayerForward,50);
-    popup.style.display = 'none';
-    popupShade.style.display = 'none';
     gameActive = true;
-})
+};
 function displayReplayPopup() {
-    const popupText = document.getElementById('popupText');
-    
-    popupText.innerText = 'Darn it!';
-    removePopup.innerText = 'Click to try again';
-    popup.style.display = 'block';
+    const bridgeReplayPopup = new Popup('Darn it!','Try again','intersection.html');
+    bridgeReplayPopup.createPopup();
 }
 // make sure the cars are the right size
 function resizeCars() {
@@ -222,10 +219,8 @@ function moveCarsForward() {
         // }
     }
 }
+displayPopup();
 } else {
-    popup.style.display = 'none';
-    const popupShade = document.getElementById('popupShade');
-    popupShade.style.display = 'none';
     failCountText.style.display = 'none';
 }
 

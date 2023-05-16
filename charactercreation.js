@@ -6,6 +6,7 @@ const choosePantsColor = document.getElementById('choosePantsColor');
 const chooseOvveColor = document.getElementById('chooseOvveColor');
 const characterScreen = document.getElementById('characterScreen');
 const submitChangesButton = document.getElementById('submitChangesButton');
+const showOvve = document.getElementById('showOvve');
 
 const jthIcon = document.getElementById('jthIcon');
 const commIcon1 = document.getElementById('commIcon1');
@@ -27,6 +28,8 @@ const rightLeg = document.getElementById('rightLeg');
 const leftLeg = document.getElementById('leftLeg');
 const rightOvveLeg = document.getElementById('rightOvveLeg');
 const leftOvveLeg = document.getElementById('leftOvveLeg');
+const ovve = document.querySelector('.ovve');
+const legs = document.querySelector('.legs');
 
 let savedCharacter; 
 let unlockedPatches = ['winnerPatch'];
@@ -174,9 +177,25 @@ function createCharacter() {
     rightArm.style.backgroundColor = character.shirtColor;
     leftArm.style.backgroundColor = character.shirtColor;
     torso.style.backgroundColor = character.shirtColor;
+    leftLeg.style.backgroundColor = character.pantsColor;
+    rightLeg.style.backgroundColor = character.pantsColor;
     rightOvveLeg.style.backgroundColor = character.ovveColor;
     leftOvveLeg.style.backgroundColor = character.ovveColor;
 }
 
+function hideOrShowOvve() {
+    if (showOvve.checked) {
+        ovve.style.display = 'flex'
+        legs.style.display = 'none'
+    } else {
+        ovve.style.display = 'none'
+        legs.style.display = 'flex'
+    }
+}
+showOvve.addEventListener('click', () => {
+    hideOrShowOvve();
+})
+
+hideOrShowOvve();
 createCharacter();
 importPatches();

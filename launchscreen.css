@@ -83,7 +83,7 @@ h1 {
     }
 }
 
-.clock-container {
+.animation-container {
     display: flex;
     justify-content: center;
     grid-row: 3;

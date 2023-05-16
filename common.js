@@ -21,10 +21,10 @@ let currentHour;
 let currentMinute;
 let timeInterval;
 
-timeInterval = setInterval(addTime,1000);
+timeInterval = setInterval(addTime,4000);
 
 if (!localStorage.currentHour || !localStorage.currentMinute) {
-    currentHour = 19;
+    currentHour = 21;
     currentMinute = 0;
 } else {
     currentHour = JSON.parse(localStorage.currentHour);
@@ -79,23 +79,30 @@ function addTime() {
     updateTimeDisplay();
 }
 
+function pauseGame() {
+    pauseIcon.setAttribute('class','fa-solid fa-play');
+    clearInterval(timeInterval);
+    restartGame.style.display = 'block';
+    gameIsPaused = true;
+}
+function unpauseGame() {
+    pauseIcon.setAttribute('class','fa-solid fa-pause');
+    timeInterval = setInterval(addTime,4000);
+    restartGame.style.display = 'none';
+    gameIsPaused = false;
+}
+
 pauseButton.addEventListener('click', ()=> {
     if (!gameIsPaused) {
-        pauseIcon.setAttribute('class','fa-solid fa-play');
-        clearInterval(timeInterval);
-        restartGame.style.display = 'block';
-        gameIsPaused = true;
+        pauseGame();
     } else {
-        pauseIcon.setAttribute('class','fa-solid fa-pause');
-        timeInterval = setInterval(addTime,800);
-        restartGame.style.display = 'none';
-        gameIsPaused = false;
+        unpauseGame();
     }    
 })
 
 function restart() {
     window.location.href = 'school.html';
-    localStorage.currentHour = 19;
+    localStorage.currentHour = 21;
     localStorage.currentMinute = 0;
     localStorage.alcoholTaskCompleted = 'false';
     localStorage.kebabTaskCompleted = 'false';
