@@ -147,7 +147,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    z-index: 1;
+    z-index: 11;
     /* border: 1vmin solid grey; */
     contain: content;
     padding: 2vmin;
@@ -168,7 +168,7 @@
     width: 100vw;
     height: 100vh;
     opacity: 40%;
-    z-index: 1;
+    z-index: 10;
     position: absolute;
     
 }
@@ -208,6 +208,38 @@
 }
 .task-completion-popup > div > img {
     max-width: 80%;
+}
+.speech-bubble-container {
+    contain: content;
+    min-width: 15vmin;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+}
+.speech-bubble {
+    background-color: white;
+    border: 1vmin solid black;
+    padding: 2vmin;
+    border-radius: 2vmin;
+}
+.text-container {
+    display: inline-block;
+}
+.text-container > p {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.typing-animation {
+    animation-name: typing-ani;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+
+@keyframes typing-ani {
+    from {
+        width: 0;
+    } 
 }
 
 @keyframes taskcompletion {

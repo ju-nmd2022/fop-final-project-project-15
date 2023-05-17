@@ -1,34 +1,19 @@
 const screenContainer = document.querySelector('.screen-container');
 
 class TaskCompletion {
-    constructor(taskName) {
+    constructor(taskName,taskImage) {
         this.taskName = taskName;
+        this.taskImage = taskImage;
     }
     createTaskCompletionPopup() {
         pauseGame();
-        let taskImage;
-        switch (this.taskName) {
-            case 'Buy alcohol':
-                taskImage = 'glyphs/taskicons/alcoholtask.png'
-                break;
-            case 'Eat a kebab':
-                taskImage = 'glyphs/taskicons/kebabtask.png'
-                break;
-            case 'Get your ovve':
-                taskImage = 'glyphs/taskicons/ovvetask.png';
-                break;
-            case 'Go to the preparty':
-                taskImage = 'glyphs/taskicons/prepartytask.png'
-                break;
-        }
-
         const taskPopup = document.createElement('div');
         taskPopup.classList.add('task-completion-popup');
 
         const taskPopupIcon = document.createElement('div');
         taskPopupIcon.classList.add('task');
         const taskPopupImage = document.createElement('img');
-        taskPopupImage.setAttribute('src',taskImage);
+        taskPopupImage.setAttribute('src',this.taskImage);
         taskPopupIcon.appendChild(taskPopupImage);
 
         const taskPopupTitle = document.createElement('h2');
@@ -40,7 +25,7 @@ class TaskCompletion {
 
         const taskCompletionSound = document.createElement('audio');
         const audioSource = document.createElement('source');
-        audioSource.setAttribute('src','taskcompletionsound.mp3');
+        audioSource.setAttribute('src','/taskcompletionsound.mp3');
         audioSource.setAttribute('type','audio/mpeg');
         taskCompletionSound.appendChild(audioSource);
 

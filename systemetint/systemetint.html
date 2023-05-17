@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systemet</title>
+    <link rel="stylesheet" href="/systemetint/systemetint.css"/>
+    <script src="/systemetint/systemetint.js" defer></script>
+    <script src="/common.js" defer></script>
+    <script src="/taskcompletion.js" defer></script>
+    <link rel="stylesheet" href="/common.css"/>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/b0f116667a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="screen-container" id="screenContainer">
+
+        <!-- the clock -->
+        <div class="clock-container">
+            <h2 id="currentTimeDisplay">00:00</h2>
+        </div>
+            <!-- pause button -->
+        <div class="pause-screen">
+        <div id="pauseButton">
+            <i class="fa-solid fa-pause" id="pauseIcon"></i>
+        </div>
+            <button class="restart-game">
+                <p>Restart Game</p>
+            </button>
+        </div>
+            <!-- tasks -->
+        <div class="task-container">
+            <div class="task-tooltip tt-alcohol">
+                <h3>Buy alcohol</h3>
+                <p>There's no preparty without alcohol!</br>Visit systemet and buy some</p>
+            </div>
+            <div class="task-tooltip tt-kebab">
+                <h3>Eat a kebab</h3>
+                <p>No one wants to get sloppy drunk.</br>Visit Alcamo and buy a kebab</p>
+            </div>
+            <div class="task-tooltip tt-ovve">
+                <h3>Get your ovve</h3>
+                <p>Only a JIBS student would</br>go to AKA without their ovve!</br>Go home and collect yours</p>
+            </div>
+            <div class="task-tooltip tt-preparty">
+                <h3>Go to the preparty</h3>
+                <p>You need to get in the party mood.</br>Visit Frej's preparty</br>(Frej won't let you in without your</br>ovve and alcohol)</p>
+            </div>
+            <div class="task-background">
+                <div class="task" id="alcoholTaskIcon">
+                    <img src="/glyphs/taskicons/alcoholtask.png"/>
+                </div>
+                <div class="task" id="kebabTaskIcon">
+                    <img src="/glyphs/taskicons/kebabtask.png"/>
+                </div>
+                <div class="task" id="ovveTaskIcon">
+                    <img src="/glyphs/taskicons/ovvetask.png"/>
+                </div>
+                <div class="task" id="prepartyTaskIcon">
+                    <img src="/glyphs/taskicons/prepartytask.png"/>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="popup" id="popup">
+            <p id="popupText">
+                Whoa! Systemet sure has changed. I'll probably need 8 beers, absolutely no vodka though.
+            </p>
+            <p class="remove-popup" id="removePopup">Click to continue</p>
+            <a id="returnToOutside">
+                <p class="remove-popup">= Back to the town</p>
+            </a>
+        </div>
+        <div class="game-container" id="gameContainer">
+            <img class="systemet-logo" src="/glyphs/systemetlogo.svg"/>
+            <div class="systemet-div" id="systemetBag">
+                <img class="systemet-bag" src="/glyphs/systemetbag.svg"/>
+                <div class="systemet-hide"></div>
+            </div>
+            <div class="life-container" id="lifeContainer">
+                <img class="life" src="/glyphs/systemetlife.svg"/>
+                <img class="life" src="/glyphs/systemetlife.svg"/>
+                <img class="life" src="/glyphs/systemetlife.svg"/>
+            </div>
+            <p class="number-of-beers" id="numberOfBeers">Number:</p>
+        </div>
+    </div>
+</body>
+</html>

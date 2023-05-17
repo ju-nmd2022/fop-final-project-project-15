@@ -180,83 +180,6 @@
     left: 38vw;
 }
 
-/* .character {
-    contain: layout;
-    z-index: 1;
-}
-
-.head {
-    background-color: rgb(218, 192, 165);
-    width: 6vw;
-    height: 5.5vw;
-    border-radius: 50%;
-    contain: layout;
-}
-.hair {
-    background-color: rgb(226, 209, 114);
-    width: 6vw;
-    height: 2vh;
-    border-top-left-radius: 1vw;
-    border-top-right-radius: 1vw;
-}   
-.eyes {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 1vh;
-    gap: 0.5vw;
-    contain: layout;
-}
-
-.pupil-axis {
-    width: 1.2vw;
-    height: 1.2vw;
-    border-radius: 50%;
-    transform: rotate(20deg);
-}
-
-
-.right-eye,.left-eye {
-    background-color: white;
-    width: 1.7vw;
-    height: 1.7vw;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.pupil {
-    background-color: black;
-    border-radius: 50%;
-    width: 0.5vw;
-    height: 0.5vw;
-}
-.mouth {
-    background-color: black;
-    width: 2vw;
-    height: 0.2vh;
-    margin-left: 2vw;
-    margin-top: 1vh;
-}
-
-.body {
-    display: flex;
-    flex-direction: row;
-}
-
-.right-arm {
-    background-color: blue;
-    width: 1vw;
-    height: 3vw;
-    transform: rotate(10deg);
-}
-.left-arm {
-    background-color: blue;
-    width: 1vw;
-    height: 3vw;
-    transform: rotate(-10deg);
-} */
-
 /* only used on the character selection screen */
 .right-arm-animation {
     animation-name: rightarmanimation;
@@ -275,35 +198,4 @@
 @keyframes leftarmanimation {
     50% {transform: rotate(-16deg);}
     100% {transform: rotate(-10deg);}
-}
-
-/* .torso {
-    background-color: aqua;
-    width: 4vw;
-    height: 3vw;
-}
-
-.legs {
-    display: flex;
-    flex-direction: row;
-}
-.right-leg {
-    background-color: blueviolet;
-    margin-left: 1vw;
-    width: 1.8vw;
-    height: 2vw;
-    contain: content;
-}
-.left-leg {
-    background-color: blueviolet;
-    margin-left: 0.4vw;
-    width: 1.8vw;
-    height: 2vw;
-} */
-
-/* patches */
-.winner-patch {
-    width: 1.3vw;
-    transform: rotate(-10deg);
-    display: none;
 }

@@ -67,25 +67,21 @@ function moveUp() {
     if (canMoveUp()) {
         topPosition -= 1 * sprintMultiplier;
     }
-    updateCharacterPosition();
 }
 function moveDown() {
     if (canMoveDown()) {
     topPosition += 1 * sprintMultiplier;
     }
-    updateCharacterPosition();
 }
 function moveLeft() {   
     if (canMoveLeft()) {
     leftPosition -= 1 * sprintMultiplier;
     }
-    updateCharacterPosition();
 }
 function moveRight() {
     if (canMoveRight()) {
     leftPosition += 1 * sprintMultiplier;
     }
-    updateCharacterPosition();
 }
 
 // raise the sprintMultiplier on shift press
@@ -102,6 +98,7 @@ document.addEventListener('keyup', (e) => {
 })
 
 document.addEventListener('keydown', (e) => {
+    if (!gameIsPaused) {
     if (e.key === 'ArrowUp' || e.key === 'w') {
         moveUp();
     }
@@ -116,6 +113,8 @@ document.addEventListener('keydown', (e) => {
     }
     animateArms();
     checkForScreenChange();
+    updateCharacterPosition();
+    }
 })
 
 generateSavedCharacter();

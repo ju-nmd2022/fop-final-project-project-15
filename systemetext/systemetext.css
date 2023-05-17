@@ -1,0 +1,37 @@
+.screen-container {
+    background-color: rgb(102, 102, 102);
+}
+.alcamo-sign {
+    left: 2vw;
+    top: 55vh;
+}
+.systemet-building {
+    width: fit-content;
+    height: fit-content;
+    contain: content;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.systemet-door {
+    width: 17vw;
+    height: auto;
+    position: absolute;
+    left: 42%;
+    bottom: 0;
+    transform: translate(-50%,0);
+}
+.bike-stand {
+    width: 35vw;
+    height: auto;
+    position: absolute;
+    top: 50vh;
+    right: 5vw;
+}
+.systemet-image {
+    width: 85vw;
+}
+.old-man {
+    width: 7vmin;
+    position: absolute;
+}

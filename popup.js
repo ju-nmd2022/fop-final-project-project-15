@@ -1,4 +1,4 @@
-const screenContainer = document.querySelector('.screen-container');
+const popupLocation = document.querySelector('.screen-container');
 
 class Popup {
     constructor(description, removeText,link) {
@@ -17,11 +17,16 @@ class Popup {
         const newPopupRemover = document.createElement('p');
         newPopupRemover.classList.add('remove-popup');
         newPopupRemover.innerText = this.removeText;
-        const newPopupLink = document.createElement('a');
-        newPopupLink.setAttribute('href',this.link);
-        const newPopupLinkText = document.createElement('p');
-        newPopupLinkText.innerText = `Back to ${this.link}`
 
+        if (this.link !== '') {
+            const newPopupLink = document.createElement('a');
+            newPopupLink.setAttribute('href',this.link);
+            const newPopupLinkText = document.createElement('p');
+            newPopupLinkText.innerText = `Back to ${this.link}`
+            newPopupLink.appendChild(newPopupLinkText);
+            newPopup.appendChild(newPopupLink);
+        }
+        
         newPopupRemover.addEventListener('click', () => {
             newPopupShade.style.display = 'none';
             newPopup.style.display = 'none';
@@ -29,11 +34,9 @@ class Popup {
             unpauseGame();
         })
         
-        newPopupLink.appendChild(newPopupLinkText);
         newPopup.appendChild(newPopupText);
         newPopup.appendChild(newPopupRemover);
-        newPopup.appendChild(newPopupLink);
-        screenContainer.appendChild(newPopupShade);
-        screenContainer.appendChild(newPopup);
+        popupLocation.appendChild(newPopupShade);
+        popupLocation.appendChild(newPopup);
     }
 }

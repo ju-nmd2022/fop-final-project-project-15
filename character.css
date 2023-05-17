@@ -97,3 +97,9 @@
     width: 1.8vw;
     height: 2vw;
 }
+
+/* patches */
+.winner-patch {
+    width: 1.3vw;
+    transform: rotate(-10deg);
+}

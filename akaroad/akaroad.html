@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROAD TO AKA</title>
+    <link rel="stylesheet" href="/common.css"/>
+    <link rel="stylesheet" href="/character.css"/>
+    <link rel="stylesheet" href="/akaroad/akaroad.css"/>
+    <script src="/common.js" defer></script>
+    <script src="/popup.js" defer></script>
+    <script src="/akaroad/akaroad.js" defer></script>
+    <script src="/taskcompletion.js" defer></script>
+    <script src="/characterjs.js" defer></script>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/b0f116667a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="screen-container">
+
+        <!-- the clock -->
+        <div class="clock-container">
+            <h2 id="currentTimeDisplay">00:00</h2>
+        </div>
+            <!-- pause button -->
+        <div class="pause-screen">
+        <div id="pauseButton">
+            <i class="fa-solid fa-pause" id="pauseIcon"></i>
+        </div>
+            <button class="restart-game">
+                <p>Restart Game</p>
+            </button>
+        </div>
+            <!-- tasks -->
+        <div class="task-container">
+            <div class="task-tooltip tt-alcohol">
+                <h3>Buy alcohol</h3>
+                <p>There's no preparty without alcohol!</br>Visit systemet and buy some</p>
+            </div>
+            <div class="task-tooltip tt-kebab">
+                <h3>Eat a kebab</h3>
+                <p>No one wants to get sloppy drunk.</br>Visit Alcamo and buy a kebab</p>
+            </div>
+            <div class="task-tooltip tt-ovve">
+                <h3>Get your ovve</h3>
+                <p>Only a JIBS student would</br>go to AKA without their ovve!</br>Go home and collect yours</p>
+            </div>
+            <div class="task-tooltip tt-preparty">
+                <h3>Go to the preparty</h3>
+                <p>You need to get in the party mood.</br>Visit Frej's preparty</br>(Frej won't let you in without your</br>ovve and alcohol)</p>
+            </div>
+            <div class="task-background">
+                <div class="task" id="alcoholTaskIcon">
+                    <img src="/glyphs/taskicons/alcoholtask.png"/>
+                </div>
+                <div class="task" id="kebabTaskIcon">
+                    <img src="/glyphs/taskicons/kebabtask.png"/>
+                </div>
+                <div class="task" id="ovveTaskIcon">
+                    <img src="/glyphs/taskicons/ovvetask.png"/>
+                </div>
+                <div class="task" id="prepartyTaskIcon">
+                    <img src="/glyphs/taskicons/prepartytask.png"/>
+                </div>
+            </div>
+        </div>
+            <!-- character -->
+        <div class="character" id="character">
+            <div class="head">
+                <div class="hair" id="hair"></div>
+                <div class="eyes">
+                    <div class="right-eye" id="rightEye">
+                        <div class="pupil"></div>
+                    </div>
+                    <div class="left-eye" id="leftEye">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+            <div class="body">
+                <div class="right-arm" id="rightArm"></div>
+                <div class="torso" id="torso"></div>
+                <div class="left-arm" id="leftArm"></div>
+            </div>
+            <div class="ovve">
+                <div class="right-ovve-leg" id="rightOvveLeg">
+                    <!-- pathes -->
+                    <img class="winner-patch" src="/glyphs/patches/winnerpatch.svg"/>
+                </div>
+                <div class="left-ovve-leg" id="leftOvveLeg"></div>
+            </div>
+            <div class="legs">
+                <div class="right-leg" id="rightLeg"></div>
+                <div class="left-leg" id="leftLeg"></div>
+            </div>
+        </div>
+        <!--  -->
+
+    <div class="jibs-container">
+        <div class="jibs-student">
+            <div class="jibs-head-container" id="jibsHead1">
+                <div class="jibs-head">
+                    <img src="/glyphs/akaroad/jibs-glasses.png" alt="glasses"/>
+                </div>
+                <div class="jibs-vision" id="jibsVision1"></div>
+            </div>
+        </div>
+        <div class="jibs-student">
+            <div class="jibs-head-container" id="jibsHead2">
+                <div class="jibs-head">
+                    <img src="/glyphs/akaroad/jibs-glasses.png" alt="glasses"/>
+                </div>
+                <div class="jibs-vision" id="jibsVision2"></div>
+            </div>
+        </div>
+        <div class="jibs-student">
+            <div class="jibs-head-container" id="jibsHead3">
+                <div class="jibs-head">
+                    <img src="/glyphs/akaroad/jibs-glasses.png" alt="glasses"/>
+                </div>
+                <div class="jibs-vision" id="jibsVision3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="jibs-body-container">
+        <img src="/glyphs/akaroad/jibsbody.png" alt="jibs body" class="jibs-body"/>
+        <img src="/glyphs/akaroad/jibsbody.png" alt="jibs body" class="jibs-body"/>
+        <img src="/glyphs/akaroad/jibsbody.png" alt="jibs body" class="jibs-body"/>
+    </div> 
+    <div class="sidewalk">
+        <div class="pillar" id="pillar1"></div>
+        <div class="pillar" id="pillar2"></div>
+        <div class="pillar" id="pillar3"></div>
+    </div>
+    <div class="building"></div>
+    </div>
+</body>
+</html>

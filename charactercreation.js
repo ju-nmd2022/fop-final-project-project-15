@@ -98,7 +98,7 @@ document.addEventListener('mousemove', (e) => {
 
 submitChangesButton.addEventListener('click', () => {
     if (chooseOvveColor.value === 'Yellow (JTH)') {
-        ovveColor = 'rgb(235, 212, 35)';
+        character.ovveColor = 'rgb(235, 212, 35)';
         character.school = 'JTH';
         jthIcon.style.display = 'block';
         jthIcon.classList.add('rotate-animation');
