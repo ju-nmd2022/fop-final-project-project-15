@@ -85,6 +85,12 @@
     display: flex;
     flex-direction: row;
 }
+.ovve {
+    width: 5vw;
+    margin-left: 0.5vw;
+    margin-top: -1vw;
+    contain: content;
+}
 .right-leg, .right-ovve-leg {
     background-color: blueviolet;
     margin-left: 1vw;
@@ -97,9 +103,55 @@
     width: 1.8vw;
     height: 2vw;
 }
+.right-ovve-leg,.left-ovve-leg {
+    contain: content;
+    display: flex;
+    flex-direction: column;
+}
+.ovve > img {
+    max-width: 100%;
+}
 
 /* patches */
+.patch {
+    width: 2.5vmin;
+    position: absolute;
+    left: 1.2vmin;
+    display: none;
+}
+/* patch positions */
+/* current patches: winner patch, speedfreak patch, westcoast patch, hitech patch, lok patch, halsosektionen patch, jsa patch, qult patch */
 .winner-patch {
-    width: 1.3vw;
-    transform: rotate(-10deg);
+    top: 0.3vmin;
+}
+.speedfreak-patch {
+    top: 4vmin;
+    left: 1.4vmin;
+}   
+.westcoast-patch {
+    width: 1.7vmin;
+    top: 2vmin;
+    left: 2vmin;
+}
+.hitech-patch,.lok-patch,.halsosektionen-patch,.jsa-patch {
+    left: 5.2vmin;
+}
+.hitech-patch {
+    top: 0.3vmin;
+}
+.lok-patch {
+    width: 1vw;
+    top: 1.9vmin;
+}
+.halsosektionen-patch {
+    top: 3.7vmin;
+}
+.jsa-patch {
+    top: 5.3vmin;
+}
+.qult-patch {
+    top: 3.2vmin;
+    left: 1.2vmin;
+    width: 1.3vmin;
+
 }

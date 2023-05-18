@@ -1,85 +1,164 @@
-const chooseName = document.getElementById('chooseName');
-const characterName = document.getElementById('characterName');
-const chooseHairColor = document.getElementById('chooseHairColor');
-const chooseShirtColor = document.getElementById('chooseShirtColor');
-const choosePantsColor = document.getElementById('choosePantsColor');
-const chooseOvveColor = document.getElementById('chooseOvveColor');
-const characterScreen = document.getElementById('characterScreen');
-const submitChangesButton = document.getElementById('submitChangesButton');
-const showOvve = document.getElementById('showOvve');
+// DOM consts
+const chooseName = document.getElementById('chooseName'); // name field
+const characterName = document.getElementById('characterName'); // name text
+const chooseHairColor = document.getElementById('chooseHairColor'); // hair color field
+const chooseShirtColor = document.getElementById('chooseShirtColor'); // shirt color field
+const choosePantsColor = document.getElementById('choosePantsColor'); // pants color field
+const chooseOvveColor = document.getElementById('chooseOvveColor'); // ovve color field
+const characterScreen = document.getElementById('characterScreen'); //character window
+const submitChangesButton = document.getElementById('submitChangesButton'); //submit button
+const showOvve = document.getElementById('showOvve'); //show ovve checkbox
+const patchListEntrys = Array.from(document.querySelectorAll('.patch-list > div'));
+const patchEquippedText = Array.from(document.querySelectorAll('.patch-equipped'));
+const patchUnlockedText = Array.from(document.querySelectorAll('.patch-unlocked'));
+const patchTooltips = Array.from(document.querySelectorAll('.patch-tooltip'));
+const patchButton = document.querySelector('.patch-button');
+const patchList = document.querySelector('.patch-list');
+const patchToolTip = document.querySelector('.patch-tooltip');
 
-const jthIcon = document.getElementById('jthIcon');
-const commIcon1 = document.getElementById('commIcon1');
-const commIcon2 = document.getElementById('commIcon2');
-const teachIcon = document.getElementById('teachIcon');
-const healthIcon = document.getElementById('healthIcon');
-const jibsIcon = document.getElementById('jibsIcon');
-const qultIcon = document.getElementById('qultIcon');
+// icons displayed on submit click depending on ovve color
+const jthIcon = document.getElementById('jthIcon'); //jth icon
+const commIcon1 = document.getElementById('commIcon1'); //comm...
+const commIcon2 = document.getElementById('commIcon2'); //icons
+const teachIcon = document.getElementById('teachIcon'); //teacher icon
+const healthIcon = document.getElementById('healthIcon'); //health icon
+const jibsIcon = document.getElementById('jibsIcon'); //jibs icon
+const qultIcon = document.getElementById('qultIcon'); //qult icon
 
-const hair = document.getElementById('hair');
-const rightEye = document.getElementById('rightEye');
-const pupilAxisRight = document.getElementById('pupilAxisRight');
-const leftEye = document.getElementById('leftEye');
-const pupilAxisLeft = document.getElementById('pupilAxisLeft');
-const rightArm = document.getElementById('rightArm');
-const torso = document.getElementById('torso');
-const leftArm = document.getElementById('leftArm');
-const rightLeg = document.getElementById('rightLeg');
-const leftLeg = document.getElementById('leftLeg');
-const rightOvveLeg = document.getElementById('rightOvveLeg');
-const leftOvveLeg = document.getElementById('leftOvveLeg');
-const ovve = document.querySelector('.ovve');
-const legs = document.querySelector('.legs');
+// character parts
+const hair = document.getElementById('hair'); //hair
+const rightEye = document.getElementById('rightEye'); //right eye
+const pupilAxisRight = document.getElementById('pupilAxisRight'); //pupil axis right
+const leftEye = document.getElementById('leftEye'); //left eye
+const pupilAxisLeft = document.getElementById('pupilAxisLeft'); //pupil axis left
+const rightArm = document.getElementById('rightArm'); //right arm
+const torso = document.getElementById('torso'); //torso
+const leftArm = document.getElementById('leftArm'); //left arm
+const rightLeg = document.getElementById('rightLeg'); //right leg
+const leftLeg = document.getElementById('leftLeg'); //left leg
+const playerOvve = document.getElementById('playerOvve'); //ovve image
+const ovve = document.querySelector('.ovve'); //ovve container
+const legs = document.querySelector('.legs'); //leg container
 
-let savedCharacter; 
-let unlockedPatches = ['winnerPatch'];
-localStorage.unlockedPatches = JSON.stringify(unlockedPatches);
+let patchListDisplayed = false;
+const patches = ['winnerPatch','speedfreakPatch','hitechPatch','lokPatch','halsosektionenPatch','jsaPatch','qultPatch','westcoastPatch'];
 
-unlockedPatches.push(0);
-
-if (localStorage.character !== undefined) {
-    savedCharacter = JSON.parse(localStorage.character); 
-}
-else {
-    savedCharacter = {
-        name: 'akko',
-        school: 'JTH',
-        hairColor: 'yellow',
-        shirtColor: 'red',
-        pantsColor: 'blue',
-        ovveColor: 'rgb(235, 212, 35)'
-    };
-    localStorage.character = JSON.stringify(savedCharacter);
+if (!localStorage.character) {
+    localStorage.character = JSON.stringify({name: 'akko',school: 'JTH',hairColor: 'yellow',shirtColor: 'red',pantsColor: 'blue',ovveColor: 'yellowovve.png'});
 }
 
-if (localStorage.unlockedPatches !== undefined) {
-    unlockedPatches = JSON.parse(localStorage.unlockedPatches);
+if (!localStorage.unlockedPatches) {
+    localStorage.unlockedPatches = JSON.stringify([]);
 }
-else {
-    unlockedPatches = ['none'];
-    localStorage.unlockedPatches = JSON.stringify(unlockedPatches);
+if (!localStorage.equippedPatches) {
+    localStorage.equippedPatches = JSON.stringify([]);
 }
 
-// for testing purposes
+let savedCharacter = JSON.parse(localStorage.character); //fetch the localStorage settings for character properties
+let unlockedPatches = JSON.parse(localStorage.unlockedPatches); //fetch the localStorage settings for unlocked patches
+let equippedPatches = JSON.parse(localStorage.equippedPatches);
 
+patchList.addEventListener('mouseover', () => {
+    for (let index in patchListEntrys) {
+        patchListEntrys[index].addEventListener('mouseenter', () => {
+            patchTooltips[index].style.display = 'block';
+        });
+        patchListEntrys[index].addEventListener('mouseleave', () => {
+            patchTooltips[index].style.display = 'none';
+        });
+        patchListEntrys[index].addEventListener('click', () => { //to equip the patch
+            if (unlockedPatches.includes(patches[index])) { //if the patch is unlocked
+                if (equippedPatches.includes(patches[index])) {
+                    equippedPatches.splice(equippedPatches.indexOf(patches[index]),1);
+                    changeEquippedText();
+                    hideOrShowPatches();
+                    
+                } else {                    
+                    equippedPatches.push(patches[index]);
+                    changeEquippedText();
+                    hideOrShowPatches();
+                }
+                localStorage.removeItem(equippedPatches);
+                localStorage.equippedPatches = JSON.stringify(equippedPatches);
+            }   
+        });
+    }
+});
 
-// import the unlocked patches
-function importPatches() {
-    const winnerPatch = document.querySelector('.winner-patch');
-    if (unlockedPatches.includes('winnerPatch')) {
-        console.log(winnerPatch)
-        winnerPatch.style.display = 'block';
+patchButton.addEventListener('click', () => {
+    if (patchListDisplayed) {
+        patchList.style.display = 'none';
+        patchListDisplayed = false;
+    } else {
+        patchList.style.display = 'grid';
+        patchListDisplayed = true;
+    }
+});
+
+function changeEquippedText() {
+    for (let index in patches) {
+        if (equippedPatches.includes(patches[index])) {
+            patchEquippedText[index].innerText = 'Equipped';
+            patchEquippedText[index].style.color = 'green';
+        } else {
+            patchEquippedText[index].innerText = 'Not Equipped';
+            patchEquippedText[index].style.color = 'red';
+        }
     }
 }
+changeEquippedText();
 
-let character = {
-    name: savedCharacter.name,
-    school: savedCharacter.school,
-    hairColor: savedCharacter.hairColor,
-    shirtColor: savedCharacter.shirtColor,
-    pantsColor: savedCharacter.pantsColor,
-    ovveColor: savedCharacter.ovveColor
-};
+function changePatchColorAndAmountIfUnlocked() {
+    if (unlockedPatches.includes('winnerPatch')) {
+        patchListEntrys[0].style.backgroundColor = 'green';
+        patchUnlockedText[0].style.color = 'green';
+        patchUnlockedText[0].innerText = 'Unlocked';
+        patchEquippedText[0].style.display = 'block';
+    }
+    if (unlockedPatches.includes('speedfreakPatch')) {
+        patchListEntrys[1].style.backgroundColor = 'green';
+        patchUnlockedText[1].style.color = 'green';
+        patchUnlockedText[1].innerText = 'Unlocked';
+        patchEquippedText[1].style.display = 'block';
+    }
+    if (unlockedPatches.includes('hitechPatch')) {
+        patchListEntrys[2].style.backgroundColor = 'green';
+        patchUnlockedText[2].style.color = 'green';
+        patchUnlockedText[2].innerText = 'Unlocked';
+        patchEquippedText[2].style.display = 'block';
+    }
+    if (unlockedPatches.includes('lokPatch')) {
+        patchListEntrys[3].style.backgroundColor = 'green';
+        patchUnlockedText[3].style.color = 'green';
+        patchUnlockedText[3].innerText = 'Unlocked';
+        patchEquippedText[3].style.display = 'block';
+    }
+    if (unlockedPatches.includes('halsosektionenPatch')) {
+        patchListEntrys[4].style.backgroundColor = 'green';
+        patchUnlockedText[4].style.color = 'green';
+        patchUnlockedText[4].innerText = 'Unlocked';
+        patchEquippedText[4].style.display = 'block';
+    }
+    if (unlockedPatches.includes('jsaPatch')) {
+        patchListEntrys[5].style.backgroundColor = 'green';
+        patchUnlockedText[5].style.color = 'green';
+        patchUnlockedText[5].innerText = 'Unlocked';
+        patchEquippedText[5].style.display = 'block';
+    }
+    if (unlockedPatches.includes('qultPatch')) {
+        patchListEntrys[6].style.backgroundColor = 'green';
+        patchUnlockedText[6].style.color = 'green';
+        patchUnlockedText[6].innerText = 'Unlocked';
+        patchEquippedText[6].style.display = 'block';
+    }
+    if (unlockedPatches.includes('westcoastPatch')) {
+        patchListEntrys[7].style.backgroundColor = 'green';
+        patchUnlockedText[7].style.color = 'green';
+        patchUnlockedText[7].innerText = 'Unlocked';
+        patchEquippedText[7].style.display = 'block';
+    }
+    document.querySelector('.patch-button > p').innerText = `Patches (${unlockedPatches.length} of 8 unlocked)`
+}
 
 chooseOvveColor.addEventListener('click', () => {
     chooseOvveColor.value = '';
@@ -96,10 +175,10 @@ document.addEventListener('mousemove', (e) => {
     rightEye.style.transform = 'rotate(-' + rotationX + 'deg)';
 })
 
-submitChangesButton.addEventListener('click', () => {
+function updateCharacterLook() {
     if (chooseOvveColor.value === 'Yellow (JTH)') {
-        character.ovveColor = 'rgb(235, 212, 35)';
-        character.school = 'JTH';
+        savedCharacter.ovveColor = 'yellowovve.png';//rgb(235, 212, 35)
+        savedCharacter.school = 'JTH';
         jthIcon.style.display = 'block';
         jthIcon.classList.add('rotate-animation');
         setTimeout(() => {
@@ -108,8 +187,8 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
     else if (chooseOvveColor.value === 'Blue (HLK)') {
-        character.ovveColor = 'rgb(26, 46, 230)';
-        character.school = 'HLK (Blue)';
+        savedCharacter.ovveColor = 'blueovve.png'; //rgb(26, 46, 230)
+        savedCharacter.school = 'HLK (Blue)';
         commIcon1.style.display = 'block';
         commIcon2.style.display = 'block';
         commIcon2.classList.add('fade-animation');
@@ -120,8 +199,8 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
     else if (chooseOvveColor.value === 'Red (HLK)') {
-        character.ovveColor = 'rgb(230, 26, 26)';
-        character.school = 'HLK (Red)';
+        savedCharacter.ovveColor = 'redovve.png'; //rgb(230, 26, 26)
+        savedCharacter.school = 'HLK (Red)';
         teachIcon.style.display = 'block';
         teachIcon.classList.add('fade-animation');
         setTimeout(() => {
@@ -130,8 +209,8 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
     else if (chooseOvveColor.value === 'White (Hälso)') {
-        character.ovveColor = 'rgb(255, 255, 255)';
-        character.school = 'Hälso';
+        savedCharacter.ovveColor = 'whiteovve.png';//rgb(255, 255, 255)
+        savedCharacter.school = 'Hälso';
         healthIcon.style.display = 'block';
         healthIcon.classList.add('rotate-animation');
         setTimeout(() => {
@@ -140,8 +219,8 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
     else if (chooseOvveColor.value === 'Green (JIBS)') {
-        character.ovveColor = 'rgb(5, 111, 17)';
-        character.school = 'JIBS';
+        savedCharacter.ovveColor = 'greenovve.png';//rgb(5, 111, 17)
+        savedCharacter.school = 'JIBS';
         jibsIcon.style.display = 'block';
         jibsIcon.classList.add('jibs-animation');
         setTimeout(() => {
@@ -150,8 +229,8 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
     else if (chooseOvveColor.value === 'Black (Qult)') {
-        character.ovveColor = 'rgb(0, 0, 0)';
-        character.school = 'Qult';
+        savedCharacter.ovveColor = 'blackovve.png';//rgb(0, 0, 0)
+        savedCharacter.school = 'Qult';
         qultIcon.style.display = 'block';
         qultIcon.classList.add('qult-animation');
         setTimeout(() => {
@@ -160,28 +239,53 @@ submitChangesButton.addEventListener('click', () => {
         }, 2000);
     }
 
-    character.name = chooseName.value;
-    character.hairColor = chooseHairColor.value;
-    character.shirtColor = chooseShirtColor.value;
-    character.pantsColor = choosePantsColor.value;
+    savedCharacter.name = chooseName.value;
+    savedCharacter.hairColor = chooseHairColor.value;
+    savedCharacter.shirtColor = chooseShirtColor.value;
+    savedCharacter.pantsColor = choosePantsColor.value;
 
     createCharacter();
     localStorage.removeItem(character);
-    localStorage.character = JSON.stringify(character);
+    localStorage.character = JSON.stringify(savedCharacter);
     savedCharacter = JSON.parse(localStorage.character);
-})
+}
 
 function createCharacter() {
-    characterName.innerText = character.name;
-    hair.style.backgroundColor = character.hairColor;
-    rightArm.style.backgroundColor = character.shirtColor;
-    leftArm.style.backgroundColor = character.shirtColor;
-    torso.style.backgroundColor = character.shirtColor;
-    leftLeg.style.backgroundColor = character.pantsColor;
-    rightLeg.style.backgroundColor = character.pantsColor;
-    rightOvveLeg.style.backgroundColor = character.ovveColor;
-    leftOvveLeg.style.backgroundColor = character.ovveColor;
+    characterName.innerText = savedCharacter.name;
+    hair.style.backgroundColor = savedCharacter.hairColor;
+    rightArm.style.backgroundColor = savedCharacter.shirtColor;
+    leftArm.style.backgroundColor = savedCharacter.shirtColor;
+    torso.style.backgroundColor = savedCharacter.shirtColor;
+    leftLeg.style.backgroundColor = savedCharacter.pantsColor;
+    rightLeg.style.backgroundColor = savedCharacter.pantsColor;
+    playerOvve.setAttribute('src',`/glyphs/ovve/${savedCharacter.ovveColor}`);
 }
+
+// const chooseName = document.getElementById('chooseName'); // name field
+// const characterName = document.getElementById('characterName'); // name text
+// const chooseHairColor = document.getElementById('chooseHairColor'); // hair color field
+// const chooseShirtColor = document.getElementById('chooseShirtColor'); // shirt color field
+// const choosePantsColor = document.getElementById('choosePantsColor'); // pants color field
+// const chooseOvveColor = document.getElementById('chooseOvveColor'); // ovve color field
+
+submitChangesButton.addEventListener('click', () => {
+    updateCharacterLook();
+})
+chooseName.addEventListener('change',()=> {
+    updateCharacterLook();
+});
+chooseHairColor.addEventListener('change',()=> {
+    updateCharacterLook();
+});
+chooseShirtColor.addEventListener('change',()=> {
+    updateCharacterLook();
+});
+choosePantsColor.addEventListener('change',()=> {
+    updateCharacterLook();
+});
+chooseOvveColor.addEventListener('change',()=> {
+    updateCharacterLook();
+});
 
 function hideOrShowOvve() {
     if (showOvve.checked) {
@@ -192,10 +296,24 @@ function hideOrShowOvve() {
         legs.style.display = 'flex'
     }
 }
+function hideOrShowPatches() {
+    // patches
+    const patchesInDom = Array.from(document.querySelectorAll('.patch')) 
+
+    for (let index in patches) {
+        if (equippedPatches.includes(patches[index])) {
+            patchesInDom[index].style.display = 'block';
+        } else {
+            patchesInDom[index].style.display = 'none';
+        }
+    }
+}
+
 showOvve.addEventListener('click', () => {
     hideOrShowOvve();
 })
 
 hideOrShowOvve();
+hideOrShowPatches();
 createCharacter();
-importPatches();
+changePatchColorAndAmountIfUnlocked();

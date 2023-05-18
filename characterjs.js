@@ -6,9 +6,8 @@ const torso = document.getElementById('torso');
 const leftArm = document.getElementById('leftArm');
 const rightLeg = document.getElementById('rightLeg');
 const leftLeg = document.getElementById('leftLeg');
-const rightOvveLeg = document.getElementById('rightOvveLeg');
-const leftOvveLeg = document.getElementById('leftOvveLeg');
 const ovve = document.querySelector('.ovve');
+const playerOvve = document.getElementById('playerOvve');
 const legs = document.querySelector('.legs');
 const characterOnScreen = document.getElementById('character'); 
 
@@ -19,6 +18,47 @@ let armsAnimationState = false;
 let sprintMultiplier = 1;
 let characterPosition = characterOnScreen.getBoundingClientRect();
 
+function checkForUnlockedPatches() {
+    // current patches: winner patch, speedfreak patch, westcoast patch, hitech patch, lok patch, halsosektionen patch, jsa patch, qult patch
+    const unlockedPatches = JSON.parse(localStorage.unlockedPatches);
+    const winnerPatch = document.querySelector('.winner-patch');
+    const speedfreakPatch = document.querySelector('.speedfreak-patch');
+    const westcoastPatch = document.querySelector('.westcoast-patch');
+    const hitechPatch = document.querySelector('.hitech-patch');
+    const lokPatch = document.querySelector('.lok-patch');
+    const halsosektionenPatch = document.querySelector('.halsosektionen-patch');
+    const jsaPatch = document.querySelector('.jsa-patch');
+    const qultPatch = document.querySelector('.qult-patch');
+    for (let index in unlockedPatches) {
+        switch (unlockedPatches[index]) {
+            case 'winnerPatch':
+                winnerPatch.style.display = 'block';
+                break;
+            case 'speedfreakPatch':
+                speedfreakPatch.style.display = 'block';
+                break;
+            case 'westcoastPatch':
+                westcoastPatch.style.display = 'block';
+                break;
+            case 'hitechPatch':
+                hitechPatch.style.display = 'block';
+                break;
+            case 'lokPatch':
+                lokPatch.style.display = 'block';
+                break;
+            case 'halsosektionenPatch':
+                halsosektionenPatch.style.display = 'block';
+                break;
+            case 'jsaPatch':
+                jsaPatch.style.display = 'block';
+                break;
+            case 'qultPatch':
+                qultPatch.style.display = 'block';
+                break;
+        } 
+    }
+}
+checkForUnlockedPatches();
 function animateArms() {
     if (armsAnimationState === false) {
         document.getElementById('rightArm').style.transform = 'rotate(20deg)'
@@ -58,8 +98,7 @@ function generateSavedCharacter() {
     torso.style.backgroundColor = characterInfo.shirtColor;
     rightLeg.style.backgroundColor = characterInfo.pantsColor;
     leftLeg.style.backgroundColor = characterInfo.pantsColor;
-    rightOvveLeg.style.backgroundColor = characterInfo.ovveColor;
-    leftOvveLeg.style.backgroundColor = characterInfo.ovveColor;
+
     isOvveOn();
 }
 

@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Character</title>
-    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="charactercreation.css"/>
     <link rel="stylesheet" href="character.css"/>
+    <link rel="stylesheet" href="common.css"/>
     <script src="charactercreation.js" type="module" defer></script>
 </head>
 <body>
@@ -75,11 +76,16 @@
                 <div class="left-arm left-arm-animation" id="leftArm"></div>
             </div>
             <div class="ovve">
-                <div class="right-ovve-leg" id="rightOvveLeg">
+                <img src="/glyphs/ovve/yellowovve.png" id="playerOvve" alt="yellow ovve"/>
                     <!-- pathes -->
-                    <img class="winner-patch" src="glyphs/patches/winnerpatch.svg"/>
-                </div>
-                <div class="left-ovve-leg" id="leftOvveLeg"></div>
+                    <img class="winner-patch patch" src="/glyphs/patches/winnerpatch.svg"/>
+                    <img class="speedfreak-patch patch" src="/glyphs/patches/speedfreakpatch.png"/>
+                    <img class="hitech-patch patch" src="/glyphs/patches/hitechpatch.png"/>
+                    <img class="lok-patch patch" src="/glyphs/patches/lokpatch.png"/>
+                    <img class="halsosektionen-patch patch" src="/glyphs/patches/halsosektionenpatch.png"/>
+                    <img class="jsa-patch patch" src="/glyphs/patches/jsapatch.png"/>
+                    <img class="qult-patch patch" src="/glyphs/patches/qultpatch.png"/>
+                    <img class="westcoast-patch patch" src="/glyphs/patches/westcoastpatch.png"/>
             </div>
             <div class="legs">
                 <div class="right-leg" id="rightLeg"></div>
@@ -88,6 +94,86 @@
         </div>
         <h2 class="character-name" id="characterName">New Character</h2>
         <div class="stage"></div>
+        <div class="patch-menu">
+            <!-- tooltips -->
+            <div class="patch-tooltip">
+                <h1>Winner</h1>
+                <p>Show everyone at AKA that</br>you have won the game!</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>Speedfreak</h1>
+                <p>Get this patch by completing</br>the game before 21:30</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>Hi Tech</h1>
+                <p>Show some JTH pride with</br>this Hi Tech patch!</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>LOK Patch</h1>
+                <p>Show some HLK pride with</br>this LOK patch!</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>Hälsosektion</h1>
+                <p>Show some Hälso pride with</br>this Hälsosektion patch!</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>JSA</h1>
+                <p>Show some JIBS pride with</br>this JSA patch!</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>Qult</h1>
+                <p>Tired of having to explain why</br>your ovve is black?</br>This patch may help</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>Westcoast</h1>
+                <p>Westcoast = bestcoast</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-list">
+                <div>
+                    <img src="/glyphs/patches/winnerpatch.svg" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="/glyphs/patches/speedfreakpatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="/glyphs/patches/hitechpatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="/glyphs/patches/lokpatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="/glyphs/patches/halsosektionenpatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="/glyphs/patches/jsapatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="/glyphs/patches/qultpatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="/glyphs/patches/westcoastpatch.png" alt="winner patch"/>
+                </div>
+            </div>
+            <div class="patch-button">
+                <p>Patches (0 of 10 Unlocked)</p>
+            </div>
+        </div>
     </div>
     </div>
 </body>

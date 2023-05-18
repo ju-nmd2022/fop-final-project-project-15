@@ -1,50 +1,3 @@
-/* remove padding and margin for everything by default */
-* {
-    padding: 0;
-    margin: 0;
-    font-family: 'Courier New', Courier, monospace; /* font: courier new (by default) */
-}
-
-.pathway {
-    background-image: url("glyphs/Pathway.svg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    width: 20vw;
-    height: 20vw;
-    position: absolute;
-}
-
-.background {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.backdrop {
-    /* the following four lines were taken from https://stackoverflow.com/questions/600743/how-to-get-div-height-to-auto-adjust-to-background-size */
-    background-image: url("backdrops/intersection.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    padding-top: 52.66%;
-
-    width: 96%;
-    height: 0;
-    contain: content;
-}
-.pathway1 {
-    position: absolute;
-    width: 100vw;
-    height: 16vh;
-    top: 43vh;
-}
-.pathway2 {
-    position: absolute;
-    width: 16vh;
-    height: 97vh;
-    top: 0;
-    left: 55.5vw;
-}
 .body-container {
     display: flex;
     flex-direction: row;
@@ -191,6 +144,68 @@
     animation-duration: 3s;
     animation-iteration-count: infinite;
 }
+
+.patch-menu {
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    right: 7vmin;
+    bottom: 8vmin;
+}
+.patch-button {
+    background-color: black;
+    color: white;
+    width: auto;
+    height: auto;
+    padding: 2vmin;
+    border-radius: 2vmin;
+    cursor: pointer;
+}
+.patch-list {
+    background-color: black;
+    height: auto;
+    width: auto;
+    padding: 2vmin;
+    margin-bottom: 1vmin;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 3vmin;
+    border-radius: 2vmin;
+    display: none;
+}
+.patch-list > div {
+    background-color: rgb(156, 0, 0);
+    width: 10vmin;
+    aspect-ratio: 1/1;
+    contain: content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2vmin;
+    border: 1vmin solid rgb(173, 173, 173);
+    cursor: pointer;
+}
+.patch-list > div > img {
+    max-width: 70%;
+}
+.patch-tooltip {
+    background-color: black;
+    color: white;
+    width: auto;
+    padding: 2vmin;
+    border-radius: 2vmin;
+    margin-bottom: 1vmin;
+    display: none;
+}
+.patch-unlocked {
+    color: red;
+}
+.patch-equipped {
+    color: red;
+    display: none;
+}
+
 @keyframes rightarmanimation {
     50% {transform: rotate(16deg);}
     100% {transform: rotate(10deg);}

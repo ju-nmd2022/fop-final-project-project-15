@@ -19,21 +19,21 @@ for (let i = 0; i < legs.length; i++) {
 
 namePlaceholder.innerText = characterInfo.name;
 
-if (characterInfo.ovveColor === 'rgb(235, 212, 35)') { //yellow
+if (characterInfo.school === 'JTH') { //yellow
     coursePlaceholder.innerText = 'engine';
 }
-if (characterInfo.ovveColor === 'rgb(26, 46, 230)') { //blue
+if (characterInfo.school === 'HLK (Blue)') { //blue
     coursePlaceholder.innerText = 'conversation';
 }
-if (characterInfo.ovveColor === 'rgb(230, 26, 26)') { //red
+if (characterInfo.school === 'HLK (Red)') { //red
     coursePlaceholder.innerText = 'teaching stuff';
 }
-if (characterInfo.ovveColor === 'rgb(255, 255, 255)') { //white
+if (characterInfo.school === 'Hälso') { //white
     coursePlaceholder.innerText = 'medicine';
 }
-if (characterInfo.ovveColor === 'rgb(5, 111, 17)') { //green
+if (characterInfo.school === 'JIBS') { //green
     coursePlaceholder.innerText = 'money stuff';
 }
-if (characterInfo.ovveColor === 'rgb(0, 0, 0)') { //black
+if (characterInfo.school === 'Qult') { //black
     coursePlaceholder.innerText = 'utlandsphest';
 }

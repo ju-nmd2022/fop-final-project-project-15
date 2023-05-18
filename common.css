@@ -230,11 +230,6 @@
     white-space: nowrap;
     overflow: hidden;
 }
-.typing-animation {
-    animation-name: typing-ani;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-}
 
 @keyframes typing-ani {
     from {

@@ -14,50 +14,58 @@ const buildingPosition = systemetBuilding.getBoundingClientRect();
 const playerSchool = JSON.parse(localStorage.character);
 const unlockedPatches = JSON.parse(localStorage.unlockedPatches);
 
+let whatOldMan;
+let whatSM;
+let whatPatch;
+let patchStorageName;
+let patchImageSrc;
+switch(playerSchool.school) {
+    case 'JTH':
+        whatOldMan = 'oldmanyellow.png'
+        whatSM = 'X-LIFE'
+        whatPatch = 'HI-TECH PATCH'
+        patchStorageName = 'hiTechPatch';
+        patchImageSrc = 'hitechpatch.png'
+        break;
+    case 'HLK (Blue)':
+        whatOldMan = 'oldmanblue.png'
+        whatSM = 'X-CREW'
+        whatPatch = 'LOK PATCH'
+        patchStorageName = 'lokPatch';
+        patchImageSrc = 'lokpatch.png'
+        break;
+    case 'Hälso':
+        whatOldMan = 'oldmanwhite.png'
+        whatSM = 'X-CELL'
+        whatPatch = 'HÄLSOSEKTIONEN PATCH'
+        patchStorageName = 'halsosektionenPatch';
+        patchImageSrc = 'halsopatch.png'
+        break;
+    case 'HLK (Red)':
+        whatOldMan = 'oldmanred.png'
+        whatSM = 'PED-X'
+        whatPatch = 'LOK PATCH'
+        patchStorageName = 'lokPatch';
+        patchImageSrc = 'lokpatch.png'
+        break;
+    case 'JIBS':
+        whatOldMan = 'oldmangreen.png'
+        whatSM = 'XKREATION'
+        whatPatch = 'JSA PATCH'
+        patchStorageName = 'jsaPatch';
+        patchImageSrc = 'jsapatch.png'
+        break;
+    case 'Qult':
+        whatOldMan = 'oldmanblack.png'
+        whatSM = 'QEX'
+        whatPatch = 'QULT PATCH'
+        patchStorageName = 'qultPatch';
+        patchImageSrc = 'qultpatch.png'
+        break;
+}
+
 function displayOldMan() {
-    let whatOldMan;
-    let whatSM;
-    let whatPatch;
-    let patchStorageName;
     const oldManContainer = document.querySelector('.screen-container');
-    switch(playerSchool.school) {
-        case 'JTH':
-            whatOldMan = 'oldmanyellow.png'
-            whatSM = 'X-LIFE'
-            whatPatch = 'HI-TECH PATCH'
-            patchStorageName = 'hiTechPatch';
-            break;
-        case 'HLK (Blue)':
-            whatOldMan = 'oldmanblue.png'
-            whatSM = 'X-CREW'
-            whatPatch = 'LOK PATCH'
-            patchStorageName = 'lokPatch';
-            break;
-        case 'Hälso':
-            whatOldMan = 'oldmanwhite.png'
-            whatSM = 'X-CELL'
-            whatPatch = 'HÄLSOSEKTIONEN PATCH'
-            patchStorageName = 'halsosektionenPatch';
-            break;
-        case 'HLK (Red)':
-            whatOldMan = 'oldmanred.png'
-            whatSM = 'PED-X'
-            whatPatch = 'LOK PATCH'
-            patchStorageName = 'lokPatch';
-            break;
-        case 'JIBS':
-            whatOldMan = 'oldmangreen.png'
-            whatSM = 'XKREATION'
-            whatPatch = 'JSA PATCH'
-            patchStorageName = 'jsaPatch';
-            break;
-        case 'Qult':
-            whatOldMan = 'oldmanblack.png'
-            whatSM = 'QEX'
-            whatPatch = 'QULT PATCH'
-            patchStorageName = 'qultPatch';
-            break;
-    }
     const oldMan = document.createElement('img');
     oldMan.classList.add('old-man');
     oldMan.setAttribute('src',`/glyphs/systemetext/${whatOldMan}`);
@@ -66,27 +74,21 @@ function displayOldMan() {
     oldMan.style.top = buildingPosition.bottom - 190 + 'px';
     oldMan.style.right = buildingPosition.width + 'px';
     oldManContainer.appendChild(oldMan);
-    return [whatSM,whatPatch,patchStorageName];
 }
 
 function makeOldManSpeak() {
-    const oldManInfo = displayOldMan();
-    if (unlockedPatches.includes(oldManInfo[2])) {
+    if (unlockedPatches.includes(patchStorageName)) {
         return;
     }
-    const SM = oldManInfo[0];
-    const patch = oldManInfo[1];
-    const oldManSpeechBubble = new SpeechBubble('13','27','...','Hey!','Are you trying to get in to AKA?',`I am in ${SM}!`,'WHAT!',`You don't have the ${patch}?`,'Here, I have an extra one');
+    const oldManSpeechBubble = new SpeechBubble('13','27','...','Hey!','Are you trying to get in to AKA?',`I am in ${whatSM}!`,'WHAT!',`You don't have the ${whatPatch}?`,'Here, I have an extra one');
     oldManSpeechBubble.createSpeechBubble();
-    return [patch,oldManInfo[2]];
 }
 
 function endOfBubbleHandler() {
     if (makeOldManSpeak()) {
-    const patchInfo = makeOldManSpeak();
-    const newPatchUnlocked = new TaskCompletion(patchInfo[0],'/glyphs/patches/hitechpatch.png');
+    const newPatchUnlocked = new TaskCompletion(whatPatch,`/glyphs/patches/${patchImageSrc}`);
     newPatchUnlocked.createTaskCompletionPopup();
-    unlockedPatches.push(patchInfo[1]);
+    unlockedPatches.push(patchStorageName);
     localStorage.unlockedPatches = JSON.stringify(unlockedPatches);
     }
 }
