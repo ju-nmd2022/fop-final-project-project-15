@@ -12,42 +12,50 @@ const buildingPosition = systemetBuilding.getBoundingClientRect();
 
 // get the information about the player
 const playerSchool = JSON.parse(localStorage.character);
+const unlockedPatches = JSON.parse(localStorage.unlockedPatches);
 
 function displayOldMan() {
     let whatOldMan;
     let whatSM;
     let whatPatch;
+    let patchStorageName;
     const oldManContainer = document.querySelector('.screen-container');
     switch(playerSchool.school) {
         case 'JTH':
             whatOldMan = 'oldmanyellow.png'
             whatSM = 'X-LIFE'
             whatPatch = 'HI-TECH PATCH'
+            patchStorageName = 'hiTechPatch';
             break;
         case 'HLK (Blue)':
             whatOldMan = 'oldmanblue.png'
             whatSM = 'X-CREW'
             whatPatch = 'LOK PATCH'
+            patchStorageName = 'lokPatch';
             break;
         case 'Hälso':
             whatOldMan = 'oldmanwhite.png'
             whatSM = 'X-CELL'
             whatPatch = 'HÄLSOSEKTIONEN PATCH'
+            patchStorageName = 'halsosektionenPatch';
             break;
         case 'HLK (Red)':
             whatOldMan = 'oldmanred.png'
             whatSM = 'PED-X'
             whatPatch = 'LOK PATCH'
+            patchStorageName = 'lokPatch';
             break;
         case 'JIBS':
             whatOldMan = 'oldmangreen.png'
             whatSM = 'XKREATION'
             whatPatch = 'JSA PATCH'
+            patchStorageName = 'jsaPatch';
             break;
         case 'Qult':
             whatOldMan = 'oldmanblack.png'
             whatSM = 'QEX'
             whatPatch = 'QULT PATCH'
+            patchStorageName = 'qultPatch';
             break;
     }
     const oldMan = document.createElement('img');
@@ -58,22 +66,29 @@ function displayOldMan() {
     oldMan.style.top = buildingPosition.bottom - 190 + 'px';
     oldMan.style.right = buildingPosition.width + 'px';
     oldManContainer.appendChild(oldMan);
-    return [whatSM,whatPatch];
+    return [whatSM,whatPatch,patchStorageName];
 }
 
 function makeOldManSpeak() {
     const oldManInfo = displayOldMan();
+    if (unlockedPatches.includes(oldManInfo[2])) {
+        return;
+    }
     const SM = oldManInfo[0];
     const patch = oldManInfo[1];
     const oldManSpeechBubble = new SpeechBubble('13','27','...','Hey!','Are you trying to get in to AKA?',`I am in ${SM}!`,'WHAT!',`You don't have the ${patch}?`,'Here, I have an extra one');
     oldManSpeechBubble.createSpeechBubble();
-    return patch;
+    return [patch,oldManInfo[2]];
 }
 
 function endOfBubbleHandler() {
-    const patch = makeOldManSpeak();
-    const newPatchUnlocked = new TaskCompletion(patch,'/glyphs/patches/hitechpatch.png');
+    if (makeOldManSpeak()) {
+    const patchInfo = makeOldManSpeak();
+    const newPatchUnlocked = new TaskCompletion(patchInfo[0],'/glyphs/patches/hitechpatch.png');
     newPatchUnlocked.createTaskCompletionPopup();
+    unlockedPatches.push(patchInfo[1]);
+    localStorage.unlockedPatches = JSON.stringify(unlockedPatches);
+    }
 }
 
 displayOldMan();
