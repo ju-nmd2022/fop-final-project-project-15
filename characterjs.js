@@ -18,9 +18,9 @@ let armsAnimationState = false;
 let sprintMultiplier = 1;
 let characterPosition = characterOnScreen.getBoundingClientRect();
 
-function checkForUnlockedPatches() {
+function checkForEquippedPatches() {
     // current patches: winner patch, speedfreak patch, westcoast patch, hitech patch, lok patch, halsosektionen patch, jsa patch, qult patch
-    const unlockedPatches = JSON.parse(localStorage.unlockedPatches);
+    const equippedPatches = JSON.parse(localStorage.equippedPatches);
     const winnerPatch = document.querySelector('.winner-patch');
     const speedfreakPatch = document.querySelector('.speedfreak-patch');
     const westcoastPatch = document.querySelector('.westcoast-patch');
@@ -29,8 +29,8 @@ function checkForUnlockedPatches() {
     const halsosektionenPatch = document.querySelector('.halsosektionen-patch');
     const jsaPatch = document.querySelector('.jsa-patch');
     const qultPatch = document.querySelector('.qult-patch');
-    for (let index in unlockedPatches) {
-        switch (unlockedPatches[index]) {
+    for (let index in equippedPatches) {
+        switch (equippedPatches[index]) {
             case 'winnerPatch':
                 winnerPatch.style.display = 'block';
                 break;
@@ -58,7 +58,7 @@ function checkForUnlockedPatches() {
         } 
     }
 }
-checkForUnlockedPatches();
+
 function animateArms() {
     if (armsAnimationState === false) {
         document.getElementById('rightArm').style.transform = 'rotate(20deg)'
@@ -98,6 +98,7 @@ function generateSavedCharacter() {
     torso.style.backgroundColor = characterInfo.shirtColor;
     rightLeg.style.backgroundColor = characterInfo.pantsColor;
     leftLeg.style.backgroundColor = characterInfo.pantsColor;
+    playerOvve.setAttribute('src',`/glyphs/ovve/${characterInfo.ovveColor}`);
 
     isOvveOn();
 }
@@ -157,3 +158,4 @@ document.addEventListener('keydown', (e) => {
 })
 
 generateSavedCharacter();
+checkForEquippedPatches();

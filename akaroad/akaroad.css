@@ -137,23 +137,63 @@
     height: 2vw;
 }
 .torso {
-    background-color: aqua;
     width: 2.66vw;
     height: 2vw;
 }
-.right-leg, .right-ovve-leg {
+.ovve {
+    width: 3.4vw;
+    margin-left: 0.34vw;
+    margin-top: -0.66vw;
+}
+.right-leg {
     margin-left: 0.66vw;
     width: 1.2vw;
     height: 1.44vw;
 }
-.left-leg, .left-ovve-leg {
-    margin-left: 0.266vw;
+.left-leg {
+    margin-left: 0.27vw;
     width: 1.2vw;
     height: 1.44vw;
 }
 
 /* patches */
+.patch {
+    width: 1.67vmin;
+    left: 0.8vmin;
+}
+/* patch positions */
+/* current patches: winner patch, speedfreak patch, westcoast patch, hitech patch, lok patch, halsosektionen patch, jsa patch, qult patch */
 .winner-patch {
-    width: 0.87vw;
-    transform: rotate(-10deg);
+    top: 0.2vmin;
+}
+.speedfreak-patch {
+    top: 2.7vmin;
+    left: 0.94vmin;
+}   
+.westcoast-patch {
+    width: 1.14vmin;
+    top: 1.44vmin;
+    left: 1.44vmin;
+}
+.hitech-patch,.lok-patch,.halsosektionen-patch,.jsa-patch {
+    left: 3.47vmin;
+}
+.hitech-patch {
+    top: 0.2vmin;
+}
+.lok-patch {
+    width: 0.66vw;
+    top: 1.27vmin;
+}
+.halsosektionen-patch {
+    top: 2.47vmin;
+}
+.jsa-patch {
+    top: 3.54vmin;
+}
+.qult-patch {
+    top: 2.14vmin;
+    left: 0.8vmin;
+    width: 0.87vmin;
+
 }
