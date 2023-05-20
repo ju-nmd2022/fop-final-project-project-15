@@ -9,7 +9,8 @@ const leftLeg = document.getElementById('leftLeg');
 const ovve = document.querySelector('.ovve');
 const playerOvve = document.getElementById('playerOvve');
 const legs = document.querySelector('.legs');
-const characterOnScreen = document.getElementById('character'); 
+const characterOnScreen = document.getElementById('character');
+const bag = document.querySelector('.bag');
 
 // get the saved character info
 const characterInfo = JSON.parse(localStorage.character);
@@ -103,23 +104,52 @@ function generateSavedCharacter() {
     isOvveOn();
 }
 
+let bagRotation = 0;
+let rotationOngoing = false;
+let bagRotationState = true;
+
+let bagRot;
+
+function bagAnimation() {
+    if (bagRotationState) {
+        bagRotation -= 6;
+        if (bagRotation <= -30) {
+            bagRotationState = false;
+        }
+    } else {
+        bagRotation += 6;
+        if (bagRotation >= 30) {
+            bagRotationState = true;
+        }
+    }
+    bag.style.transform = `rotate(${bagRotation}deg)`
+};
+
 function moveUp() {
     if (canMoveUp()) {
+        bagRotationState = false;
+        bagAnimation();
         topPosition -= 1 * sprintMultiplier;
     }
 }
 function moveDown() {
     if (canMoveDown()) {
+        bagRotationState = true;
+        bagAnimation();
     topPosition += 1 * sprintMultiplier;
     }
 }
 function moveLeft() {   
     if (canMoveLeft()) {
+        bagRotationState = false;
+        bagAnimation();
     leftPosition -= 1 * sprintMultiplier;
     }
 }
 function moveRight() {
     if (canMoveRight()) {
+        bagRotationState = true;
+        bagAnimation();
     leftPosition += 1 * sprintMultiplier;
     }
 }
@@ -134,6 +164,12 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('keyup', (e) => {
     if (e.key === 'Shift') {
         sprintMultiplier = 1;
+    }
+    if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'ArrowDown' || e.key === 's' || e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'ArrowRight' || e.key === 'd') {
+        bagRot = setInterval(bagAnimation(), 100);
+        setTimeout(() => {
+            clearInterval(bagRot);
+        }, 2000);
     }
 })
 
@@ -151,7 +187,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' || e.key === 'a') {
         moveLeft();
     }
-    animateArms();
+    // animateArms();
     checkForScreenChange();
     updateCharacterPosition();
     }

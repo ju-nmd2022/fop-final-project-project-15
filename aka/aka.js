@@ -21,9 +21,7 @@ function canMoveDown() {
     }
 }
 function canMoveLeft() {
-    if (characterPosition.left > 0) {
-        return true;
-    }
+    return true;
 }
 function canMoveRight() {
     return true;
@@ -43,6 +41,9 @@ function checkForScreenChange() {
     }
     if (characterPosition.right > window.innerWidth + characterPosition.width/2) {
         window.location.href = '/akaroad/akaroad.html'
+    }
+    if (characterPosition.left < 0) {
+        window.location.href = '/westcoasthideout/westcoasthideout.html'
     }
 }
 

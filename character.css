@@ -155,3 +155,12 @@
     width: 1.3vmin;
 
 }
+
+.bag {
+    width: 4vmin;
+    height: 4vmin;
+    background-color: aliceblue;
+    margin-top: 4vmin;
+    margin-left: -2vmin;
+    transform-origin: top center;
+}
