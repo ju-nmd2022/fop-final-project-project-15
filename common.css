@@ -158,6 +158,7 @@
     font-size: 2vmin;
 }
 .remove-popup {
+    color: rgb(255, 255, 255);
     text-align: center;
     font-size: 1.2vw;
     font-weight: bold;

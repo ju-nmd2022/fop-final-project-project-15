@@ -1,0 +1,33 @@
+.character {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    bottom: 0;
+    left: 50vw;
+    z-index: 1;
+}
+
+.head{
+    contain: layout;
+    transform: translate(-50%,0);
+
+    background-color: rgb(218, 192, 165);
+    width: 6vw;
+    height: 5.5vw;
+    border-radius: 50%;
+}
+.hair {
+    background-color: rgb(226, 209, 114);
+    width: 6vw;
+    height: 2vh;
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+}
+.arm {
+    background-color: aqua;
+    width: 3vmin;
+    height: 7vmin;
+    margin-left: 2vmin;
+    margin-bottom: -4vmin;
+    transform: rotate(-20deg);
+}
