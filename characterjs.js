@@ -19,6 +19,10 @@ let armsAnimationState = false;
 let sprintMultiplier = 1;
 let characterPosition = characterOnScreen.getBoundingClientRect();
 
+let bagAnimationActive = false;
+let bagRotation = 0;
+let bagRotationDirection = false;
+
 function checkForEquippedPatches() {
     // current patches: winner patch, speedfreak patch, westcoast patch, hitech patch, lok patch, halsosektionen patch, jsa patch, qult patch
     const equippedPatches = JSON.parse(localStorage.equippedPatches);
@@ -104,51 +108,64 @@ function generateSavedCharacter() {
     isOvveOn();
 }
 
-let bagRotation = 0;
-let rotationOngoing = false;
-let bagRotationState = true;
-
-let bagRot;
-
 function bagAnimation() {
-    if (bagRotationState) {
-        bagRotation -= 6;
-        if (bagRotation <= -30) {
-            bagRotationState = false;
-        }
-    } else {
-        bagRotation += 6;
-        if (bagRotation >= 30) {
-            bagRotationState = true;
-        }
+    if (!bagAnimationActive) {
+        let numbersOfRotations = 0;
+        bagAnimationActive = true;
+        let bagInterval = setInterval(() => {
+            if (bagRotationDirection) {
+                bagRotation += 10;
+                if (bagRotation > 0 && numbersOfRotations === 2) {
+                    clearInterval(bagInterval);
+                    bagAnimationActive = false;
+                }
+            } else {
+                bagRotation -= 10;
+                if (bagRotation < 0 && numbersOfRotations === 2) {
+                    clearInterval(bagInterval);
+                    bagAnimationActive = false;
+                }
+            }
+            if (bagRotation > 45) {
+                if (numbersOfRotations < 2) {
+                    numbersOfRotations++;
+                    bagRotationDirection = false;
+                }
+            }
+            if (bagRotation < -45) {
+                if (numbersOfRotations < 2) {
+                    numbersOfRotations++;
+                    bagRotationDirection = true;
+                }
+                
+            }
+            
+            bag.style.transform = `rotate(${bagRotation}deg)`;
+        }, 50);
     }
-    bag.style.transform = `rotate(${bagRotation}deg)`
-};
+}
+
 
 function moveUp() {
     if (canMoveUp()) {
-        bagRotationState = false;
         bagAnimation();
         topPosition -= 1 * sprintMultiplier;
     }
 }
 function moveDown() {
     if (canMoveDown()) {
-        bagRotationState = true;
         bagAnimation();
     topPosition += 1 * sprintMultiplier;
     }
 }
 function moveLeft() {   
     if (canMoveLeft()) {
-        bagRotationState = false;
         bagAnimation();
     leftPosition -= 1 * sprintMultiplier;
     }
 }
 function moveRight() {
     if (canMoveRight()) {
-        bagRotationState = true;
         bagAnimation();
     leftPosition += 1 * sprintMultiplier;
     }
@@ -187,7 +204,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' || e.key === 'a') {
         moveLeft();
     }
-    // animateArms();
+    animateArms();
     checkForScreenChange();
     updateCharacterPosition();
     }

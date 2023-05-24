@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.background-container {
+    width: 100vw;
+    height: 100vh;
+    contain: layout;
+}
+.backdrop {
+    width: auto;
+    height: auto;
+    position: absolute;
+}
+.backdrop-img {
+    width: 200rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.door {
+    width: 17vmin;
+    position: relative;
+    top: 232vh;
+    left: 125vw;
+}
+
+#frejsHouse {
+
+    width: 69rem; 
+    height: 51rem;
+    position: absolute;
+    top: 10.2rem;
+}
+#playerHouse {
+
+    width: 64rem;
+    height: 38.5rem;
+    position: absolute;
+    top: 41.2rem;
+    left: 133rem;
+}

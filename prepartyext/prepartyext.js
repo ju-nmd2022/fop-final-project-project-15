@@ -49,7 +49,7 @@ function removePopupHandler() {
 
 // check if the character can move up
 function canMoveUp() {
-    if (characterPosition.bottom + characterPosition.height/2 > frejsHousePosition.bottom) {
+    if (characterPosition.bottom + characterPosition.height*0.75 > frejsHousePosition.bottom) {
         return true;
     }
     else {

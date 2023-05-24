@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Town</title>
-    <script src="/common.js" defer></script>
-    <script src="/popup.js" defer></script>
-    <script src="/speechbubble.js" defer></script>
-    <script src="/taskcompletion.js" defer></script>
-    <script src="/prepartyext/prepartyext.js" defer></script>
-    <script src="/characterjs.js" defer></script>
-    <link rel="stylesheet" href="/common.css"/>
-    <link rel="stylesheet" href="/prepartyext/prepartyext.css"/>
+    <title>OP</title>
+    <link rel="stylesheet" href="/testarea1.css"/>
     <link rel="stylesheet" href="/character.css"/>
+    <link rel="stylesheet" href="/common.css"/>
+    <script src="/common.js" defer></script>
+    <script src="/testarea1.js" defer></script>
+    <script src="/characterjs.js" defer></script>
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/b0f116667a.js" crossorigin="anonymous"></script>
 </head>
@@ -66,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <!-- character -->
+
         <div class="character" id="character">
             <div class="head">
                 <div class="hair" id="hair"></div>
@@ -81,7 +78,7 @@
                 <div class="mouth"></div>
             </div>
             <div class="body">
-                <div class="right-arm" id="rightArm"><img class="bag" src="/glyphs/bag.svg"/></div>
+                <div class="right-arm" id="rightArm"><div class="bag"></div></div>
                 <div class="torso" id="torso"></div>
                 <div class="left-arm" id="leftArm"></div>
             </div>
@@ -104,10 +101,14 @@
         </div>
         <!--  -->
 
-        <div class="frejs-house">
-            <img id="frejsHouseImg" src="/glyphs/prepartyext/frejshouse.png" alt="frejs house"/>
-            <img id="frejsDoor" src="/glyphs/prepartyext/frejsdoor.png" alt="frejs door"/>
+    <div class="background-container">
+        <div class="backdrop">
+            <img class="backdrop-img" src="/backdrop/test.svg"/>
+            <img class="door" src="/backdrop/door.png"/>
+            <div id="frejsHouse"></div>
+            <div id="playerHouse"></div>
         </div>
+    </div>
     </div>
 </body>
 </html>

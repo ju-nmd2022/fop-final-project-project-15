@@ -157,10 +157,8 @@
 }
 
 .bag {
-    width: 4vmin;
-    height: 4vmin;
-    background-color: aliceblue;
+    width: 2.5vmin;
     margin-top: 4vmin;
-    margin-left: -2vmin;
+    margin-left: -1vmin;
     transform-origin: top center;
 }
