@@ -26,6 +26,7 @@ let bagRotation = 0;
 let bagRotationDirection = false;
 
 const boundaries = Array.from(document.querySelectorAll('.boundary'));
+const pathways = Array.from(document.querySelectorAll('.door'));
 
 function checkForEquippedPatches() {
     // current patches: winner patch, speedfreak patch, westcoast patch, hitech patch, lok patch, halsosektionen patch, jsa patch, qult patch
@@ -188,6 +189,33 @@ function boundaryDetected(direction) {
       return false;
 }
 
+function detectPathway() {
+    for (let i = 0; i < pathways.length; i++) {
+        const pathway = pathways[i];
+        const pathwayPosition = pathway.getBoundingClientRect();
+    
+        if (characterPosition.top > pathwayPosition.y &&
+            characterPosition.top < pathwayPosition.y + pathwayPosition.height &&
+            characterPosition.left > pathwayPosition.x &&
+            characterPosition.left < pathwayPosition.x + pathwayPosition.width) {
+                switch (pathway.id) {
+                    case 'frejsDoor':
+                        window.location.href = '/prepartyint/prepartyint.html';
+                        break;
+                    case 'playerDoor':
+                        console.log('tjenixen')
+                        break;
+                    case 'bridgeTunnel':
+                        window.location.href = '/bridge/bridge.html';
+                        break;
+                    case 'akaTunnel':
+                        window.location.href = '/akaroad/akaroad.html';
+                        break;
+                }
+            }
+}
+}
+
 function moveUp() {
     if (!boundaryDetected('up')) {
         topPosition += walkingDistance * sprintMultiplier;
@@ -243,8 +271,8 @@ document.addEventListener('keydown', (e) => {
         moveLeft();
     }
     animateArms();
-    checkForScreenChange();
     updateBackdropPosition();
+    detectPathway();
     }
 })
 

@@ -21,15 +21,8 @@
     top: 0;
     left: 0;
 }
-.door {
-    width: 17vmin;
-    position: relative;
-    top: 232vh;
-    left: 125vw;
-}
 
 .boundary {
-    background-color: aqua;
     position: absolute;
 }
 
@@ -73,7 +66,43 @@
     left: 30rem;
 }
 #busstopBoundary {
-    width: 10rem;
+    width: 16rem;
+    height: 7rem;
+    left: 118.5rem;
+    top: 29.1rem;
+}
+#treeBoundary {
+    width: 6rem;
+    height: 9.6rem;
+    left: 84rem;
+    top: 25.8rem;
+}
+
+.door {
+    background-color: red;
+    position: absolute;
+}
+#frejsDoor {
+    width: 5.5rem;
     height: 5rem;
-    
+    left: 45.3rem;
+    top: 60.5rem;
+}
+#playerDoor {
+    width: 2.8rem;
+    height: 5rem;
+    left: 130rem;
+    top: 72.8rem;
+}
+#bridgeTunnel {
+    width: 15rem;
+    height: 5rem;
+    left: 92rem;
+    top: 24rem;
+}
+#akaTunnel {
+    width: 5.5rem;
+    height: 15rem;
+    left: 33rem;
+    top: 66rem;
 }
