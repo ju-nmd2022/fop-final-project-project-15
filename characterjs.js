@@ -11,10 +11,12 @@ const playerOvve = document.getElementById('playerOvve');
 const legs = document.querySelector('.legs');
 const characterOnScreen = document.getElementById('character');
 const bag = document.querySelector('.bag');
+const backdrop = document.querySelector('.backdrop');
 
 // get the saved character info
 const characterInfo = JSON.parse(localStorage.character);
 
+let walkingDistance = 2;
 let armsAnimationState = false;
 let sprintMultiplier = 1;
 let characterPosition = characterOnScreen.getBoundingClientRect();
@@ -22,6 +24,8 @@ let characterPosition = characterOnScreen.getBoundingClientRect();
 let bagAnimationActive = false;
 let bagRotation = 0;
 let bagRotationDirection = false;
+
+const boundaries = Array.from(document.querySelectorAll('.boundary'));
 
 function checkForEquippedPatches() {
     // current patches: winner patch, speedfreak patch, westcoast patch, hitech patch, lok patch, halsosektionen patch, jsa patch, qult patch
@@ -77,9 +81,9 @@ function animateArms() {
     }
 }
 
-function updateCharacterPosition() {
-    characterOnScreen.style.top = topPosition + 'vh';
-    characterOnScreen.style.left = leftPosition + 'vw';
+function updateBackdropPosition() {
+    backdrop.style.top = topPosition + 'rem';
+    backdrop.style.right = leftPosition + 'rem';
     characterPosition = characterOnScreen.getBoundingClientRect();
 }
 
@@ -95,7 +99,7 @@ function isOvveOn() {
 
 function generateSavedCharacter() {
     characterOnScreen.style.position = 'absolute';
-    updateCharacterPosition();
+    updateBackdropPosition();
 
     hair.style.backgroundColor = characterInfo.hairColor;
     rightArm.style.backgroundColor = characterInfo.shirtColor;
@@ -145,29 +149,63 @@ function bagAnimation() {
     }
 }
 
+function boundaryDetected(direction) {
+    for (let i = 0; i < boundaries.length; i++) {
+        const boundary = boundaries[i];
+        const boundaryPosition = boundary.getBoundingClientRect();
+    
+        if (direction === 'up') {
+          if (characterPosition.top < boundaryPosition.y + boundaryPosition.height + 60 &&
+              characterPosition.bottom > boundaryPosition.y &&
+              characterPosition.left > boundaryPosition.x &&
+              characterPosition.right < boundaryPosition.x + boundaryPosition.width) {
+            return true;
+          }
+        } else if (direction === 'down') {
+          if (characterPosition.bottom > boundaryPosition.y - 60 &&
+              characterPosition.top < boundaryPosition.y + boundaryPosition.height &&
+              characterPosition.left > boundaryPosition.x &&
+              characterPosition.right < boundaryPosition.x + boundaryPosition.width) {
+            return true;
+          }
+        } else if (direction === 'left') {
+          if (characterPosition.left < boundaryPosition.x + boundaryPosition.width + 60 &&
+              characterPosition.right > boundaryPosition.x &&
+              characterPosition.bottom > boundaryPosition.y &&
+              characterPosition.top < boundaryPosition.y + boundaryPosition.height) {
+            return true;
+          }
+        } else if (direction === 'right') {
+          if (characterPosition.right > boundaryPosition.x - 60 &&
+              characterPosition.left < boundaryPosition.x + boundaryPosition.width && 
+              characterPosition.bottom > boundaryPosition.y &&
+              characterPosition.top < boundaryPosition.y + boundaryPosition.height) {
+            return true;
+          }
+        }
+      }
+    
+      return false;
+}
 
 function moveUp() {
-    if (canMoveUp()) {
-        bagAnimation();
-        topPosition -= 1 * sprintMultiplier;
+    if (!boundaryDetected('up')) {
+        topPosition += walkingDistance * sprintMultiplier;
     }
 }
 function moveDown() {
-    if (canMoveDown()) {
-        bagAnimation();
-    topPosition += 1 * sprintMultiplier;
+    if (!boundaryDetected('down')) {
+        topPosition -= walkingDistance * sprintMultiplier;
     }
 }
-function moveLeft() {   
-    if (canMoveLeft()) {
-        bagAnimation();
-    leftPosition -= 1 * sprintMultiplier;
+function moveLeft() {
+    if (!boundaryDetected('left')) {
+        leftPosition -= walkingDistance * sprintMultiplier;
     }
 }
 function moveRight() {
-    if (canMoveRight()) {
-        bagAnimation();
-    leftPosition += 1 * sprintMultiplier;
+    if (!boundaryDetected('right')) {
+        leftPosition += walkingDistance * sprintMultiplier;
     }
 }
 
@@ -206,7 +244,7 @@ document.addEventListener('keydown', (e) => {
     }
     animateArms();
     checkForScreenChange();
-    updateCharacterPosition();
+    updateBackdropPosition();
     }
 })
 

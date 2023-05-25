@@ -12,6 +12,8 @@
     width: auto;
     height: auto;
     position: absolute;
+    right: 200rem;
+    top: 10rem;
 }
 .backdrop-img {
     width: 200rem;
@@ -26,18 +28,52 @@
     left: 125vw;
 }
 
-#frejsHouse {
-
-    width: 69rem; 
-    height: 51rem;
+.boundary {
+    background-color: aqua;
     position: absolute;
-    top: 10.2rem;
 }
-#playerHouse {
 
-    width: 64rem;
-    height: 38.5rem;
-    position: absolute;
-    top: 41.2rem;
-    left: 133rem;
+#topBoundary, #bottomBoundary {
+    width: 200rem;
+    height: 10rem;
+}
+#leftBoundary, #rightBoundary {
+    width: 10rem;
+    height: 135rem;
+}
+
+#topBoundary {
+    top: 10rem;
+}
+#bottomBoundary {
+    top: 93rem;
+}
+#leftBoundary {
+    left: 160rem;
+}
+#rightBoundary {
+    left: 25rem;
+}
+
+#frejsHouseBoundary {
+    width: 77.6rem; 
+    height: 63rem;
+    top: 0;
+}
+#playerHouseBoundary {
+    width: 40rem;
+    height: 14rem;
+    top: 62.3rem;
+    left: 122.1rem;
+}
+#housesBoundary {
+    width: 52.8rem;
+    height: 14rem;
+    top: 83.5rem;
+    left: 30rem;
+}
+#busstopBoundary {
+    width: 10rem;
+    height: 5rem;
+    
 }
