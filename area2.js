@@ -59,7 +59,7 @@ function displayOldMan() {
     const oldManContainer = document.querySelector('.backdrop');
     const oldMan = document.createElement('img');
     oldMan.classList.add('old-man');
-    oldMan.setAttribute('src',`/glyphs/systemetext/${whatOldMan}`);
+    oldMan.setAttribute('src',`glyphs/systemetext/${whatOldMan}`);
     oldManContainer.appendChild(oldMan);
 }
 
@@ -74,7 +74,7 @@ function makeOldManSpeak() {
 
 function endOfBubbleHandler() {
     if (makeOldManSpeak()) {
-    const newPatchUnlocked = new TaskCompletion(whatPatch,`/glyphs/patches/${patchImageSrc}`);
+    const newPatchUnlocked = new TaskCompletion(whatPatch,`glyphs/patches/${patchImageSrc}`);
     newPatchUnlocked.createTaskCompletionPopup();
     unlockedPatches.push(patchStorageName);
     localStorage.unlockedPatches = JSON.stringify(unlockedPatches);

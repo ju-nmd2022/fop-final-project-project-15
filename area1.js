@@ -6,28 +6,28 @@ const whatOvve = JSON.parse(localStorage.character);
 
 switch (whatOvve.school) {
     case 'JTH':
-        ovveToDisplay = '/glyphs/home/yellowovve.png';
+        ovveToDisplay = 'glyphs/home/yellowovve.png';
         break;
     case 'HLK (Blue)':
-        ovveToDisplay = '/glyphs/home/blueovve.png';
+        ovveToDisplay = 'glyphs/home/blueovve.png';
         break;
     case 'HLK (Red)':
-        ovveToDisplay = '/glyphs/home/redovve.png';
+        ovveToDisplay = 'glyphs/home/redovve.png';
         break;
     case 'Hälso':
-        ovveToDisplay = '/glyphs/home/whiteovve.png';
+        ovveToDisplay = 'glyphs/home/whiteovve.png';
         break;
     case 'JIBS':
-        ovveToDisplay = '/glyphs/home/greenovve.png';
+        ovveToDisplay = 'glyphs/home/greenovve.png';
         break;
     case 'Qult':
-        ovveToDisplay = '/glyphs/home/blackovve.png';
+        ovveToDisplay = 'glyphs/home/blackovve.png';
         break;
 }
 
 function updateOvveInWindow() {
     if (localStorage.ovveTaskCompleted === 'true') {
-        playerHouseOvve.setAttribute('src', '/glyphs/home/emptywindow.png');    
+        playerHouseOvve.setAttribute('src', 'glyphs/home/emptywindow.png');    
     } else {
         playerHouseOvve.setAttribute('src', ovveToDisplay);
     }
@@ -48,7 +48,7 @@ function displayErrorPopup() {
 function removePopupHandler() {
     unpauseGame();
     if (localStorage.prepartyTaskCompleted === 'true' && localStorage.prepartyPopupDisplayed === 'false') {
-        const prepartyCompletion = new TaskCompletion('Go to the preparty','/glyphs/taskicons/prepartytask.png');
+        const prepartyCompletion = new TaskCompletion('Go to the preparty','glyphs/taskicons/prepartytask.png');
         prepartyCompletion.createTaskCompletionPopup();
         localStorage.prepartyPopupDisplayed = 'true';
     } 

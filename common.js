@@ -140,14 +140,19 @@ pauseButton.addEventListener('click', ()=> {
 })
 
 function restart() {
-    window.location.href = 'school.html';
-    localStorage.currentHour = 21;
-    localStorage.currentMinute = 0;
+    window.location.href = 'area1.html';
     localStorage.alcoholTaskCompleted = 'false';
     localStorage.kebabTaskCompleted = 'false';
     localStorage.ovveTaskCompleted = 'false';
     localStorage.prepartyTaskCompleted = 'false';
+
     localStorage.bridgeCompleted = 'false';
+    localStorage.akaRoadCompleted = 'false';
+
+    localStorage.currentHour = 21;
+    localStorage.currentMinute = 0;
+
+    localStorage.prepartyPopupDisplayed = 'false';
 }
 
 restartGame.addEventListener('click', () => {

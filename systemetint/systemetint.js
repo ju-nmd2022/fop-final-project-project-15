@@ -18,15 +18,15 @@ let gameActive = false;
 
 returnToOutside.addEventListener('click', () => {
     if (localStorage.alcoholTaskCompleted === 'false') {
-        window.location.href = '/area2.html';
+        window.location.href = 'area2.html';
         return;
     } else {
         const popup = document.getElementById('popup');
         popup.style.display = 'none';
-        const alcoholTaskCompletedPopup = new TaskCompletion('Buy alcohol','/glyphs/taskicons/alcoholtask.png');
+        const alcoholTaskCompletedPopup = new TaskCompletion('Buy alcohol','glyphs/taskicons/alcoholtask.png');
         alcoholTaskCompletedPopup.createTaskCompletionPopup();
         setTimeout(() => {
-            window.location.href = '/area2.html';
+            window.location.href = 'area2.html';
         }, 3500);
         updateTaskColors();
     }   
@@ -109,10 +109,10 @@ function spawnDrink() {
     drink.classList.add('drink');
 
     if (whatType === 0) {
-        drink.setAttribute('src','/glyphs/beercan.svg');
+        drink.setAttribute('src','glyphs/beercan.svg');
     }
     if (whatType === 1) {
-        drink.setAttribute('src','/glyphs/vodka.svg');
+        drink.setAttribute('src','glyphs/vodka.svg');
     }
     drink.style.left = drinkPosition() + 'px';
     gameContainer.appendChild(drink);

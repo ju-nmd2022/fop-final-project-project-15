@@ -25,7 +25,7 @@ class TaskCompletion {
 
         const taskCompletionSound = document.createElement('audio');
         const audioSource = document.createElement('source');
-        audioSource.setAttribute('src','/taskcompletionsound.mp3');
+        audioSource.setAttribute('src','taskcompletionsound.mp3');
         audioSource.setAttribute('type','audio/mpeg');
         taskCompletionSound.appendChild(audioSource);
 

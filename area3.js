@@ -20,7 +20,7 @@ function westcoastAnimation() {
 
 function endOfBubbleHandler() {
     if (!unlockedPatches.includes('westcoastPatch')) {
-        const newPatchUnlocked = new TaskCompletion('WESTCOAST PATCH','/glyphs/patches/westcoastpatch.png');
+        const newPatchUnlocked = new TaskCompletion('WESTCOAST PATCH','glyphs/patches/westcoastpatch.png');
         newPatchUnlocked.createTaskCompletionPopup();
         unlockedPatches.push('westcoastPatch');
         localStorage.unlockedPatches = JSON.stringify(unlockedPatches);
@@ -39,21 +39,21 @@ function testForWin() {
 function removePopupHandler() {
     if (localStorage.alcoholTaskCompleted === 'true' && localStorage.kebabTaskCompleted === 'true' && localStorage.ovveTaskCompleted === 'true' && localStorage.prepartyTaskCompleted) {
         if (!unlockedPatches.includes('winnerPatch')) {
-            const winnerPatchUnlocked = new TaskCompletion('WINNER PATCH','/glyphs/patches/winnerpatch.svg');
+            const winnerPatchUnlocked = new TaskCompletion('WINNER PATCH','glyphs/patches/winnerpatch.svg');
             winnerPatchUnlocked.createTaskCompletionPopup();
             unlockedPatches.push('winnerPatch');
             localStorage.unlockedPatches = JSON.stringify(unlockedPatches);
         }
         if (localStorage.currentMinute < 31 && !unlockedPatches.includes('speedfreakPatch')) {
             setTimeout(() => {
-                const speedfreakPatchUnlocked = new TaskCompletion('SPEEDFREAK PATCH','/glyphs/patches/speedfreakpatch.png');
+                const speedfreakPatchUnlocked = new TaskCompletion('SPEEDFREAK PATCH','glyphs/patches/speedfreakpatch.png');
                 speedfreakPatchUnlocked.createTaskCompletionPopup();
                 unlockedPatches.push('speedfreakPatch');
                 localStorage.unlockedPatches = JSON.stringify(unlockedPatches);
             }, 2500);
         }
         setTimeout(() => {
-            window.location.href = '/index.html';
+            window.location.href = 'index.html';
         }, 5000);
     }
 }

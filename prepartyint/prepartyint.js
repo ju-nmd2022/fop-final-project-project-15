@@ -31,7 +31,7 @@ let rotationInterval = setInterval(rotateBall,20);
 
 
 function displayFirstPopup() {
-    const firstPopup = new Popup('Beer Pong! My favorite','Start','/area1.html');
+    const firstPopup = new Popup('Beer Pong! My favorite','Start','area1.html');
     firstPopup.createPopup();
 }
 
@@ -162,7 +162,7 @@ function draw() {
 
 function testForWin() {
     if (cupsHit === 6) {
-        const winPopup = new Popup('Score! I/m totally in a party mode now!','','/area1.html');
+        const winPopup = new Popup('Score! I/m totally in a party mode now!','','area1.html');
         winPopup.createPopup();
         localStorage.prepartyTaskCompleted = 'true';
     }

@@ -56,7 +56,7 @@ function whichEnemies() {
     if (characterInfo.school === 'JIBS') {
         for (let index in jibsBody) {
             
-            jibsBody[index].setAttribute('src','/glyphs/akaroad/jthbody.png');
+            jibsBody[index].setAttribute('src','glyphs/akaroad/jthbody.png');
         }
         enemySchool = 'JTH';
     }
@@ -142,7 +142,7 @@ function generateSavedCharacter() {
     torso.style.backgroundColor = characterInfo.shirtColor;
     rightLeg.style.backgroundColor = characterInfo.pantsColor;
     leftLeg.style.backgroundColor = characterInfo.pantsColor;
-    playerOvve.setAttribute('src',`/glyphs/ovve/${characterInfo.ovveColor}`);
+    playerOvve.setAttribute('src',`glyphs/ovve/${characterInfo.ovveColor}`);
 
     isOvveOn();
 }
@@ -297,11 +297,11 @@ function canMoveRight() {
 
 function checkForScreenChange() {
     if ((characterPosition.right > window.innerWidth + characterPosition.width) || characterPosition.bottom > window.innerHeight + characterPosition.height/2) {
-        window.location.href = '/area1.html';
+        window.location.href = 'area1.html';
     }
     if (characterPosition.top < 0 - characterPosition.height/2) {
         localStorage.akaRoadCompleted = 'true';
-        window.location.href = '/area3.html';
+        window.location.href = 'area3.html';
     }
 }
 

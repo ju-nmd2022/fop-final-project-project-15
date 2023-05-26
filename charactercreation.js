@@ -247,7 +247,7 @@ function createCharacter() {
     torso.style.backgroundColor = savedCharacter.shirtColor;
     leftLeg.style.backgroundColor = savedCharacter.pantsColor;
     rightLeg.style.backgroundColor = savedCharacter.pantsColor;
-    playerOvve.setAttribute('src',`/glyphs/ovve/${savedCharacter.ovveColor}`);
+    playerOvve.setAttribute('src',`glyphs/ovve/${savedCharacter.ovveColor}`);
 }
 
 // const chooseName = document.getElementById('chooseName'); // name field

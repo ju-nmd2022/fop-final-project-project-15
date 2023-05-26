@@ -115,7 +115,7 @@ function generateSavedCharacter() {
     torso.style.backgroundColor = characterInfo.shirtColor;
     rightLeg.style.backgroundColor = characterInfo.pantsColor;
     leftLeg.style.backgroundColor = characterInfo.pantsColor;
-    playerOvve.setAttribute('src',`/glyphs/ovve/${characterInfo.ovveColor}`);
+    playerOvve.setAttribute('src',`glyphs/ovve/${characterInfo.ovveColor}`);
 
     isOvveOn();
 }
@@ -206,11 +206,11 @@ function detectPathway(direction) {
                 case 'frejsDoor':
                     if (localStorage.prepartyTaskCompleted === 'true') {break;}
                     if (localStorage.ovveTaskCompleted === 'false' || localStorage.alcoholTaskCompleted === 'false') {displayErrorPopup(); break;}
-                    window.location.href = '/prepartyint/prepartyint.html';
+                    window.location.href = 'prepartyint/prepartyint.html';
                     break;
                 case 'playerDoor':
                     if (localStorage.ovveTaskCompleted !== 'true') {
-                        const ovveTaskCompletedPopup = new TaskCompletion('Get your ovve','/glyphs/taskicons/ovvetask.png');
+                        const ovveTaskCompletedPopup = new TaskCompletion('Get your ovve','glyphs/taskicons/ovvetask.png');
                         ovveTaskCompletedPopup.createTaskCompletionPopup();
                         localStorage.ovveTaskCompleted = 'true';
                         upgradeTaskColors();
@@ -219,19 +219,19 @@ function detectPathway(direction) {
                     }
                     break;
                 case 'bridgeTunnel':
-                    window.location.href = '/bridge/bridge.html';
+                    window.location.href = 'bridge/bridge.html';
                     break;
                 case 'akaTunnel':
-                    window.location.href = '/akaroad/akaroad.html';
+                    window.location.href = 'akaroad/akaroad.html';
                     break;
                 case 'systemetDoor':
                     if (localStorage.alcoholTaskCompleted !== 'true') {
-                        window.location.href = '/systemetint/systemetint.html'
+                        window.location.href = 'systemetint/systemetint.html'
                     }
                     break;
                 case 'alcamoDoor':
                     if (localStorage.kebabTaskCompleted !== 'true') {
-                        const kebabTaskCompletion = new TaskCompletion('Eat a kebab','/glyphs/taskicons/kebabtask.png');
+                        const kebabTaskCompletion = new TaskCompletion('Eat a kebab','glyphs/taskicons/kebabtask.png');
                         kebabTaskCompletion.createTaskCompletionPopup();
                         localStorage.kebabTaskCompleted = 'true';
                         upgradeTaskColors();
