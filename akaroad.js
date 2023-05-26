@@ -323,7 +323,7 @@ function detectPillar(index) {
 
 function detectJibsSpotting(index) {
     const jibsVisionLocation = jibsVision[index].getBoundingClientRect();
-    if (characterPosition.right < jibsVisionLocation.right && jibsVisionLocation.top < characterPosition.top && jibsVisionLocation.bottom > characterPosition.bottom) {
+    if (characterPosition.left + characterPosition.width < jibsVisionLocation.right && jibsVisionLocation.top < characterPosition.top && jibsVisionLocation.bottom > characterPosition.bottom) {
         failGame();
     }
 }

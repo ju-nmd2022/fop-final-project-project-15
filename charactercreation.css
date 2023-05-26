@@ -24,6 +24,10 @@
     flex-direction: column;
 }
 
+.ovve-colors {
+    display: block;
+}
+
 .customization-window > p {
     margin-top: 4vh;
     margin-left: 2vw;

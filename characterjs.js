@@ -165,12 +165,12 @@ function boundaryDetected(direction) {
         if (direction === 'up') {
           if (characterPosition.top < boundaryPosition.y + boundaryPosition.height + 40 &&
               characterPosition.bottom > boundaryPosition.y &&
-              characterPosition.left > boundaryPosition.x &&
-              characterPosition.right < boundaryPosition.x + boundaryPosition.width) {
+              (characterPosition.left > boundaryPosition.x &&
+              characterPosition.left < boundaryPosition.x + boundaryPosition.width)) {
             return true;
           }
         } else if (direction === 'down') {
-          if (characterPosition.bottom > boundaryPosition.y - 40 &&
+          if (characterPosition.top + characterPosition.height > boundaryPosition.y - 40 &&
               characterPosition.top < boundaryPosition.y + boundaryPosition.height &&
               characterPosition.left > boundaryPosition.x &&
               characterPosition.right < boundaryPosition.x + boundaryPosition.width) {
@@ -254,29 +254,37 @@ function detectPathway(direction) {
         if (direction === 'up') {
             if (characterPosition.top > pathwayPosition.y &&
                 characterPosition.top < pathwayPosition.y + pathwayPosition.height &&
-                characterPosition.left > pathwayPosition.x &&
-                characterPosition.left < pathwayPosition.x + pathwayPosition.width) {  
+                (characterPosition.left > pathwayPosition.x &&
+                characterPosition.left < pathwayPosition.x + pathwayPosition.width ||
+                characterPosition.left + characterPosition.width > pathwayPosition.x &&
+                characterPosition.left + characterPosition.width < pathwayPosition.x + pathwayPosition.width)) {  
                     goToDestination();
                 }
         } else if (direction === 'down') {
             if (characterPosition.bottom > pathwayPosition.y &&
                 characterPosition.bottom < pathwayPosition.y + pathwayPosition.height &&
-                characterPosition.left > pathwayPosition.x &&
-                characterPosition.left < pathwayPosition.x + pathwayPosition.width) {  
+                (characterPosition.left > pathwayPosition.x &&
+                characterPosition.left < pathwayPosition.x + pathwayPosition.width ||
+                characterPosition.left + characterPosition.width > pathwayPosition.x &&
+                characterPosition.left + characterPosition.width < pathwayPosition.x + pathwayPosition.width)) {  
                     goToDestination();
                 }
         } else if (direction === 'left') {
             if (characterPosition.left > pathwayPosition.x &&
                 characterPosition.left < pathwayPosition.x + pathwayPosition.width &&
-                characterPosition.top > pathwayPosition.y &&
-                characterPosition.top < pathwayPosition.y + pathwayPosition.height) {  
+                (characterPosition.top > pathwayPosition.y &&
+                characterPosition.top < pathwayPosition.y + pathwayPosition.height ||
+                characterPosition.top + characterPosition.height > pathwayPosition.y &&
+                characterPosition.top + characterPosition.height < pathwayPosition.y + pathwayPosition.height)) {  
                     goToDestination();
                 }
         } else if (direction === 'right') {
             if (characterPosition.right > pathwayPosition.x &&
                 characterPosition.right < pathwayPosition.x + pathwayPosition.width &&
-                characterPosition.top > pathwayPosition.y &&
-                characterPosition.top < pathwayPosition.y + pathwayPosition.height) { 
+                (characterPosition.top > pathwayPosition.y &&
+                characterPosition.top < pathwayPosition.y + pathwayPosition.height ||
+                characterPosition.top + characterPosition.height > pathwayPosition.y &&
+                characterPosition.top + characterPosition.height < pathwayPosition.y + pathwayPosition.height)) { 
                     goToDestination(); 
                 }
         } 
