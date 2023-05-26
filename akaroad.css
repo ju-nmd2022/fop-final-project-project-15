@@ -64,7 +64,7 @@
 }
 .pillar {
     background-color: gray;
-    width: 12vmin;
+    width: 5rem;
     aspect-ratio: 1/1;
     margin-left: 10vmin;
 }
@@ -198,4 +198,12 @@
     left: 0.8vmin;
     width: 0.87vmin;
 
+}
+
+.bag {
+    width: 1.67vmin;
+    height: 2.67vmin;
+    margin-top: 2.67vmin;
+    margin-left: -0.66vmin;
+    transform-origin: top center;;
 }
