@@ -28,7 +28,7 @@ class Popup {
             if (this.description !== 'Dang it! I won/t get in for free at this time!') {
                 removePopupHandler();
             } else {
-                window.location.href = '/index.html';
+                window.location.href = 'index.html';
             }
         })
         

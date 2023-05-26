@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Systemet</title>
-    <link rel="stylesheet" href="systemetint/systemetint.css"/>
+    <title>Bridge</title>
+    <link rel="stylesheet" href="bridge.css"/>
+    <link rel="stylesheet" href="common.css"/>
     <script src="common.js" defer></script>
-    <script src="systemetint/systemetint.js" defer></script>
-    <script src="taskcompletion.js" defer></script>
-    <link rel="stylesheet" href="/common.css"/>
+    <script src="bridge.js" defer></script>
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/b0f116667a.js" crossorigin="anonymous"></script>
 </head>
@@ -63,29 +62,18 @@
             </div>
         </div>
 
+        <p id="failCountText">Fails: 0</p>
+        <!-- <div class="popup"></div> -->
 
-        <div class="popup" id="popup">
-            <p id="popupText">
-                Whoa! Systemet sure has changed. I'll probably need 8 beers, absolutely no vodka though.
-            </p>
-            <p class="remove-popup" id="removePopup">Click to continue</p>
-            <a id="returnToOutside">
-                <p class="remove-popup">Back to the town</p>
-            </a>
+        <img class="bridge" id="bridge" src="glyphs/bridge.png"/>
+        <img class="bridge-pillar" id="bridgePillarLeft" src="glyphs/pillarleft.png"/>
+        <img class="bridge-pillar" id="bridgePillarRight" src="glyphs/pillarright.png"/>
+
+        <div class="character" id="character">
+            <div class="head" id="head"></div>
+            <div class="body" id="body"></div>
+            <div class="legs" id="legs"></div>
         </div>
-        <div class="game-container" id="gameContainer">
-            <img class="systemet-logo" src="glyphs/systemetlogo.svg"/>
-            <div class="systemet-div" id="systemetBag">
-                <img class="systemet-bag" src="glyphs/systemetbag.svg"/>
-                <div class="systemet-hide"></div>
-            </div>
-            <div class="life-container" id="lifeContainer">
-                <img class="life" src="glyphs/systemetlife.svg"/>
-                <img class="life" src="glyphs/systemetlife.svg"/>
-                <img class="life" src="glyphs/systemetlife.svg"/>
-            </div>
-            <p class="number-of-beers" id="numberOfBeers">Number:</p>
         </div>
-    </div>
 </body>
 </html>

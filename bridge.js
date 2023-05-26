@@ -78,18 +78,18 @@ function checkForScreenChange() {
     const characterPosition = character.getBoundingClientRect();
     // top: characterposition.top + characterposition.height/2
     if (characterPosition.top + characterPosition.height/2 < 0) {
-        window.location.href = '/area2.html';
+        window.location.href = 'area2.html';
     }
     // bottom: characterposition.bottom - characterposition.height/2
     if (characterPosition.bottom - characterPosition.height/2 > window.innerHeight) {
-        window.location.href = '/area1.html';
+        window.location.href = 'area1.html';
     }
 }
 
 if (localStorage.bridgeCompleted === 'false') {
 
 function displayPopup() {
-    const bridgePopup = new Popup('Whoa! What happened to my perspective? What happened to me? Why doesn/t this bridge have any sidewalk? The questions are many, but the quest remains: I/ve gotta get across!','click to start','/area1.html');
+    const bridgePopup = new Popup('Whoa! What happened to my perspective? What happened to me? Why doesn/t this bridge have any sidewalk? The questions are many, but the quest remains: I/ve gotta get across!','click to start','area1.html');
     bridgePopup.createPopup();
 }
 
@@ -115,7 +115,7 @@ function removePopupHandler() {
     gameActive = true;
 };
 function displayReplayPopup() {
-    const bridgeReplayPopup = new Popup('Darn it!','Try again','/area1.html');
+    const bridgeReplayPopup = new Popup('Darn it!','Try again','area1.html');
     bridgeReplayPopup.createPopup();
 }
 // make sure the cars are the right size
@@ -148,22 +148,22 @@ function spawnCar() {
     const car = document.createElement('img');
     car.classList.add('car');
     if (chosenCar === 0) { //blue
-        car.setAttribute('src','/glyphs/cars/bluecar.svg')
+        car.setAttribute('src','glyphs/cars/bluecar.svg')
     }
     if (chosenCar === 1) { //green
-        car.setAttribute('src','/glyphs/cars/greencar.svg')
+        car.setAttribute('src','glyphs/cars/greencar.svg')
     }
     if (chosenCar === 2) { //red
-        car.setAttribute('src','/glyphs/cars/redcar.svg')
+        car.setAttribute('src','glyphs/cars/redcar.svg')
     }
     if (chosenCar === 3) { //skyblue
-        car.setAttribute('src','/glyphs/cars/skybluecar.svg')
+        car.setAttribute('src','glyphs/cars/skybluecar.svg')
     }
     if (chosenCar === 4) { //white
-        car.setAttribute('src','/glyphs/cars/whitecar.svg')
+        car.setAttribute('src','glyphs/cars/whitecar.svg')
     }
     if (chosenCar === 5) { //yellow
-        car.setAttribute('src','/glyphs/cars/yellowcar.svg')
+        car.setAttribute('src','glyphs/cars/yellowcar.svg')
     }
     car.style.left = bridgeLeftPosition + chooseLane() + 'px';
     screenContainer.appendChild(car);

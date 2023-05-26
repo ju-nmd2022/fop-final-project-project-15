@@ -206,7 +206,7 @@ function detectPathway(direction) {
                 case 'frejsDoor':
                     if (localStorage.prepartyTaskCompleted === 'true') {break;}
                     if (localStorage.ovveTaskCompleted === 'false' || localStorage.alcoholTaskCompleted === 'false') {displayErrorPopup(); break;}
-                    window.location.href = 'prepartyint/prepartyint.html';
+                    window.location.href = 'prepartyint.html';
                     break;
                 case 'playerDoor':
                     if (localStorage.ovveTaskCompleted !== 'true') {
@@ -219,14 +219,14 @@ function detectPathway(direction) {
                     }
                     break;
                 case 'bridgeTunnel':
-                    window.location.href = 'bridge/bridge.html';
+                    window.location.href = 'bridge.html';
                     break;
                 case 'akaTunnel':
-                    window.location.href = 'akaroad/akaroad.html';
+                    window.location.href = 'akaroad.html';
                     break;
                 case 'systemetDoor':
                     if (localStorage.alcoholTaskCompleted !== 'true') {
-                        window.location.href = 'systemetint/systemetint.html'
+                        window.location.href = 'systemetint.html'
                     }
                     break;
                 case 'alcamoDoor':
