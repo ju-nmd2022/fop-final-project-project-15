@@ -1,3 +1,5 @@
+const speechBubbleBackdrop = document.querySelector('.backdrop');
+
 class SpeechBubble {
     constructor(positionTop,positionLeft,bubble1,bubble2,bubble3,bubble4,bubble5,bubble6,bubble7,bubble8,bubble9) {
         this.positionTop = positionTop;
@@ -45,8 +47,8 @@ class SpeechBubble {
         newText.style.animation = `typing-ani 0.4s steps(${this.bubble1.length}) 1`;
         newTextLine.style.animationDelay = '0.4s';
 
-        newSpeechBubbleContainer.style.top = `${this.positionTop}vmin`;
-        newSpeechBubbleContainer.style.left = `${this.positionLeft}vmin`;
+        newSpeechBubbleContainer.style.top = `${this.positionTop}rem`;
+        newSpeechBubbleContainer.style.left = `${this.positionLeft}rem`;
 
         const testForMultipleLines = (bubble) => {
             if (this.makeNewLine(bubble)) {
@@ -66,55 +68,55 @@ class SpeechBubble {
 
         newSpeechBubbleContainer.addEventListener('click', () => {
             newText.style.animation = 'none';
-            if (!this.bubble2) {endOfBubbleHandler(); screenContainer.removeChild(newSpeechBubbleContainer); return;}
+            if (!this.bubble2) {endOfBubbleHandler(); backdrop.removeChild(newSpeechBubbleContainer); return;}
             if (newText.innerText === this.bubble1 || newText.innerText + newTextLine.innerText === this.bubble1 || `${newText.innerText} ${newTextLine.innerText}` === this.bubble1) {
                 testForMultipleLines(this.bubble2);
                 newText.style.animation = `typing-ani 0.4s steps(${this.bubble2.length}) 1`;
                 return;
             } 
-            if (!this.bubble3) {endOfBubbleHandler(); screenContainer.removeChild(newSpeechBubbleContainer); return;}
+            if (!this.bubble3) {endOfBubbleHandler(); backdrop.removeChild(newSpeechBubbleContainer); return;}
             if (newText.innerText === this.bubble2 || newText.innerText + newTextLine.innerText === this.bubble2 || `${newText.innerText} ${newTextLine.innerText}` === this.bubble2) {
                 testForMultipleLines(this.bubble3);
                 newText.style.animation = `typing-ani 0.4s steps(${this.bubble3.length}) 1`;
                 return;
             }
-            if (!this.bubble4) {endOfBubbleHandler(); screenContainer.removeChild(newSpeechBubbleContainer); return;}
+            if (!this.bubble4) {endOfBubbleHandler(); backdrop.removeChild(newSpeechBubbleContainer); return;}
             if (newText.innerText === this.bubble3 || newText.innerText + newTextLine.innerText === this.bubble3 || `${newText.innerText} ${newTextLine.innerText}` === this.bubble3) {
                 testForMultipleLines(this.bubble4);
                 newText.style.animation = `typing-ani 0.4s steps(${this.bubble4.length}) 1`;
                 return;
             }
-            if (!this.bubble5) {endOfBubbleHandler(); screenContainer.removeChild(newSpeechBubbleContainer); return;}
+            if (!this.bubble5) {endOfBubbleHandler(); backdrop.removeChild(newSpeechBubbleContainer); return;}
             if (newText.innerText === this.bubble4 || newText.innerText + newTextLine.innerText === this.bubble4 || `${newText.innerText} ${newTextLine.innerText}` === this.bubble4) {
                 testForMultipleLines(this.bubble5);
                 newText.style.animation = `typing-ani 0.4s steps(${this.bubble5.length}) 1`;
                 return;
             }
-            if (!this.bubble6) {endOfBubbleHandler(); screenContainer.removeChild(newSpeechBubbleContainer); return;}
+            if (!this.bubble6) {endOfBubbleHandler(); backdrop.removeChild(newSpeechBubbleContainer); return;}
             if (newText.innerText === this.bubble5 || newText.innerText + newTextLine.innerText === this.bubble5 || `${newText.innerText} ${newTextLine.innerText}` === this.bubble5) {
                 testForMultipleLines(this.bubble6);
                 newText.style.animation = `typing-ani 0.4s steps(${this.bubble6.length}) 1`;
                 return;
             }
-            if (!this.bubble7) {endOfBubbleHandler(); screenContainer.removeChild(newSpeechBubbleContainer); return;}
+            if (!this.bubble7) {endOfBubbleHandler(); backdrop.removeChild(newSpeechBubbleContainer); return;}
             if (newText.innerText === this.bubble6 || newText.innerText + newTextLine.innerText === this.bubble6 || `${newText.innerText} ${newTextLine.innerText}` === this.bubble6) {
                 testForMultipleLines(this.bubble7);
                 newText.style.animation = `typing-ani 0.4s steps(${this.bubble7.length}) 1`;
                 return;
             }
-            if (!this.bubble8) {endOfBubbleHandler(); screenContainer.removeChild(newSpeechBubbleContainer); return;}
+            if (!this.bubble8) {endOfBubbleHandler(); backdrop.removeChild(newSpeechBubbleContainer); return;}
             if (newText.innerText === this.bubble7 || newText.innerText + newTextLine.innerText === this.bubble7 || `${newText.innerText} ${newTextLine.innerText}` === this.bubble7) {
                 testForMultipleLines(this.bubble8);
                 newText.style.animation = `typing-ani 0.4s steps(${this.bubble8.length}) 1`;
                 return;
             }
-            if (!this.bubble9) {endOfBubbleHandler(); screenContainer.removeChild(newSpeechBubbleContainer); return;}
+            if (!this.bubble9) {endOfBubbleHandler(); backdrop.removeChild(newSpeechBubbleContainer); return;}
             if (newText.innerText === this.bubble8 || newText.innerText + newTextLine.innerText === this.bubble8 || `${newText.innerText} ${newTextLine.innerText}` === this.bubble8) {
                 testForMultipleLines(this.bubble9);
                 newText.style.animation = `typing-ani 0.4s steps(${this.bubble9.length}) 1`;
                 return;
             }
-            endOfBubbleHandler(); screenContainer.removeChild(newSpeechBubbleContainer);
+            endOfBubbleHandler(); backdrop.removeChild(newSpeechBubbleContainer);
             }
 
 
@@ -124,6 +126,6 @@ class SpeechBubble {
         newTextContainer.appendChild(newTextLine);
         newSpeechBubble.appendChild(newTextContainer);
         newSpeechBubbleContainer.appendChild(newSpeechBubble);
-        screenContainer.appendChild(newSpeechBubbleContainer);
+        backdrop.appendChild(newSpeechBubbleContainer);
     }
 }

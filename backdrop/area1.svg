@@ -236,7 +236,6 @@
     <rect class="cls-15" x="2582.54" y="91.03" width="40.43" height="93.78" transform="translate(2464.84 2740.67) rotate(-90)"/>
     <rect class="cls-27" x="2515.57" y=".12" width="40.43" height="105.76" transform="translate(5071.57 106) rotate(180)"/>
     <rect class="cls-15" x="2582.86" y="-19.57" width="40.43" height="93.78" transform="translate(2575.75 2630.39) rotate(-90)"/>
-    <rect class="cls-23" x="4125.89" y="2301.83" width="33.62" height="33.89"/>
     <rect class="cls-15" x="4066.73" y="3357.04" width="21.52" height="344.91"/>
     <ellipse class="cls-25" cx="2907.7" cy="1146.73" rx="80.91" ry="41.59"/>
     <g>
@@ -510,8 +509,6 @@
     <rect class="cls-20" x="4734.78" y="2422.5" width="95.03" height="165.34"/>
     <rect class="cls-20" x="5112.13" y="2422.5" width="95.03" height="165.34"/>
     <rect class="cls-20" x="5538.1" y="2422.5" width="95.03" height="165.34"/>
-    <rect class="cls-34" x="4125.89" y="2301.83" width="152.35" height="136.66"/>
-    <rect class="cls-17" x="4136.06" y="2314.17" width="132.01" height="111.98"/>
     <rect class="cls-34" x="4575.81" y="2301.83" width="152.35" height="136.65"/>
     <rect class="cls-17" x="4585.98" y="2314.17" width="132.01" height="111.98"/>
     <rect class="cls-34" x="4953.16" y="2301.83" width="152.35" height="136.65"/>

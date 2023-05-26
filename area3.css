@@ -1,0 +1,92 @@
+.backdrop-img {
+    width: 180rem;
+}
+#topBoundary {
+    top: 20rem;
+}
+#bottomBoundary {
+    top: 70rem;
+}
+#leftBoundary {
+    left: 40rem;
+}
+#rightBoundary {
+    left: 140rem;
+}
+#akaBoundary {
+    width: 127rem;
+    height: 37rem;
+    top: 0rem;
+    left: 0;
+}
+
+.boundary {
+    opacity: 0;
+}
+
+#akaDoor {
+    width: 4.6rem;
+    height: 8rem;
+    left: 89rem;
+    top: 33rem;
+}
+#akaTunnel {
+    width: 15.5rem;
+    height: 5rem;
+    left: 105rem;
+    top: 63rem;
+}
+#westcoastTrigger {
+    width: 5rem;
+    height: 100rem;
+    left: 70rem;
+}
+
+#exclamationPoint {
+    width: 4vmin;
+    margin-bottom: 1vmin;
+    visibility: hidden;
+}
+.exclamation-animation {
+    animation-name: exclamation-delay;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-delay: 1s;
+}
+#westcoastStudent {
+    transform: scale(80%);
+    width: fit-content;
+    height: fit-content;
+    contain: content;
+    position: absolute;
+    left: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.westcoast-student-animation {
+    animation-name: westcoast-ani;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+#westcoastStudentImg {
+    width: 11vmin;
+}
+
+@keyframes westcoast-ani {
+    from {
+        left: 40rem;
+    } to {
+        left: 60rem;
+    }
+}
+@keyframes exclamation-delay {
+    from {
+        visibility: hidden;
+    } to {
+        visibility: visible;
+    }
+}

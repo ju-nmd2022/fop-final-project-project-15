@@ -16,9 +16,8 @@ const backdrop = document.querySelector('.backdrop');
 // get the saved character info
 const characterInfo = JSON.parse(localStorage.character);
 
-let walkingDistance = 2;
+let walkingDistance = 1.5;
 let armsAnimationState = false;
-let sprintMultiplier = 1;
 let characterPosition = characterOnScreen.getBoundingClientRect();
 
 let bagAnimationActive = false;
@@ -66,6 +65,14 @@ function checkForEquippedPatches() {
                 qultPatch.style.display = 'block';
                 break;
         } 
+    }
+}
+
+function showOrHideBag() {
+    if (localStorage.alcoholTaskCompleted === 'true') {
+        bag.style.display = 'block'
+    } else {
+        bag.style.display = 'none'
     }
 }
 
@@ -156,28 +163,28 @@ function boundaryDetected(direction) {
         const boundaryPosition = boundary.getBoundingClientRect();
     
         if (direction === 'up') {
-          if (characterPosition.top < boundaryPosition.y + boundaryPosition.height + 60 &&
+          if (characterPosition.top < boundaryPosition.y + boundaryPosition.height + 40 &&
               characterPosition.bottom > boundaryPosition.y &&
               characterPosition.left > boundaryPosition.x &&
               characterPosition.right < boundaryPosition.x + boundaryPosition.width) {
             return true;
           }
         } else if (direction === 'down') {
-          if (characterPosition.bottom > boundaryPosition.y - 60 &&
+          if (characterPosition.bottom > boundaryPosition.y - 40 &&
               characterPosition.top < boundaryPosition.y + boundaryPosition.height &&
               characterPosition.left > boundaryPosition.x &&
               characterPosition.right < boundaryPosition.x + boundaryPosition.width) {
             return true;
           }
         } else if (direction === 'left') {
-          if (characterPosition.left < boundaryPosition.x + boundaryPosition.width + 60 &&
+          if (characterPosition.left < boundaryPosition.x + boundaryPosition.width + 40 &&
               characterPosition.right > boundaryPosition.x &&
               characterPosition.bottom > boundaryPosition.y &&
               characterPosition.top < boundaryPosition.y + boundaryPosition.height) {
             return true;
           }
         } else if (direction === 'right') {
-          if (characterPosition.right > boundaryPosition.x - 60 &&
+          if (characterPosition.right > boundaryPosition.x - 40 &&
               characterPosition.left < boundaryPosition.x + boundaryPosition.width && 
               characterPosition.bottom > boundaryPosition.y &&
               characterPosition.top < boundaryPosition.y + boundaryPosition.height) {
@@ -189,72 +196,131 @@ function boundaryDetected(direction) {
       return false;
 }
 
-function detectPathway() {
+function detectPathway(direction) {
     for (let i = 0; i < pathways.length; i++) {
         const pathway = pathways[i];
         const pathwayPosition = pathway.getBoundingClientRect();
-    
-        if (characterPosition.top > pathwayPosition.y &&
-            characterPosition.top < pathwayPosition.y + pathwayPosition.height &&
-            characterPosition.left > pathwayPosition.x &&
-            characterPosition.left < pathwayPosition.x + pathwayPosition.width) {
-                switch (pathway.id) {
-                    case 'frejsDoor':
-                        window.location.href = '/prepartyint/prepartyint.html';
-                        break;
-                    case 'playerDoor':
-                        console.log('tjenixen')
-                        break;
-                    case 'bridgeTunnel':
-                        window.location.href = '/bridge/bridge.html';
-                        break;
-                    case 'akaTunnel':
-                        window.location.href = '/akaroad/akaroad.html';
-                        break;
-                }
+
+        const goToDestination = () => {
+            switch (pathway.id) {
+                case 'frejsDoor':
+                    if (localStorage.prepartyTaskCompleted === 'true') {break;}
+                    if (localStorage.ovveTaskCompleted === 'false' || localStorage.alcoholTaskCompleted === 'false') {displayErrorPopup(); break;}
+                    window.location.href = '/prepartyint/prepartyint.html';
+                    break;
+                case 'playerDoor':
+                    if (localStorage.ovveTaskCompleted !== 'true') {
+                        const ovveTaskCompletedPopup = new TaskCompletion('Get your ovve','/glyphs/taskicons/ovvetask.png');
+                        ovveTaskCompletedPopup.createTaskCompletionPopup();
+                        localStorage.ovveTaskCompleted = 'true';
+                        upgradeTaskColors();
+                        updateOvveInWindow();
+                        isOvveOn();
+                    }
+                    break;
+                case 'bridgeTunnel':
+                    window.location.href = '/bridge/bridge.html';
+                    break;
+                case 'akaTunnel':
+                    window.location.href = '/akaroad/akaroad.html';
+                    break;
+                case 'systemetDoor':
+                    if (localStorage.alcoholTaskCompleted !== 'true') {
+                        window.location.href = '/systemetint/systemetint.html'
+                    }
+                    break;
+                case 'alcamoDoor':
+                    if (localStorage.kebabTaskCompleted !== 'true') {
+                        const kebabTaskCompletion = new TaskCompletion('Eat a kebab','/glyphs/taskicons/kebabtask.png');
+                        kebabTaskCompletion.createTaskCompletionPopup();
+                        localStorage.kebabTaskCompleted = 'true';
+                        upgradeTaskColors();
+                    }
+                    break;
+                case 'oldManDetector':
+                    makeOldManSpeak();
+                    break;
+                case 'akaDoor':
+                    testForWin();
+                    break;
+                case 'westcoastTrigger':
+                    const unlockedPatches = JSON.parse(localStorage.unlockedPatches);
+                    if (!unlockedPatches.includes('westcoastPatch')) {
+                        westcoastAnimation();
+                    }
             }
+        }    
+
+        if (direction === 'up') {
+            if (characterPosition.top > pathwayPosition.y &&
+                characterPosition.top < pathwayPosition.y + pathwayPosition.height &&
+                characterPosition.left > pathwayPosition.x &&
+                characterPosition.left < pathwayPosition.x + pathwayPosition.width) {  
+                    goToDestination();
+                }
+        } else if (direction === 'down') {
+            if (characterPosition.bottom > pathwayPosition.y &&
+                characterPosition.bottom < pathwayPosition.y + pathwayPosition.height &&
+                characterPosition.left > pathwayPosition.x &&
+                characterPosition.left < pathwayPosition.x + pathwayPosition.width) {  
+                    goToDestination();
+                }
+        } else if (direction === 'left') {
+            if (characterPosition.left > pathwayPosition.x &&
+                characterPosition.left < pathwayPosition.x + pathwayPosition.width &&
+                characterPosition.top > pathwayPosition.y &&
+                characterPosition.top < pathwayPosition.y + pathwayPosition.height) {  
+                    goToDestination();
+                }
+        } else if (direction === 'right') {
+            if (characterPosition.right > pathwayPosition.x &&
+                characterPosition.right < pathwayPosition.x + pathwayPosition.width &&
+                characterPosition.top > pathwayPosition.y &&
+                characterPosition.top < pathwayPosition.y + pathwayPosition.height) { 
+                    goToDestination(); 
+                }
+        } 
+        
 }
 }
 
 function moveUp() {
     if (!boundaryDetected('up')) {
-        topPosition += walkingDistance * sprintMultiplier;
+        topPosition += walkingDistance;
+        detectPathway('up');
     }
 }
 function moveDown() {
     if (!boundaryDetected('down')) {
-        topPosition -= walkingDistance * sprintMultiplier;
+        topPosition -= walkingDistance;
+        detectPathway('down');
     }
 }
 function moveLeft() {
     if (!boundaryDetected('left')) {
-        leftPosition -= walkingDistance * sprintMultiplier;
+        leftPosition -= walkingDistance;
+        detectPathway('left');
     }
 }
 function moveRight() {
     if (!boundaryDetected('right')) {
-        leftPosition += walkingDistance * sprintMultiplier;
+        leftPosition += walkingDistance;
+        detectPathway('right');
     }
 }
 
 // raise the sprintMultiplier on shift press
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Shift') {
-        sprintMultiplier = 2;
-    }
-})
+// document.addEventListener('keydown', (e) => {
+//     if (e.key === 'Shift') {
+//         sprintMultiplier = 1.5;
+//     }
+// })
 // revert the sprintMultiplier to starting value on shift release
-document.addEventListener('keyup', (e) => {
-    if (e.key === 'Shift') {
-        sprintMultiplier = 1;
-    }
-    if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'ArrowDown' || e.key === 's' || e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'ArrowRight' || e.key === 'd') {
-        bagRot = setInterval(bagAnimation(), 100);
-        setTimeout(() => {
-            clearInterval(bagRot);
-        }, 2000);
-    }
-})
+// document.addEventListener('keyup', (e) => {
+//     if (e.key === 'Shift') {
+//         sprintMultiplier = 1;
+//     }
+// })
 
 document.addEventListener('keydown', (e) => {
     if (!gameIsPaused) {
@@ -271,10 +337,11 @@ document.addEventListener('keydown', (e) => {
         moveLeft();
     }
     animateArms();
+    bagAnimation();
     updateBackdropPosition();
-    detectPathway();
     }
 })
 
+showOrHideBag();
 generateSavedCharacter();
 checkForEquippedPatches();

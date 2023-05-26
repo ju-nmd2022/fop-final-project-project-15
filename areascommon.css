@@ -1,0 +1,31 @@
+.background-container {
+    width: 100vw;
+    height: 100vh;
+    contain: layout;
+}
+.backdrop-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.backdrop {
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 200rem;
+    top: 10rem;
+}
+.boundary {
+    position: absolute;
+}
+#topBoundary, #bottomBoundary {
+    width: 200rem;
+    height: 10rem;
+}
+#leftBoundary, #rightBoundary {
+    width: 10rem;
+    height: 135rem;
+}
+.door {
+    position: absolute;
+}

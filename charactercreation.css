@@ -3,6 +3,12 @@
     flex-direction: row;
 }
 
+/* override character settings */ 
+.character {
+    position: static;
+    transform: translate(0,0) scale(100%);
+}
+
 .customization-window {
     background-color: rgb(194, 194, 194);
     width: 28vw;
@@ -203,6 +209,9 @@
 }
 .patch-equipped {
     color: red;
+    display: none;
+}
+.bag {
     display: none;
 }
 

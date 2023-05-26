@@ -1,5 +1,54 @@
 // every screen in the game uses this js
 
+// popup class, YES I know classes should be put in a separate file but i can't get modules to work
+const popupLocation = document.querySelector('.screen-container');
+
+class Popup {
+    constructor(description, removeText,link) {
+        this.description = description;
+        this.removeText = removeText;
+        this.link = link;
+    }
+    createPopup() {
+        pauseGame();
+        const newPopupShade = document.createElement('div');
+        newPopupShade.classList.add('popup-shade');
+        const newPopup = document.createElement('div');
+        newPopup.classList.add('popup'); 
+        const newPopupText = document.createElement('p');
+        newPopupText.innerText = this.description;
+        const newPopupRemover = document.createElement('p');
+        newPopupRemover.classList.add('remove-popup');
+        newPopupRemover.innerText = this.removeText;
+        
+        newPopupRemover.addEventListener('click', () => {
+            newPopupShade.style.display = 'none';
+            newPopup.style.display = 'none';
+            unpauseGame();
+            if (this.description !== 'Dang it! I won/t get in for free at this time!') {
+                removePopupHandler();
+            } else {
+                window.location.href = '/index.html';
+            }
+        })
+        
+        newPopup.appendChild(newPopupText);
+        newPopup.appendChild(newPopupRemover);
+        if (this.link !== '') {
+            const newPopupLink = document.createElement('a');
+            newPopupLink.setAttribute('href',this.link);
+            const newPopupLinkText = document.createElement('p');
+            newPopupLinkText.innerText = `Back to ${this.link}`
+            newPopupLink.appendChild(newPopupLinkText);
+            newPopup.appendChild(newPopupLink);
+        }
+        popupLocation.appendChild(newPopupShade);
+        popupLocation.appendChild(newPopup);
+    }
+}
+// end of popup class
+
+
 // the clock
 const currentTimeDisplay = document.getElementById('currentTimeDisplay');
 // the pausebutton
@@ -21,28 +70,10 @@ let currentHour;
 let currentMinute;
 let timeInterval;
 
-timeInterval = setInterval(addTime,4000);
+timeInterval = setInterval(addTime,6500);
 
-if (!localStorage.currentHour || !localStorage.currentMinute) {
-    currentHour = 21;
-    currentMinute = 0;
-} else {
-    currentHour = JSON.parse(localStorage.currentHour);
-    currentMinute = JSON.parse(localStorage.currentMinute);
-}
-
-if (!localStorage.alcoholTaskCompleted) {
-    localStorage.alcoholTaskCompleted = 'false'
-}
-if (!localStorage.kebabTaskCompleted) {
-    localStorage.kebabTaskCompleted = 'false'
-}
-if (!localStorage.ovveTaskCompleted) {
-    localStorage.ovveTaskCompleted = 'false'
-}
-if (!localStorage.prepartyTaskCompleted) {
-    localStorage.prepartyTaskCompleted = 'false'
-}
+currentHour = JSON.parse(localStorage.currentHour);
+currentMinute = JSON.parse(localStorage.currentMinute);
 
 function upgradeTaskColors() {
     if (localStorage.alcoholTaskCompleted === 'true') {
@@ -68,12 +99,20 @@ function updateTimeDisplay() {
     
 }
 
+function testForFail() {
+    if (currentHour === 22) {
+        const losePopup = new Popup('Dang it! I won/t get in for free at this time!','Try Again','');
+        losePopup.createPopup();
+    }
+}
+
 function addTime() {
     currentMinute += 1;
     if (currentMinute === 60) {
         currentMinute = 0;
         currentHour += 1;
     }
+    testForFail();
     localStorage.currentHour = JSON.stringify(currentHour);
     localStorage.currentMinute = JSON.stringify(currentMinute);
     updateTimeDisplay();
@@ -87,7 +126,7 @@ function pauseGame() {
 }
 function unpauseGame() {
     pauseIcon.setAttribute('class','fa-solid fa-pause');
-    timeInterval = setInterval(addTime,4000);
+    timeInterval = setInterval(addTime,6500);
     restartGame.style.display = 'none';
     gameIsPaused = false;
 }

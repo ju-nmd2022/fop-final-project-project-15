@@ -18,14 +18,16 @@ let gameActive = false;
 
 returnToOutside.addEventListener('click', () => {
     if (localStorage.alcoholTaskCompleted === 'false') {
-        window.location.href = '/systemetext/systemetext.html';
+        window.location.href = '/area2.html';
         return;
     } else {
-        const alcoholTaskCompletedPopup = new TaskCompletion('Buy alcohol');
+        const popup = document.getElementById('popup');
+        popup.style.display = 'none';
+        const alcoholTaskCompletedPopup = new TaskCompletion('Buy alcohol','/glyphs/taskicons/alcoholtask.png');
         alcoholTaskCompletedPopup.createTaskCompletionPopup();
         setTimeout(() => {
-            window.location.href = '/systemetext/systemetext.html';
-        }, 4000);
+            window.location.href = '/area2.html';
+        }, 3500);
         updateTaskColors();
     }   
 });

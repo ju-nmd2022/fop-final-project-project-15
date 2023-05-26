@@ -43,17 +43,6 @@ const legs = document.querySelector('.legs'); //leg container
 let patchListDisplayed = false;
 const patches = ['winnerPatch','speedfreakPatch','hitechPatch','lokPatch','halsosektionenPatch','jsaPatch','qultPatch','westcoastPatch'];
 
-if (!localStorage.character) {
-    localStorage.character = JSON.stringify({name: 'akko',school: 'JTH',hairColor: 'yellow',shirtColor: 'red',pantsColor: 'blue',ovveColor: 'yellowovve.png'});
-}
-
-if (!localStorage.unlockedPatches) {
-    localStorage.unlockedPatches = JSON.stringify([]);
-}
-if (!localStorage.equippedPatches) {
-    localStorage.equippedPatches = JSON.stringify([]);
-}
-
 let savedCharacter = JSON.parse(localStorage.character); //fetch the localStorage settings for character properties
 let unlockedPatches = JSON.parse(localStorage.unlockedPatches); //fetch the localStorage settings for unlocked patches
 let equippedPatches = JSON.parse(localStorage.equippedPatches);

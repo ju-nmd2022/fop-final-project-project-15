@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROAD TO AKA</title>
-    <link rel="stylesheet" href="/common.css"/>
+    <title>OP</title>
+    <link rel="stylesheet" href="areascommon.css"/>
+    <link rel="stylesheet" href="/area1.css"/>
     <link rel="stylesheet" href="/character.css"/>
-    <link rel="stylesheet" href="/akaroad/akaroad.css"/>
+    <link rel="stylesheet" href="/common.css"/>
     <script src="/common.js" defer></script>
-    <script src="/akaroad/akaroad.js" defer></script>
     <script src="/taskcompletion.js" defer></script>
+    <script src="/area1.js" defer></script>
+    <script src="/characterjs.js" defer></script>
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/b0f116667a.js" crossorigin="anonymous"></script>
 </head>
@@ -63,8 +65,7 @@
                 </div>
             </div>
         </div>
-        
-            <!-- character -->
+
         <div class="character" id="character">
             <div class="head">
                 <div class="hair" id="hair"></div>
@@ -102,43 +103,29 @@
         </div>
         <!--  -->
 
-    <div class="jibs-container">
-        <div class="jibs-student">
-            <div class="jibs-head-container" id="jibsHead1">
-                <div class="jibs-head">
-                    <img src="/glyphs/akaroad/jibs-glasses.png" alt="glasses"/>
-                </div>
-                <div class="jibs-vision" id="jibsVision1"></div>
-            </div>
-        </div>
-        <div class="jibs-student">
-            <div class="jibs-head-container" id="jibsHead2">
-                <div class="jibs-head">
-                    <img src="/glyphs/akaroad/jibs-glasses.png" alt="glasses"/>
-                </div>
-                <div class="jibs-vision" id="jibsVision2"></div>
-            </div>
-        </div>
-        <div class="jibs-student">
-            <div class="jibs-head-container" id="jibsHead3">
-                <div class="jibs-head">
-                    <img src="/glyphs/akaroad/jibs-glasses.png" alt="glasses"/>
-                </div>
-                <div class="jibs-vision" id="jibsVision3"></div>
-            </div>
+    <div class="background-container">
+        <div class="backdrop">
+            <!-- background image -->
+            <img class="backdrop-img" src="/backdrop/area1.svg"/>
+            <!-- boundaries -->
+            <div id="topBoundary" class="boundary"></div> <!-- done -->
+            <div id="bottomBoundary" class="boundary"></div> <!-- done -->
+            <div id="leftBoundary" class="boundary"></div> <!-- done -->
+            <div id="rightBoundary" class="boundary"></div> <!-- done -->
+            <div id="frejsHouseBoundary" class="boundary"></div> <!-- done -->
+            <div id="playerHouseBoundary" class="boundary"></div> <!-- done -->
+            <div id="housesBoundary" class="boundary"></div> <!-- done-->
+            <div id="busstopBoundary" class="boundary"></div> <!-- done -->
+            <div id="treeBoundary" class="boundary"></div> 
+            <!-- doors/tunnels -->
+            <div id="frejsDoor" class="door"></div>
+            <div id="playerDoor" class="door"></div>
+            <div id="bridgeTunnel" class="door"></div>
+            <div id="akaTunnel" class="door"></div>
+
+            <img src="/glyphs/home/yellowovve.png" alt="your ovve" id="playerHouseOvve"/>
         </div>
     </div>
-    <div class="jibs-body-container">
-        <img src="/glyphs/akaroad/jibsbody.png" alt="jibs body" class="jibs-body"/>
-        <img src="/glyphs/akaroad/jibsbody.png" alt="jibs body" class="jibs-body"/>
-        <img src="/glyphs/akaroad/jibsbody.png" alt="jibs body" class="jibs-body"/>
-    </div> 
-    <div class="sidewalk">
-        <div class="pillar" id="pillar1"></div>
-        <div class="pillar" id="pillar2"></div>
-        <div class="pillar" id="pillar3"></div>
-    </div>
-    <div class="building"></div>
     </div>
 </body>
 </html>
