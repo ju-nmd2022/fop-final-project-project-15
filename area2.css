@@ -1,0 +1,67 @@
+.backdrop-img {
+    width: 155rem;
+}
+#topBoundary {
+    top: 22rem;
+}
+#bottomBoundary {
+    top: 94rem;
+}
+#leftBoundary {
+    left: 15rem;
+}
+#rightBoundary {
+    left: 120rem;
+}
+#alcamoBoundary {
+    width: 14rem;
+    height: 45rem;
+    top: 50.2rem;
+    left: 20rem;
+}
+#systemetBoundary {
+    width: 40rem;
+    height: 17rem;
+    top: 46.2rem;
+    left: 54rem;
+}
+#houseBoundary {
+    width: 30rem;
+    height: 35rem;
+    top: 30rem;
+    left: 94rem;
+}
+
+#alcamoDoor {
+    width: 8rem;
+    height: 5.7rem;
+    left: 29rem;
+    top: 64.2rem;
+}
+#systemetDoor {
+    width: 7.2rem;
+    height: 7rem;
+    left: 66.2rem;
+    top: 58.7rem;
+}
+#bridgeTunnel {
+    width: 16.5rem;
+    height: 5rem;
+    left: 64.6rem;
+    top: 84.8rem;
+}   
+
+#oldManDetector {
+    width: 2.8rem;
+    height: 10rem;
+    top: 35rem;
+    left: 90rem;
+}
+
+.old-man {
+    width: 2.8rem;
+    position: absolute;
+    top: 35rem;
+    left: 90rem;
+    z-index: 5;
+}

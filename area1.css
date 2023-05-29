@@ -1,0 +1,76 @@
+
+.backdrop-img {
+    width: 200rem;
+}
+#topBoundary {
+    top: 10rem;
+}
+#bottomBoundary {
+    top: 93rem;
+}
+#leftBoundary {
+    left: 160rem;
+}
+#rightBoundary {
+    left: 25rem;
+}
+#frejsHouseBoundary {
+    width: 77.6rem; 
+    height: 62rem;
+    top: 0;
+}
+#playerHouseBoundary {
+    width: 40rem;
+    height: 13rem;
+    top: 62.3rem;
+    left: 122.1rem;
+}
+#housesBoundary {
+    width: 52.8rem;
+    height: 14rem;
+    top: 83.5rem;
+    left: 30rem;
+}
+#busstopBoundary {
+    width: 16rem;
+    height: 7rem;
+    left: 118.5rem;
+    top: 29.1rem;
+}
+#treeBoundary {
+    width: 6rem;
+    height: 9.6rem;
+    left: 84rem;
+    top: 25.8rem;
+}
+#frejsDoor {
+    width: 5.5rem;
+    height: 5rem;
+    left: 45.3rem;
+    top: 60.5rem;
+}
+#playerDoor {
+    width: 2.8rem;
+    height: 5rem;
+    left: 130rem;
+    top: 72.8rem;
+}
+#bridgeTunnel {
+    width: 15rem;
+    height: 5rem;
+    left: 92rem;
+    top: 24rem;
+}
+#akaTunnel {
+    width: 5.5rem;
+    height: 15rem;
+    left: 33rem;
+    top: 66rem;
+}
+
+#playerHouseOvve {
+    width: 4rem;
+    position: absolute;
+    top: 69rem;
+    left: 124rem;
+}

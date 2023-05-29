@@ -1,0 +1,239 @@
+.body-container {
+    display: flex;
+    flex-direction: row;
+}
+
+/* override character settings */ 
+.character {
+    position: static;
+    transform: translate(0,0) scale(100%);
+}
+
+.customization-window {
+    background-color: rgb(194, 194, 194);
+    width: 28vw;
+    height: 84vh;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    padding-right: 2vw;
+    padding-left: 2vw;
+    margin-top: 5vh;
+    margin-left: 2vw;
+    contain: layout;
+    display: flex;
+    flex-direction: column;
+}
+
+.ovve-colors {
+    display: block;
+}
+
+.customization-window > p {
+    margin-top: 4vh;
+    margin-left: 2vw;
+}
+
+.choose-color,.choose-ovve-color,.choose-name {
+    margin-top: 1vh;
+    margin-left: 2vw;
+}
+.choose-ovve-color,.choose-name {
+    width: 12vw;
+}
+
+.submit-changes-button,.start-game-button {
+    width: 8vw;
+    height: 4vh;
+    margin-left: 2vw;
+}
+
+.submit-changes-button {
+    margin-top: 10vh;
+}
+
+.start-game-button {
+    margin-top: 3vh;
+}
+
+.character-window {
+    background-color: rgb(132, 215, 215);
+    margin-top: 5vh;
+    width: 62vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2vw;
+}
+
+.rotate-animation {
+    animation-name: rotateanimation;
+    animation-duration: 1s;
+}
+.fade-animation {
+    animation-name: fadeinanimation;
+    animation-duration: 1s;
+}
+.jibs-animation {
+    animation-name: jibsanimation;
+    animation-duration: 1s;
+}
+.qult-animation {
+    animation-name: qultanimation;
+    animation-duration: 1s;
+}
+.jth-icon,.comm-icon1,.comm-icon2,.teach-icon,.health-icon,.jibs-icon,.qult-icon { /* all icons */
+    height: auto;
+    display: none;
+    position: absolute;
+    top: 23vh;
+}
+.jth-icon,.comm-icon1,.teach-icon,.health-icon,.jibs-icon {
+    width: 5vw;
+}
+.comm-icon2 {
+    width: 3vw;
+    top: 29vh;
+
+}
+.qult-icon {
+    width: 12vw;
+
+}
+
+@keyframes rotateanimation {
+    25% {transform: rotate(90deg);}
+    50% {transform: rotate(180deg);}
+    75% {transform: rotate(270deg);}
+    100% {transform: rotate(360deg);}
+}
+@keyframes fadeinanimation {
+    from {opacity: 0;}
+    to {opacity: 100;}
+}
+@keyframes jibsanimation {
+    from {top: 18vh;}
+    to {top: 23vh;}
+}
+@keyframes qultanimation {
+    from {
+        margin-right: 20vw;
+    }
+    to {
+        margin-right: 0;
+    }
+}
+
+.stage {
+    /* gradient made with https://cssgradient.io */
+    background: linear-gradient(90deg, rgba(77,77,77,1) 0%, rgba(32,32,32,1) 35%, rgba(32,32,32,1) 65%, rgba(77,77,77,1) 100%);
+    opacity: 70%;
+
+    width: 8vw;
+    height: 5vh;
+    border-radius: 50%;
+    margin-top: -2vh;
+    filter: blur(5px);
+}
+
+.character-name {
+    position: absolute;
+    bottom: 8vh;
+    left: 38vw;
+}
+
+/* only used on the character selection screen */
+.right-arm-animation {
+    animation-name: rightarmanimation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.left-arm-animation {
+    animation-name: leftarmanimation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+.patch-menu {
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    right: 7vmin;
+    bottom: 8vmin;
+}
+.presentation-mode-tooltip {
+    background-color: black;
+    color: white;
+    height: auto;
+    width: auto;
+    padding: 2vmin;
+    margin-bottom: 1vmin;
+    border-radius: 2vmin;
+    display: none;
+}
+.patch-button {
+    background-color: black;
+    color: white;
+    width: auto;
+    height: auto;
+    padding: 2vmin;
+    border-radius: 2vmin;
+    cursor: pointer;
+}
+.patch-list {
+    background-color: black;
+    height: auto;
+    width: auto;
+    padding: 2vmin;
+    margin-bottom: 1vmin;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 3vmin;
+    border-radius: 2vmin;
+    display: none;
+}
+.patch-list > div {
+    background-color: rgb(156, 0, 0);
+    width: 10vmin;
+    aspect-ratio: 1/1;
+    contain: content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2vmin;
+    border: 1vmin solid rgb(173, 173, 173);
+    cursor: pointer;
+}
+.patch-list > div > img {
+    max-width: 70%;
+}
+.patch-tooltip {
+    background-color: black;
+    color: white;
+    width: auto;
+    padding: 2vmin;
+    border-radius: 2vmin;
+    margin-bottom: 1vmin;
+    display: none;
+}
+.patch-unlocked {
+    color: red;
+}
+.patch-equipped {
+    color: red;
+    display: none;
+}
+.bag {
+    display: none;
+}
+
+@keyframes rightarmanimation {
+    50% {transform: rotate(16deg);}
+    100% {transform: rotate(10deg);}
+}
+@keyframes leftarmanimation {
+    50% {transform: rotate(-16deg);}
+    100% {transform: rotate(-10deg);}
+}

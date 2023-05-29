@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* font from: https://www.dafont.com/alarm-clock.font */
+@font-face {
+    font-family: alarm_clock;
+    src: url(alarm_clock.ttf)
+}
+
+.clock-container {
+    background-color: black;
+    contain: content;
+    width: 20vmin;
+    aspect-ratio: 5/2;
+
+    position: absolute;
+    top: 4vmin;
+    left: 4vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2vmin;
+    z-index: 10;
+}
+.clock-container > h2 {
+    color: white;
+    font-size: 5vmin;
+    font-family: alarm_clock;
+}
+
+.pause-screen {
+    contain: content;
+
+    width: auto;
+    height: auto;
+
+    position: absolute;
+    right: 4vmin;
+    top: 4vmin;
+
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 2vmin;
+    z-index: 10;
+}
+
+.pause-screen > button {
+    background-color: black;
+    border: none;
+    border-radius: 2vmin;
+    height: 7vmin;
+    aspect-ratio: 2/1;
+    display: none;
+}
+.pause-screen > button > p {
+    color: white;
+}
+
+#pauseButton {
+    background-color: rgb(0, 0, 0);
+    contain: content;
+    width: 7vmin;
+    aspect-ratio: 1/1;
+
+    
+
+    border-radius: 2vmin;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pauseButton > i {
+    color: white;
+    font-size: 4vmin;
+}
+
+.task-container {
+    contain: content;
+
+    position: absolute;
+    bottom: 4vmin;
+    left: 4vmin;
+
+    z-index: 10;
+}
+
+.task-tooltip {
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 1vmin;
+    display: none;
+
+    border-radius: 2vmin;
+    margin-bottom: 1vmin;
+}
+
+.task-background {
+    background-color: rgb(0, 0, 0);
+    width: auto;
+    height: auto;
+    contain: content;
+    padding: 4vmin;
+
+    border-radius: 2vmin;
+    display: flex;
+    flex-direction: row;
+    gap: 3vmin;
+    align-items: center;
+}
+
+.task {
+    background-color: rgb(157, 157, 157);
+    width: 10vmin;
+    aspect-ratio: 1/1;
+    contain: content;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0.5vmin solid gray;
+}
+
+.task-background > div > img {
+    /* width: 9vmin; */
+    max-width: 80%;
+}
+
+.screen-container {
+    width: 100vw;
+    height: 100vh;
+    contain: content;
+}
+
+.popup {
+    background-color: rgb(0, 0, 0);
+    width: 30vw;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 11;
+    /* border: 1vmin solid grey; */
+    contain: content;
+    padding: 2vmin;
+    border-radius: 2vmin;
+}
+.popup > p {
+    color: rgb(255, 255, 255);
+    font-size: 2vmin;
+}
+.remove-popup {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1.2vw;
+    font-weight: bold;
+    margin-top: 2vh;
+}
+.popup-shade {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    opacity: 40%;
+    z-index: 10;
+    position: absolute;
+    
+}
+
+/* signs */
+.sign {
+    width: 11vw;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+}
+
+.task-completion-popup {
+    background-color: black;
+    width: 30vw;
+    height: auto;
+    z-index: 10;
+    contain: content;
+    padding: 2vmin;
+    border-radius: 2vmin;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    animation-name: taskcompletion;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+.task-completion-popup > h2 {
+    color: white;
+    margin-left: 2vmin;
+}
+.task-completion-popup > div > img {
+    max-width: 80%;
+}
+.speech-bubble-container {
+    contain: content;
+    min-width: 15vmin;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+}
+.speech-bubble {
+    background-color: white;
+    border: 1vmin solid black;
+    padding: 2vmin;
+    border-radius: 2vmin;
+}
+.text-container {
+    display: inline-block;
+}
+.text-container > p {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes typing-ani {
+    from {
+        width: 0;
+    } 
+}
+
+@keyframes taskcompletion {
+    33% {
+        /* width: 30vw; */
+        padding: 2vmin;
+    }
+    66% {
+        /* width: 35vw; */
+        padding: 5vmin;
+    }
+    100% {
+        /* width: 30vw; */
+        padding: 2vmin;
+    }
+}

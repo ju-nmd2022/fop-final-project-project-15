@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Character</title>
+    <link rel="stylesheet" href="character.css"/>
+    <link rel="stylesheet" href="charactercreation.css"/>
+    <link rel="stylesheet" href="common.css"/>
+    <script src="charactercreation.js" type="module" defer></script>
+</head>
+<body>
+    <!-- inputs for customization --> 
+    <div class="body-container">
+    <div class="customization-window">
+        <h2>Create Your Character!</h2>
+        <p>What's Your Name?</p>
+        <input class="choose-name" id="chooseName" type="text" value="Character #1"/>
+        <p>What's Your Hair Color?</p>
+        <input class="choose-color" id="chooseHairColor" type="color" value="#F1F107"/>
+        <p>What's Your Shirt Color?</p>
+        <input class="choose-color" id="chooseShirtColor" type="color" value="#FF0000"/>
+        <p>What's Your Pants Color?</p>
+        <input class="choose-color" id="choosePantsColor" type="color" value="#FF0000"/>
+        <p>What's Your Ovve Color?</p>
+        <input list="ovve-colors" class="choose-ovve-color" id="chooseOvveColor" autocomplete="off"/>
+            <datalist id="ovve-colors">
+                <option value="Yellow (JTH)"></option> <!-- yellow -->
+                <option value="Red (HLK)"></option> <!-- red -->
+                <option value="Blue (HLK)"></option> <!-- blue -->
+                <option value="White (Hälso)"></option> <!-- white -->
+                <option value="Green (JIBS)"></option> <!-- green -->
+                <option value="Black (Qult)"></option> <!-- black -->
+            </datalist>
+        <p>Show ovve</p>
+        <input class="choose-color" type="checkbox" id="showOvve"/>
+        <button class="submit-changes-button" id="submitChangesButton">Submit</button>
+        <a href="introscreen.html">
+            <button class="start-game-button">
+                <p class="start-game-text">Start Game!</p>
+            </button>
+        </a>
+    </div>
+
+    <div class="character-window" id="characterScreen">
+        <img class="jth-icon" id="jthIcon" src="glyphs/jthicon.svg"/>
+        <img class="comm-icon1" id="commIcon1" src="glyphs/commicon1.svg"/>
+        <img class="comm-icon2" id="commIcon2" src="glyphs/commicon2.svg"/>
+        <img class="teach-icon" id="teachIcon" src="glyphs/teachicon.svg"/>
+        <img class="health-icon" id="healthIcon" src="glyphs/healthicon.svg"/>
+        <img class="jibs-icon" id="jibsIcon" src="glyphs/jibsicon.svg"/>
+        <img class="qult-icon" id="qultIcon" src="glyphs/qulticon.svg"/>
+
+    <!-- the character -->
+        <div class="character" id="character">
+            <div class="head">
+                <div class="hair" id="hair"></div>
+                <div class="eyes" id="eyes">
+                    <div class="right-eye" id="rightEye">
+                        <div class="pupil-axis" id="pupilAxisRight">
+                            <div class="pupil"></div>
+                        </div>
+                    </div>
+                    <div class="left-eye" id="leftEye">
+                        <div class="pupil-axis" id="pupilAxisLeft">
+                            <div class="pupil"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+            <div class="body">
+                <div class="right-arm right-arm-animation" id="rightArm"></div>
+                <div class="torso" id="torso"></div>
+                <div class="left-arm left-arm-animation" id="leftArm"></div>
+            </div>
+            <div class="ovve">
+                <img src="glyphs/ovve/yellowovve.png" id="playerOvve" alt="yellow ovve"/>
+                    <!-- pathes -->
+                    <img class="winner-patch patch" src="glyphs/patches/winnerpatch.svg"/>
+                    <img class="speedfreak-patch patch" src="glyphs/patches/speedfreakpatch.png"/>
+                    <img class="hitech-patch patch" src="glyphs/patches/hitechpatch.png"/>
+                    <img class="lok-patch patch" src="glyphs/patches/lokpatch.png"/>
+                    <img class="halsosektionen-patch patch" src="glyphs/patches/halsosektionenpatch.png"/>
+                    <img class="jsa-patch patch" src="glyphs/patches/jsapatch.png"/>
+                    <img class="qult-patch patch" src="glyphs/patches/qultpatch.png"/>
+                    <img class="westcoast-patch patch" src="glyphs/patches/westcoastpatch.png"/>
+            </div>
+            <div class="legs">
+                <div class="right-leg" id="rightLeg"></div>
+                <div class="left-leg" id="leftLeg"></div>
+            </div>
+        </div>
+        <h2 class="character-name" id="characterName">New Character</h2>
+        <div class="stage"></div>
+        <div class="patch-menu">
+            <div class="presentation-mode-tooltip">
+                <h3>(Presentation mode)</h3>
+                <p>You can now equip patches</br>even if they aren't</br>unlocked.</br>(unlocked patches won't be saved)</p>
+            </div>
+            <!-- tooltips -->
+            <div class="patch-tooltip">
+                <h1>Winner</h1>
+                <p>Show everyone at AKA that</br>you have won the game!</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>Speedfreak</h1>
+                <p>Get this patch by completing</br>the game before 21:30</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>Hi Tech</h1>
+                <p>Show some JTH pride with</br>this Hi Tech patch!</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>LOK Patch</h1>
+                <p>Show some HLK pride with</br>this LOK patch!</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>Hälsosektion</h1>
+                <p>Show some Hälso pride with</br>this Hälsosektion patch!</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>JSA</h1>
+                <p>Show some JIBS pride with</br>this JSA patch!</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>Qult</h1>
+                <p>Tired of having to explain why</br>your ovve is black?</br>This patch may help</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-tooltip">
+                <h1>Westcoast</h1>
+                <p>Westcoast = bestcoast</p>
+                <p class="patch-unlocked">Not Unlocked</p>
+                <p class="patch-equipped">Not Equipped</p>
+            </div>
+            <div class="patch-list">
+                <div>
+                    <img src="glyphs/patches/winnerpatch.svg" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="glyphs/patches/speedfreakpatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="glyphs/patches/hitechpatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="glyphs/patches/lokpatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="glyphs/patches/halsosektionenpatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="glyphs/patches/jsapatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="glyphs/patches/qultpatch.png" alt="winner patch"/>
+                </div>
+                <div>
+                    <img src="glyphs/patches/westcoastpatch.png" alt="winner patch"/>
+                </div>
+            </div>
+            <div class="patch-button">
+                <p>Patches (0 of 10 Unlocked)</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
