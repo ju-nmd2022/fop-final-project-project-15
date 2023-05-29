@@ -15,6 +15,7 @@ const patchTooltips = Array.from(document.querySelectorAll('.patch-tooltip'));
 const patchButton = document.querySelector('.patch-button');
 const patchList = document.querySelector('.patch-list');
 const patchToolTip = document.querySelector('.patch-tooltip');
+const presentationModeTooltip = document.querySelector('.presentation-mode-tooltip');
 
 // icons displayed on submit click depending on ovve color
 const jthIcon = document.getElementById('jthIcon'); //jth icon
@@ -56,7 +57,7 @@ patchList.addEventListener('mouseover', () => {
             patchTooltips[index].style.display = 'none';
         });
         patchListEntrys[index].addEventListener('click', () => { //to equip the patch
-            if (unlockedPatches.includes(patches[index])) { //if the patch is unlocked
+            if (unlockedPatches.includes(patches[index]) || localStorage.presentationMode === 'true') { //if the patch is unlocked or presentation mode is on
                 if (equippedPatches.includes(patches[index])) {
                     equippedPatches.splice(equippedPatches.indexOf(patches[index]),1);
                     changeEquippedText();
@@ -77,9 +78,13 @@ patchList.addEventListener('mouseover', () => {
 patchButton.addEventListener('click', () => {
     if (patchListDisplayed) {
         patchList.style.display = 'none';
+        presentationModeTooltip.style.display = 'none';
         patchListDisplayed = false;
     } else {
         patchList.style.display = 'grid';
+        if (localStorage.presentationMode === 'true') {
+            presentationModeTooltip.style.display = 'block';
+        }
         patchListDisplayed = true;
     }
 });

@@ -162,6 +162,16 @@
     right: 7vmin;
     bottom: 8vmin;
 }
+.presentation-mode-tooltip {
+    background-color: black;
+    color: white;
+    height: auto;
+    width: auto;
+    padding: 2vmin;
+    margin-bottom: 1vmin;
+    border-radius: 2vmin;
+    display: none;
+}
 .patch-button {
     background-color: black;
     color: white;

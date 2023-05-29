@@ -38,22 +38,27 @@ function testForWin() {
 }
 function removePopupHandler() {
     if (localStorage.alcoholTaskCompleted === 'true' && localStorage.kebabTaskCompleted === 'true' && localStorage.ovveTaskCompleted === 'true' && localStorage.prepartyTaskCompleted) {
+        let homeScreenTimer = 0;
+        let patchPopupDelay = 0;
         if (!unlockedPatches.includes('winnerPatch')) {
             const winnerPatchUnlocked = new TaskCompletion('WINNER PATCH','glyphs/patches/winnerpatch.svg');
             winnerPatchUnlocked.createTaskCompletionPopup();
             unlockedPatches.push('winnerPatch');
             localStorage.unlockedPatches = JSON.stringify(unlockedPatches);
+            homeScreenTimer += 2500;
+            patchPopupDelay += 2500;
         }
         if (localStorage.currentMinute < 31 && !unlockedPatches.includes('speedfreakPatch')) {
+            homeScreenTimer += 2500;
             setTimeout(() => {
                 const speedfreakPatchUnlocked = new TaskCompletion('SPEEDFREAK PATCH','glyphs/patches/speedfreakpatch.png');
                 speedfreakPatchUnlocked.createTaskCompletionPopup();
                 unlockedPatches.push('speedfreakPatch');
                 localStorage.unlockedPatches = JSON.stringify(unlockedPatches);
-            }, 2500);
+            }, patchPopupDelay);
         }
         setTimeout(() => {
             window.location.href = 'index.html';
-        }, 5000);
+        }, homeScreenTimer);
     }
 }
